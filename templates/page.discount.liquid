@@ -1,0 +1,32 @@
+<div id="col-main" class="col-md-24 text-center clearfix">
+  
+  <div class="widget-wrapper page_discount">
+    
+    {{ page.content }}
+  </div>
+  {% if settings.tweet_code != 'none' %}
+  <script>
+    // Include the Twitter Library
+    window.twttr = (function (d,s,id) {
+      var t, js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+      js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+      return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+
+    // On ready, register the callback...
+    twttr.ready(function (twttr) {
+      twttr.events.bind('tweet', function (event) {
+        jQuery('#tweetCode').show();
+      });
+    });
+  </script>
+  
+  <a class="btn-arrow btn btn-1" id="tweetLink" href="https://twitter.com/intent/tweet?url={{settings.tweet_code_url}}"><i class="icomoon-arrow-right"></i> {{settings.tweet_code_button}}</a>
+  
+  <h4>{{settings.tweet_code_mesg}}</h4>
+  
+  <h3 id="tweetCode"><i class="fa fa-hand-o-right"></i> {{settings.tweet_code_discount}}</h3>
+  
+  {% endif %}
+</div>

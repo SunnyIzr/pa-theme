@@ -1,0 +1,56 @@
+{% assign variant_tmp = prod.selected_or_first_available_variant  %}
+{% for variant in prod.variants %}
+{% if variant.available == true and variant.price < variant_tmp.price %}
+{% assign variant_tmp = variant %}
+{% endif %}
+{% endfor %}
+<div class="product">
+  <div class="product-container{% if variant_tmp.compare_at_price > variant_tmp.price and settings.wrapper_price_percent == true %} issale{% endif %}">
+
+    <div class="product-wrap">
+      <div class="product-image">
+        <div class="wrap">
+          {% include 'spinner2' %}
+          <a href="{{prod.url | within: collection}}">
+            <img src="{{ prod.images[1].src | product_img_url: settings.wrapper_img_size }}" class="hover-image img-responsive" alt="{{ prod.title }}" />
+            <img src="{{ prod.images[0].src | product_img_url: settings.wrapper_img_size }}" class="main-image img-responsive" alt="{{ prod.title }}" />
+          </a>
+        </div>
+      </div>
+
+      <div class="product-content">
+        <div class="inner">
+          <div class="product-title">
+            <a href="{{ prod.url | within: collection }}" title="{{ prod.title }}">
+              {{ prod.title }}
+            </a>
+          </div>
+
+          {% if ecommerce_enabled && variant_tmp.price > 0 %}
+          <div class="price-val product-price">
+            {% if prod.available %}
+            <span class="price">{{ variant_tmp.price | money_without_trailing_zeros }}</span>
+
+            {% if variant_tmp.compare_at_price > variant_tmp.price %}
+            <del class="price_compare"> {{ variant_tmp.compare_at_price | money_without_trailing_zeros }}</del>
+            {% endif %}
+
+            {% else %}
+            <span class="sold_out">{{'products.product.sold_out' | t}}</span>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="product-utils">
+        <a class="quick-view" href="{{prod.url | within: collection}}">Quick View</a>
+        <a href="/account/login" class="btn-wishlist" title="{{'wish_list.general.add_to_wishlist' | t}}"><i class="icon-pa-heart"></i></a>
+      </div>
+
+      {% if prod.metafields.c_f.label %}
+        <h4 class="product-label">{{ prod.metafields.c_f.label }}</h4>
+      {% endif %}
+    </div> <!-- /end .product-wrap -->
+  </div>
+</div>

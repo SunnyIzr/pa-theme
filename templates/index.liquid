@@ -1,0 +1,37 @@
+<div class="box-wrap">
+  {% if settings.show_slideshow %}
+  {% include 'home-slider' %}
+  {% elsif settings.video_active %}
+  {% include 'home-video' %}
+  {% endif %}
+</div>
+
+<div id="col-main">
+
+  {% comment %} ----- Featured Products ----- {% endcomment %}
+  {% if settings.featured_products_home %}
+  <section class="container-fluid">
+    <div class="row text-center">
+    {% if settings.featured_products_home_heading != blank %}
+      <h2>{{ settings.featured_products_home_heading }}</h2>
+    {% endif %}
+    {% if settings.featured_products_home_subheading != blank %}
+      <p>{{ settings.featured_products_home_subheading }}</p>
+    {% endif %}
+    </div>
+
+    <div id="featured-products" class="row cat-grid">
+      {% assign collection = collections[settings.featured_products_home_collection] %}
+      {% for prod in collection.products limit: settings.featured_products_home_num %}
+      <div class="product_item item-{{prod.id}}">
+        {% include 'product-item' %}
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% comment %} ----- Static Block ----- {% endcomment %}
+  {% include 'static-block' %}
+
+</div>

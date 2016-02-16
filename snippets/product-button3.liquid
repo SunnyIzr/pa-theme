@@ -1,0 +1,20 @@
+{% capture permalinkURL %}{{ shop.url }}{{ prod.url }}{% endcapture %}
+{% capture shareTitle %}{{ prod.title }}{% endcapture %}
+<div class="social-sharing btns" data-permalink="{{ permalinkURL }}">
+  <div class="table">
+    <div class="social-icons">
+      <ul class="list-inline">
+        <li>
+          <a href="{{prod.url}}" class="product-quick-view">Quick View</a>
+        </li>
+        
+        {% if settings.allow_wishlist %}
+        <li>
+          {% include 'wishlist-item' %}
+        </li>
+        {% endif %}
+        
+      </ul>
+    </div>
+  </div>
+</div>

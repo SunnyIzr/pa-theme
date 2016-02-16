@@ -1,0 +1,39 @@
+<footer id="footer">
+  <div id="footer-bottom" class="container">
+
+    <div class="row hidden-xs hidden-sm">
+      <div class="col-md-8">
+        {% include 'footer-widget-menu-company' %}
+      </div>
+      <div class="col-md-8">
+        {% include 'footer-widget-social' %}
+        {% include 'footer-widget-menu-where-to-buy' %}
+      </div>
+      <div class="col-md-8">
+        {% include 'footer-widget-subscribe' %}
+      </div>
+    </div>
+
+    <div class="row visible-xs visible-sm" id="footer-mobile">
+      <div class="col-xs-24">
+        {% include 'footer-widget-subscribe' %}
+      </div>
+      <div class="col-xs-24">
+        {% include 'footer-widget-social' %}
+      </div>
+      <div class="col-xs-12">
+        {% include 'footer-widget-menu-company' %}
+      </div>
+      <div class="col-xs-12">
+        {% include 'footer-widget-menu-where-to-buy' %}
+      </div>
+    </div>
+
+  </div> <!-- /end #footer-bottom -->
+
+  <div id="copyright">
+    <div class="container">
+      <div class="copyright-text">Copyright {{ 'now' | date: '%Y' }} <a href="/">{{ shop.name | escape }}</a> &ndash; All Rights Reserved.</div>
+    </div>
+  </div> <!-- /end #pa-copyright -->
+</footer>

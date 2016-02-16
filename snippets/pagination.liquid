@@ -1,0 +1,32 @@
+{% if paginate.pages > 1 %}
+<div class="pagination clearfix">
+  <ul class="list-inline pagination-num">
+    {% if paginate.previous %}
+    <li class="prev"><a class="btn" href="{{ paginate.previous.url }}"><i class="icomoon-arrow-left"></i></a></li>
+    {% else %}
+    <li class="prev hide"><span class="btn"><i class="icomoon-arrow-left"></i></span></li>
+    {% endif %}
+    
+    {% for part in paginate.parts %}
+    {% if part.is_link %}
+    <li><a class="btn" href="{{ part.url }}">{{ part.title }}</a></li>
+    {% else %}
+    {% if part.title == '&hellip;' %}
+    <li class="ellipsis"><span>{{ part.title }}</span></li>
+    {% else %}
+    <li><span class="btn active">{{ part.title }}</span></li>
+    {% endif %}
+    {% endif %}
+    {% endfor %}     
+    
+    {% if paginate.next %}
+    <li class="next"><a class="btn" href="{{ paginate.next.url }}"><i class="icomoon-arrow-right"></i></a></li>
+    {% else %}
+    <li class="next hide"><span class="btn"><i class="icomoon-arrow-right"></i></span></li>
+    {% endif %}
+  </ul>
+  <p class="pagination-num-showing">
+    {{'general.pagination.showing' | t}}: {{ paginate.current_offset | plus: 1 }}-{% if paginate.next %}{{ paginate.current_offset | plus: paginate.page_size }}{% else %}{{ paginate.items }}{% endif %} {{'general.pagination.of' | t}} {{ paginate.items }}
+  </p>
+</div>
+{% endif %}

@@ -1,0 +1,445 @@
+/*
+* PaulAndrew.com Theme Customization + Overrides
+*/
+
+/* Color Variables
+...................................... */
+{% assign grey_light      = "#F2F2F2" %}
+{% assign grey_med_light  = "#CCCCCC" %}
+{% assign grey_medium     = "#9C9C9C" %}
+{% assign grey_dark       = "#555555" %}
+
+{% assign link_color      =  grey_dark %}
+{% assign link_hover      =  "black"   %}
+
+{% assign label_red       = "#EA5A4E" %}
+{% assign label_green     = "#49A6A5" %}
+
+
+/* Font Weights
+...................................... */
+{% assign futura_light   = "300" %}
+{% assign futura_book    = "400" %}
+{% assign futura_medium  = "500" %}
+
+
+/* PA Font Glyphs
+...................................... */
+{% assign pa_brand_logo    = "\e900" %}
+{% assign pa_logo_symbol   = "\e901" %}
+
+{% assign pa_account       = "\e902" %}
+{% assign pa_account_full  = "\e903" %}
+
+{% assign pa_heart         = "\e904" %}
+{% assign pa_heart_full    = "\e905" %}
+
+{% assign pa_search        = "\e913" %}
+{% assign pa_search_full   = "\e908" %}
+
+{% assign pa_shopping_bag         = "\e906" %}
+{% assign pa_shopping_bag_full    = "\e907" %}
+
+{% assign pa_toggle_carousel      = "\e90d" %}
+{% assign pa_toggle_carousel_full = "\e90e" %}
+
+{% assign pa_toggle_grid          = "\e90f" %}
+{% assign pa_toggle_grid_full     = "\e910" %}
+
+
+/* ----------------------------------------------
+Fonts
+---------------------------------------------- */
+html, body {
+  text-rendering: optimizeLegibility;
+  text-rendering: geometricPrecision;
+
+  font-smooth: always;
+  font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+body {
+  font-family: "futura-pt", "futura", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: {{ futura_light }};
+  line-height: 1.42857143; // 20px
+  color: {{ grey_dark }};
+  background-color: white;
+}
+
+h1, .h1 { font-size: 28px; }
+h2, .h2 { font-size: 22px; }
+h3, .h3 { font-size: 16px; }
+h4, .h4 { font-size: 14px; }
+h5, .h5 { font-size: 13px; }
+h6, .h6 { font-size: 12px; }
+
+h1,h2,h3,h4 .title, strong, button, .btn { font-weight: {{ futura_medium }}; }
+h1,h2,h3,h4, .title, button, .btn { text-transform: uppercase; }
+
+a {
+  text-decoration: none;
+  color: {{ grey_dark }};
+}
+
+#content p a { text-decoration: underline; }
+
+
+/* ----------------------------------------------
+Top Bar
+---------------------------------------------- */
+#top-bar {
+  overflow: hidden;
+  height: 30px;
+  background-color: #000000;
+  color: {{ grey_light }};
+  font-size: 13px;
+  text-transform: uppercase;
+  line-height: 30px;
+}
+#promo-text { text-align: center; }
+#top-bar-util {
+  text-align: right;
+
+  a {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: {{ grey_light }};
+    font-size: 18px;
+    &:hover { color: #FFFFFF; }
+  }
+}
+
+/* ----------------------------------------------
+Navigation
+---------------------------------------------- */
+
+#header a:hover {
+  text-decoration: none;
+}
+
+li#navlink-paul-andrew a {
+  display: block;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 0 !important;
+  width: 88px;
+  height: 88px;
+  background-position: center center;
+  background-size: cover;
+  text-indent: -100000px;
+  background-image: url( {{ 'pa-nav-logo.png' | asset_url; }} );
+}
+
+
+#header.sticky li {
+  &.customer-menu-icon,
+  &.wishlist-menu-icon,
+  &.cart-menu-icon,
+  &.search-menu-icon {
+    display: inline-block;
+  }
+}
+
+@media (min-width: 992px){
+  #header.sticky.on {
+    li#navlink-paul-andrew a {
+      width: 60px;
+      height: 60px;
+      background-image: url( {{ 'pa-nav-logo-sticky.png' | asset_url; }} );
+    }
+  }
+}
+
+/* ----------------------------------------------
+Mobile Navigation
+---------------------------------------------- */
+.nav-menu-icon {
+  position: absolute;
+  top:0;
+  left:15px;
+  width: 40px;
+  height: 60px;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+  .btn-navbar {
+    display: block;
+    margin-top: 20px;
+  }
+  .icon-bar{
+    display: block;
+    margin-top: 10px;
+    height: 1px;
+    background: {{grey_dark}};
+  }
+}
+#mobile-site-logo {
+  position: absolute;
+  left: 50%;
+  margin-left: -30px;
+  width: 60px;
+  height: 60px;
+  a {
+    display: block;
+    text-align: center;
+  }
+  .icon-pa-logo {
+    font-size: 40px;
+    line-height: 60px;
+    text-align: center;
+  }
+}
+#mobilenavbar-utils {
+  position: absolute;
+  top:0;
+  right:15px;;
+  a {
+    padding-left: 12px;
+    color: #333;
+    font-size: 24px;
+    &:hover { color: #000; }
+  }
+}
+
+#mobilnavlink-paul-andrew,
+#navlink-home {
+  display: none !important;
+}
+
+@media (max-width: 767px){
+  #mobilenavbar-utils a { font-size: 18px; }
+}
+@media (max-width: 991px){
+  #header_nav > .container {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #header .navigation_wrapper {
+    > * { line-height: 60px;}
+  }
+}
+
+/* ----------------------------------------------
+Sliders
+---------------------------------------------- */
+.loading .flexslider * {
+  visibility: hidden;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transition: all .4s ease-out;
+}
+
+.flexslider {
+  height: auto;
+  min-height: 100px;
+  max-height: 800px;
+  overflow: hidden;
+  visibility: visible;
+  opacity: 1;
+  filter: alpha(opacity=100);
+
+  border-bottom: 1px solid white;
+  background-color: #CCCCCC;
+
+  transition: all .4s ease-in;
+  -webkit-transition: all .4s ease-in;
+  -moz-transition: all .4s ease-in;
+  -o-transition: all .4s ease-in;
+  -ms-transition: all .4s ease-in;
+
+  .caption.header.collection-header {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    color: white;
+    height: 40px;
+    top: 50%;
+    margin-top: -20px;
+
+    h1, h2 {
+      font-weight: 300;
+      font-size: 30px;
+      line-height: 40px;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .slides .slider-mask {
+      opacity: .25;
+      filter: alpha(opacity=25);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .flexslider {
+    .caption.header.collection-header {
+      h1, h2 { font-size: 24px; }
+    }
+    .flex-control-nav,
+    .flex-direction-nav {
+      display: none !important;
+    }
+    .caption.header {
+      top: 30%;
+      h1, h2, { font-size: 24px; }
+    }
+  }
+
+}
+
+/* ----------------------------------------------
+Collections Section
+---------------------------------------------- */
+#col-main.collection-page,
+.container-fluid,
+.container-fluid .row {
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+.container-fluid .row.cat-grid {
+  margin-right: -1px;
+}
+.cat-grid .product_item {
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  &:last-child {
+    border-right: 1px solid #fff;
+  }
+}
+
+/* ----------------------------------------------
+Collections Grid Product
+---------------------------------------------- */
+.advanced-pagination { height: 0; }
+.product_item.animated {
+  opacity: 0;
+}
+.product {
+  position: relative;
+  background-color: transparent;
+
+  img {
+    padding-top: 20px;
+    display: inline-block;
+    visibility: visible;
+    opacity: 1;
+    filter: alpha(opacity=100);
+  }
+
+  img.hover-image {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+
+  &:hover {
+    background-color: white;
+
+    .product-utils { display: block; }
+    .product-label { display: none; }
+
+    img.main-image {
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+      filter: alpha(opacity=0);
+    }
+    img.hover-image {
+      display: inline-block;
+      visibility: visible;
+      opacity: 1;
+      filter: alpha(opacity=100);
+    }
+  }
+}
+
+.product-utils {
+  position: absolute;
+  height: 40px;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size: 13px;
+  line-height: 40px;
+  display: none;
+
+  .quick-view {
+    display: inline-block;
+    text-transform: uppercase;
+    position: absolute;
+    left: 16px;
+    top: 0;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .btn-wishlist {
+    position: absolute;
+    top: 0;
+    right: 16px;
+    i { font-size: 20px; line-height: 40px; }
+    &:hover { color: {{ grey_dark }} }
+  }
+
+}
+
+.product-label{
+  display: block;
+  color: {{ label_red }};
+  font-weight: {{ futura_light }};
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-transform: uppercase;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* ----------------------------------------------
+Product Overrides
+---------------------------------------------- */
+.cart-qty { display: none; }
+.product_item {
+  min-height: 300px;
+  position: relative;
+}
+.product {
+  .product-title a {
+    font-weight: 500;
+  }
+
+  .product-image a {
+    display: block;
+  }
+
+  .product-price span.price {
+    font-weight: 300 !important;
+    font-size: 15px;
+  }
+  .product-quick-view {
+    text-transform: uppercase;
+  }
+}
+
+/* ----------------------------------------------
+General Theme Overrides
+---------------------------------------------- */
+#content, #module-content {
+  background-color: #F2F2F2;
+}

@@ -1,0 +1,94 @@
+{{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
+{{ 'jquery.products.min.js' | asset_url | script_tag }}
+
+<div id="recently-viewed-container" class="widget-wrapper">
+  <h3 class="title">{{settings.viewed_heading}}</h3>
+  <div id="recently-viewed-wrapper" class="row" style="display:none">
+    <div id="recently-viewed-products" class="collection clearfix">
+    </div>
+  </div>
+</div>
+
+{% raw %}
+<script id="recently-viewed-product-template" type="text/x-jquery-tmpl">
+<div id="product-${handle}" class="product">
+  <div class="product-container">
+    <div class="row-fluid">
+      <div class="product-head">
+        <div class="product-images">
+          <div class="front">
+            <a href="${url}">
+              <img src="${Shopify.Products.resizeImage(featured_image, "medium")}" class="img-responsive" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="product-contents">
+        <div class="product-details">
+          <div class="product-details-container">
+            <div class="product-title">
+              <a href="${url}" title="${title}">${title}</a>
+            </div>
+            
+            <div class="product-price">
+            {{if available}}
+              {{if price_varies}}
+                <span class="price_sale"><span class="money">${price_min}</span></span>
+              {{else}}
+                <span class="price"><span class="money">${price_min}</span></span>
+              {{/if}}
+            
+              {{if compare_at_price > price}}
+              <del class="price_compare"> <span class="money">${compare_at_price}</del></span>
+              {{/if}}
+              
+            {{else}}
+                <span class="sold_out">Sold out</span>
+            {{/if}}
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</script>
+{% endraw %}
+
+<script type="text/javascript">
+  Shopify.Products.showRecentlyViewed( { 
+    howManyToShow: {{settings.viewed_number_of}},
+    onComplete: function() {
+      
+    {% if settings.show_multiple_currencies == false %}
+      var listPrice = jQuery('#recently-viewed-products .product .money');
+      listPrice.each(function() {
+        var $this = jQuery(this);
+        var $price = Shopify.formatMoney($this.html(), window.money_format);
+        $this.html($price);
+      });
+     {% endif %}
+      
+      jQuery("#recently-viewed-products .sold_out").html("{{'products.product.sold_out' | t}}");
+      jQuery("#recently-viewed-products .price_percentage .save").html("{{'products.product.save' | t}}");
+      
+      jQuery("#recently-viewed-products").owlCarousel({
+        navigation : true,
+        pagination: false,
+        mouseDrag: false,
+        items: 2,
+        itemsDesktop : [1199,2],
+        itemsDesktopSmall : [991,4],
+        itemsTablet: [768,3],
+        itemsMobile : [479,2],
+        scrollPerPage: {{settings.viewmore_image_scroll}},
+        navigationText: ['<span class="btn mini"><i class="fa fa-angle-left"></i></span>', '<span class="btn mini"><i class="fa fa-angle-right"></i></span>']
+      });
+    
+      jQuery('#recently-viewed-wrapper').show();
+  	  
+  	  if(window.show_multiple_currencies)
+        currenciesCallbackSpecial('#recently-viewed-products span.money');
+    } 
+  });
+</script>

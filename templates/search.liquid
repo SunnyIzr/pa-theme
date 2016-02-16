@@ -1,0 +1,43 @@
+<div id="col-main" class="page-search col-md-24">
+  <div class="row">
+    <div class="col-md-18">
+      {% capture search_title %}{{ search.terms | escape }}{% endcapture %}
+      <h2 class="title">{{ 'search.general.title' | t: title: search_title }}</h2>
+    </div>
+    <div class="col-md-6">
+      <div class="search-wrap">
+        <form action="/search" method="get">
+          <input type="text" name="q" value="" accesskey="4" autocomplete="off" placeholder="{{settings.search_searchtext}}" />
+          <button type="submit" class="btn btn-1">
+            <i class="icon-magnifier"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="sandBox">
+    {% if search.performed and search.results.size > 0 %}
+    {% paginate search.results by settings.collection_pagination_limit %}
+
+    <div class="cat-grid row">
+      {% for prod in search.results %}
+      <div class="product_item item-{{prod.id}}">
+        {% if prod.url contains 'products' %}
+        {% include 'product-item' %}
+        {% else %}
+        {% include 'other-item' %}
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    
+    {% include 'pagination' %}
+    {% endpaginate %}
+
+    {% else %}
+    <p class="empty">{{ 'search.general.no_products' | t: title: search_title }}</p>
+    {% include 'collection-default' %}
+    {% endif %}
+  </div>
+</div>

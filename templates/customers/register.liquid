@@ -1,0 +1,59 @@
+<div id="col-main" class="login clearfix">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-24">
+        <div id="customer-register" class="content">
+          <div class="widget-wrapper">
+
+            <h2 class="title">
+              {{ 'customer.register.title' | t }}
+            </h2>
+
+            {% form 'create_customer' %}
+
+            {% if form.errors %}
+            <div class="alert alert-error">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              {{ form.errors | default_errors }}
+            </div>
+            {% endif %}
+
+            <div class="control-group">
+              <label class="control-label" for="first_name">{{'customer.register.first_name' | t}}</label>
+              <input type="text" value="{{ form.first_name }}" name="customer[first_name]" id="first_name" class="col-sm-8 col-xs-24" />
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="last_name">{{'customer.register.last_name' | t}}</label>
+              <input type="text" value="{{ form.last_name }}" name="customer[last_name]" id="last_name" class="col-sm-8 col-xs-24 {% if form.errors contains 'last_name' %} error{% endif %}" />
+            </div>
+
+            <div class="control-group{% if form.errors contains 'email' %} error{% endif %}">
+              <label class="control-label" for="email">{{'customer.register.email' | t}} <span class="req">*</span></label>
+              <input type="email" required value="{{ form.email }}" name="customer[email]" id="email" class="col-sm-8 col-xs-24 {% if form.errors contains 'email' %} error{% endif %}" />
+            </div>
+
+            <div class="control-group{% if form.errors contains 'password' %} error{% endif %}">
+              <label class="control-label" for="password">{{'customer.register.password' | t}} <span class="req">*</span></label>
+              <input type="password" required name="customer[password]" id="password" class="col-sm-8 col-xs-24 password{% if form.errors contains 'password' %} error{% endif %}" />
+            </div>
+
+            <div class="control-group last">
+              <button class="btn-arrow btn btn-1" type="submit"><i class="icomoon-arrow-right"></i> {{'customer.register.submit' | t}}</button>
+            </div>
+
+            <div class="control-group last">
+              <div class="login-account">
+                <p>
+                  {{'customer.register.login_html' | t}}
+                  <a href="/account/login" id="login-btn">{{'customer.register.login' | t}}</a>
+                </p>
+              </div>
+            </div>
+            {% endform %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

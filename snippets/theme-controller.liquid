@@ -1,0 +1,76 @@
+{% comment %} Cart Success Modal {% endcomment %}
+<div id="cart-modal" class="theme-modal">
+  <div class="inner">
+    <span class="overlay"></span>
+    <div class="modal-actions">
+      <a class="close-modal" href="javascript:;" data-modal-close=""><i class="icon-pa-close-x"></i></a>
+    </div>
+    <div class="container">
+      <div class="wrapper central">
+        <div class="widget">
+          <div class="left">
+            <a class="product-link" href="#">
+              <img class="product-img" src="{{'No_Image.png' | asset_url}}" alt="" />
+            </a>
+          </div>
+          <div class="right">
+            <div class="product-title h3"><a class="product-link" href="#"></a></div>
+            <div class="alert alert-success"><i class="fa fa-check-circle"></i> is added to your shopping cart.</div>
+            <div class="actions">
+              <button class="btn" onclick="roar.closeThemeModal();">Continue Shopping</button>
+              <a class="btn btn-1" href="/cart">Go to Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% comment %} Wishlist Success Modal {% endcomment %}
+<div id="wishlist-modal" class="theme-modal">
+  <div class="inner">
+    <span class="overlay"></span>
+    <div class="modal-actions">
+      <a class="close-modal" href="javascript:;" data-modal-close=""><i class="icon-pa-close-x"></i></a>
+    </div>
+    <div class="container">
+      <div class="wrapper central">
+        <div class="widget">
+          <div class="left">
+            <a class="product-link" href="#">
+              <img class="product-img" src="{{'No_Image.png' | asset_url}}" alt="" />
+            </a>
+          </div>
+          <div class="right">
+            <div class="product-title h3"><a class="product-link" href="#"></a></div>
+            <div class="alert alert-success"><i class="fa fa-check-circle"></i> is added to your wishlist.</div>
+            <div class="actions">
+              <button class="btn" onclick="roar.closeThemeModal();">Continue Shopping</button>
+              <a class="btn btn-1" href="{{pages[settings.wishlist_page].url}}">Go to Wishlist</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% comment %} Error Modal {% endcomment %}
+<div id="error-modal" class="theme-modal">
+  <div class="inner">
+    <span class="overlay"></span>
+    <div class="modal-actions">
+      <a class="close-modal" href="javascript:;" data-modal-close=""><i class="icon-pa-close-x"></i></a>
+    </div>
+    <div class="container">
+      <div class="wrapper central">
+        <div class="widget">
+          <div class="title h3"></div>
+          <div class="message alert alert-error"></div>
+          <div class="actions">
+            <button class="btn" onclick="roar.closeThemeModal();">Continue Shopping</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

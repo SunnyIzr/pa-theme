@@ -1,0 +1,55 @@
+{% if settings.show_header_customer %}
+  {% if shop.customer_accounts_enabled %}
+  <ul id="accounts" class="list-inline">
+    {% if customer %}
+    <li class="logout">
+      {{ 'general.top.logout' | t | customer_logout_link }}
+    </li>
+    <li class="account">
+      <a href="/account">{{ 'general.top.my_account' | t }}</a>
+    </li>
+    {% else %}
+    <li class="login dropdown-parent">
+      {% if settings.customer_login_dropdown %}
+      <a id="loginButton" class="dropdown-toggle" data-toggle="dropdown" href="/account/login">
+        {{ 'general.top.login' | t }}
+        <i class="fa fa-angle-down"></i>
+      </a>
+      
+      <!-- Customer Account Login -->
+      <div id="loginBox" class="dropdown-menu noclose" style="display:none;">
+        {% form 'customer_login' %}
+        
+        <div id="bodyBox" class="text-left">
+          <div class="control-container">
+            <div class="control-group">
+              <label for="customer_email_box" class="control-label">{{ 'general.top.email_address' | t }} <span class="req">*</span></label>
+              <input type="email" value="" name="customer[email]" id="customer_email_box" class="btn-block" />
+            </div>
+            {% if form.password_needed %}
+            <div class="control-group">
+              <label for="customer_password_box" class="control-label">{{ 'general.top.password' | t }} <span class="req">*</span></label>
+              <input type="password" value="" name="customer[password]" id="customer_password_box" class="btn-block password" />
+            </div>
+            {% endif %}
+            
+            <div class="control-group last">
+              <button class="btn" type="submit">{{ 'general.top.login' | t }}</button>
+            </div>
+          </div>
+        </div>
+        {% endform %}
+      </div>
+      {% else %}
+      {{  'general.top.login' | t  | customer_login_link }}
+      {% endif %}
+    </li>
+    {% if shop.customer_accounts_optional %}
+    <li>
+      <a class="register" href="/account/register">{{ 'general.top.register' | t }}</a>
+    </li>
+    {% endif %}
+    {% endif %}
+  </ul>
+  {% endif %}
+{% endif %}

@@ -1,0 +1,13 @@
+<div id="col-main" class="all-collections col-md-24">
+  <div class="widget-wrapper clearfix">
+    <div class="row">
+      {% for collection in collections %}
+      {% unless collection.handle == 'frontpage' or collection.handle == 'all' %}
+      <div class="collection-item col-sm-8 col-xs-12">
+        {% include 'collection-item' %}
+      </div>
+      {% endunless %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

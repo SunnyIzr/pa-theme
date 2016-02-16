@@ -1,0 +1,95 @@
+{% comment %} Media Social Icons {% endcomment %}
+<div id="widget-social" class="social-icons">
+  <ul class="list-inline">
+    {% if settings.social_icons_instagram_show %}
+    <li>
+      <a target="_blank" href="{{ settings.social_icons_instagram_link }}" class="social-wrapper instagram" title="Instagram">
+        <span class="social-icon">
+          <i class="icomoon-instagram"></i>
+        </span>
+      </a>
+    </li>
+    {% endif %}
+    {% if settings.social_icons_facebook_show %}
+    <li>
+      <a target="_blank" href="{{ settings.social_icons_facebook_link }}" class="social-wrapper facebook" title="Facebook">
+        <span class="social-icon">
+          <i class="icomoon-facebook"></i>
+        </span>
+      </a>
+    </li>
+    {% endif %}
+    {% if settings.social_icons_pinterest_show %}
+    <li>
+      <a target="_blank" href="{{ settings.social_icons_pinterest_link }}" class="social-wrapper pinterest" title="Pinterest">
+        <span class="social-icon">
+          <i class="icomoon-pinterest"></i>
+        </span>
+      </a>
+    </li>
+    {% endif %}
+    {% if settings.social_icons_twitter_show %}
+    <li>
+      <a target="_blank" href="{{ settings.social_icons_twitter_link }}" class="social-wrapper twitter" title="Twitter">
+        <span class="social-icon">
+          <i class="icomoon-twitter"></i>
+        </span>
+      </a>
+    </li>
+    {% endif %}
+    {% if settings.social_icons_google_show %}
+    <li>
+      <a target="_blank" href="{{ settings.social_icons_google_link }}" class="social-wrapper google" title="Google+">
+        <span class="social-icon">
+          <i class="icomoon-googleplus"></i>
+        </span>
+      </a>
+    </li>
+    {% endif %}
+    {% if settings.social_icons_youtube_show %}
+    <li>
+      <a target="_blank" href="{{ settings.social_icons_youtube_link }}" class="social-wrapper youtube" title="YouTube">
+        <span class="social-icon">
+          <i class="icomoon-youtube"></i>
+        </span>
+      </a>
+    </li>
+    {% endif %}
+    {% if settings.social_icons_vimeo_show %}
+    <li>
+      <a target="_blank" href="{{ settings.social_icons_vimeo_link }}" class="social-wrapper vimeo" title="Vimeo">
+        <span class="social-icon">
+          <i class="icomoon-vimeo"></i>
+        </span>
+      </a>
+    </li>
+    {% endif %}
+    {% if settings.social_icons_flickr_show %}
+    <li>
+      <a target="_blank" href="{{ settings.social_icons_flickr_link }}" class="social-wrapper flickr" title="Flickr">
+        <span class="social-icon">
+          <i class="icomoon-flickr"></i>
+        </span>
+      </a>
+    </li>
+    {% endif %}
+    {% if settings.social_icons_tumblr_show %}
+    <li>
+      <a target="_blank" href="{{ settings.social_icons_tumblr_link }}" class="social-wrapper tumblr" title="Tumblr">
+        <span class="social-icon">
+          <i class="icomoon-tumblr"></i>
+        </span>
+      </a>
+    </li>
+    {% endif %}
+    {% if settings.social_icons_rss_show %}
+    <li>
+      <a target="_blank" href="{{ settings.social_icons_rss_link }}" class="social-wrapper rss" title="RSS Feed">
+        <span class="social-icon">
+          <i class="fa fa-rss"></i>
+        </span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</div>

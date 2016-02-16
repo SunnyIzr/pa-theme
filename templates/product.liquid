@@ -1,0 +1,308 @@
+{% assign variant_tmp = product.selected_or_first_available_variant | default: product.variants.first %}
+<div id="col-main" class="container">
+  <div class="row"><div class="col-xs-24"><div class="top-divider"></div></div></div>
+  <div itemscope itemtype="http://schema.org/Product">
+    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+    <div id="product" class="row clearfix">
+      <div class="col-sm-12 product-images">
+        <div class="product-gallery inner">
+          <div class="thumbnails">
+          {% for image in product.images %}
+            {% unless image.src contains '_hover' %}
+            <a class="thumbnail" href="{{ image | product_img_url:'master' }}" data-src="{{image | product_img_url:'grande'}}"><img src="{{ image | product_img_url:'small' }}" alt="{{product.title}}" /></a>
+            {% endunless %}
+          {% endfor %}
+          </div>
+
+          {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+          <div class="main">
+            <div class="main-img-link" href="{{featured_image | product_img_url:'master'}}" title="{{product.title}}">
+              <img itemprop="image" id="main-image" class="main-img" src="{{product.featured_image | product_img_url:'grande'}}" alt="{{product.title}}" />
+              {% include 'spinner' %}
+            </div>
+            <div class="gallery-icon">
+              <i class="fa fa-expand"></i>
+              <div class="icon_spinner2 svg" style="display:none;">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="34px" height="34px">
+                  <circle cx="17" cy="17" r="16" stroke-width="2px" stroke="{{settings.b_scaffolding_bg}}" fill="none"></circle>
+                </svg>
+              </div>
+            </div>
+            {% include 'wishlist-product' %}
+            <div class="product-label{% if variant_tmp.compare_at_price > variant_tmp.price %} sale{% endif %}">
+              {% if settings.use_saleoff == 'saleoff_txt' %}
+              {{settings.saleoff_txt}}
+              {% endif %}
+            </div>
+          </div>
+          <script>
+            jQuery(document).ready(function(){
+              jQuery('.gallery-icon').on('click', function(){
+                var gallery = [];
+                {% for image in product.images %}
+                  {% unless image.src contains '_hover' %}
+                  gallery.push('{{ image | product_img_url: 'master' }}');
+                  {% endunless %}
+                {% endfor %}
+                roar.showThemeGallery(gallery, jQuery(this));
+                return false;
+              });
+            });
+          </script>
+        </div>
+      </div>
+      <div class="col-sm-8 product-sidebar">
+        <div class="product_item item-{{product.id}}">
+          {% include 'spinner2' %}
+          <div class="inner">
+            {% include 'product-breadcrumb' %}
+            <h1 class="title" itemprop="name" content="{{ product.title }}">{{ product.title }}</h1>
+
+            {% if settings.product_sku_show %}
+            <p id="sku"{% unless variant_tmp and variant_tmp.sku %} style="display:none;"{% endunless %}>{{variant_tmp.sku}}</p>
+            {% endif %}
+
+            {% if settings.reviews_enable %}
+              <a class="smoothscroll" href="#product-reviews-a">
+                <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+              </a>
+              {% endif %}
+
+            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+              <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+
+              {% if product.available %}
+              <link itemprop="availability" href="http://schema.org/InStock" />
+              {% else %}
+              <link itemprop="availability" href="http://schema.org/OutOfStock" />
+              {% endif %}
+
+              <div class="product-price">
+                <div id="purchase">
+                  <h2 class="detail-price" itemprop="price">
+                    <span class="price">{{ variant_tmp.price | money }}</span>
+                    {% if variant_tmp.compare_at_price > variant_tmp.price %}
+                    <del class="price_compare"> {{ variant_tmp.compare_at_price | money }}</del>
+                    {% endif %}
+                  </h2>
+                </div>
+              </div>
+
+              {% if product.available %}
+
+              {% assign hide_default_title = false %}
+              {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+              {% assign hide_default_title = true %}
+              {% endif %}
+
+              <form action="/cart/add" method="post" class="cart product-form" enctype="multipart/form-data">
+                <div id="product-actions-{{ product.id }}"  class="options clearfix">
+                  <div class="variants-wrapper clearfix{% if hide_default_title %} hide{% endif %}">
+                    <select id="product-select-{{ product.id }}" name="id" style="display: none;">
+                      {% for variant in product.variants %}
+                      {% if variant.available %}
+
+                      <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+                      {% else %}
+                      <option disabled="disabled">
+                        {{ variant.title }} - {{'products.product.sold_out' | t}}
+                      </option>
+                      {% endif %}
+                      {% endfor %}
+                    </select>
+                  </div>
+
+                  <div class="cart-group limited-edition-group">
+                    {% include 'limited-edition' %}
+                  </div>
+
+                  <div class="cart-group cart-act">
+                    <button id="add-to-cart" type="{% if settings.ajax_add_to_cart %}button{% else %}submit{% endif %}" class="{% if settings.ajax_add_to_cart %}add-to-cart {% endif %}btn btn-1">
+                      {{'products.product.add_to_cart' | t}}
+                    </button>
+                  </div>
+                </div>
+              </form>
+
+              {% else %}
+              <meta itemprop="price" content="{{ product.price | money }}" />
+
+              <div id="product-actions" class="sold-out">
+                <div id="purchase">
+                  <p class="price">{{'products.product.sold_out' | t}}</p>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="cart-group touch-group">
+            <ul class="list-inline">
+              {% comment %}
+              <li>
+                <div class="share sharing-buttons">
+                  <i class="icon-cursor"></i>
+                  <span>{{'products.product.share' | t}}</span>
+
+                  <div class="sharing-bubble fixed">
+                    {% include 'social-sharing' %}
+                  </div>
+                </div>
+              </li>
+              {% endcomment %}
+              {% assign tmp = settings.product_size_charts %}
+              {% assign temp = pages[tmp] %}
+              {% if temp.handle != blank %}
+              <li>
+                <a href="{{temp.url}}" class="size" target="_blank">
+                  <i class="icon-docs"></i>
+                  <span>{{'products.product.size_charts' | t}}</span>
+                </a>
+              </li>
+              {% endif %}
+
+              {% assign tmp = settings.product_touch_us %}
+              {% assign temp = pages[tmp] %}
+              {% if temp.handle != blank %}
+              <li>
+                <a href="{{temp.url}}" class="touch" target="_blank">
+                  <i class="icon-bubbles"></i>
+                  <span>{{'products.product.touch_us' | t}}</span>
+                </a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4 product-nav hidden-xs">
+        <div class="next-prev-nav">
+          <div class="prod-dropdown">
+            {% if collection.previous_product %}
+            <a href="{{collection.previous_product}}" class="prev"><i class="fa fa-angle-left"></i></a>
+
+            {% assign words = collection.previous_product | split:'/' %}
+            {% assign word = words.last %}
+
+            <div class="nav-dropdown">
+              <a href="{{collection.previous_product}}" data-fill-with-product="{{word}}">
+                <script type="text/template"><img src="[img:medium]" title="[title]" /></script>
+              </a>
+            </div>
+            {% else %}
+            <span class="prev disable"><i class="fa fa-angle-left"></i></span>
+            {% endif %}
+          </div>
+          <div class="prod-dropdown">
+            {% if collection.next_product %}
+            <a href="{{collection.next_product}}" class="next"><i class="fa fa-angle-right"></i></a>
+
+            {% assign words = collection.next_product | split:'/' %}
+            {% assign word = words.last %}
+
+            <div class="nav-dropdown">
+              <a href="{{collection.next_product}}" data-fill-with-product="{{word}}">
+                <script type="text/template"><img src="[img:medium]" title="[title]" /></script>
+              </a>
+            </div>
+            {% else %}
+            <span class="next disable"><i class="fa fa-angle-right"></i></span >
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="wrap-one">
+        {% include 'product-tab' %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  {% include 'related-products' %}
+</div>
+
+{% if product.available %}
+<script>
+  jQuery(document).ready(function($){
+    if(window.swatch_color || window.swatch_size)
+      roar.createVariantsSwatch({{product | json}}, jQuery('#product .product-sidebar'));
+
+    var selectOptionsCallback = function(variant, selector) {
+      // BEGIN SWATCHES
+      if (variant) {
+        for (i=0;i<variant.options.length;i++) {
+          if (parseFloat(jQuery.fn.jquery) < 1.6) {
+            jQuery('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]').attr('checked', 'checked');
+          }
+          else {
+            jQuery('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]').prop('checked', true);
+          }
+        }
+      }// END SWATCHES
+
+      roar_pseudo.initProduct();
+
+      var cart = jQuery('#add-to-cart');
+      var price = jQuery('#purchase .detail-price');
+      if (variant && variant.available) {
+        var cart_txt = "{{'products.product.add_to_cart' | t}}";
+
+        if (variant.featured_image) {
+          var originalImage = jQuery("#main-image");
+          var newImage = variant.featured_image;
+          var element = originalImage[0];
+          Shopify.Image.switchImage(newImage, element, function (newImageSizedSrc, newImage, element) {
+            jQuery(element).parents('a').attr('href', newImageSizedSrc);
+            jQuery(element).attr('src', newImageSizedSrc);
+          });
+        }
+
+        cart.removeClass('disabled').removeAttr('disabled').find('.del').html(cart_txt);
+
+        if(variant.compare_at_price == null){
+          price.html('<span class="price">'+Shopify.formatMoney(variant.price, window.money_format)+'</span>');
+          jQuery('.product-label').removeClass('sale');
+        }
+        else {
+          price.html('<span class="price">'+Shopify.formatMoney(variant.price, window.money_format) + '</span>' + '<del class="price_compare">' + Shopify.formatMoney(variant.compare_at_price, window.money_format) + '</del>');
+          jQuery('.product-label').addClass('sale');
+        }
+      }
+      else {
+        var sold_out_txt = "{{'products.product.sold_out' | t}}";
+        var unavailable_txt = "{{'products.product.unavailable' | t}}";
+        cart.addClass('disabled').attr('disabled', 'disabled');
+        var message = variant ? sold_out_txt : unavailable_txt;
+        cart.find('.del').html(message);
+        price.html('<span class="unavailable">' + message + '</span>');
+        jQuery('.product-label').removeClass('sale');
+      }
+      var id = '{{product.id}}';
+      var p = cart.closest('.item-' + id);
+      jQuery('.price-btn .sub_price', p).attr('data-price', variant.price).html(Shopify.formatMoney(variant.price, window.money_format));
+      roar.subPrice(cart, id);
+
+      {% if settings.product_sku_show %}
+      if (variant && variant.sku) {
+        jQuery("#sku").html(variant.sku).show();
+      }
+      else{
+        jQuery("#sku").hide();
+      }
+      {% endif %}
+    };
+
+    new Shopify.OptionSelectors("product-select-{{ product.id }}", { product: {{ product | json | remove:'\u003E' | remove:'\u003C' | remove:'\u00a0' }}, onVariantSelected: selectOptionsCallback, enableHistoryState: true });
+
+    {% if product.options.size == 1 %}
+    jQuery('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first | escape }}</label>');
+    {% endif %}
+
+    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+    jQuery('.selector-wrapper').hide();
+    {% endif %}
+  });
+</script>
+{% endif %}

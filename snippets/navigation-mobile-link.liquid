@@ -1,0 +1,46 @@
+{% comment %} Sanity check to prevent infinite recursion {% endcomment %}
+{% assign sanity = sanity | plus: 1 %}
+
+{% if sanity < 1000 %}
+{% capture link_handle %}{{ link.title | handle }}{% endcapture %}
+{% assign hasChildren = false %}
+{% if linklists[link_handle] and linklists[link_handle].links.size > 0 %}
+{% assign hasChildren = true %}
+{% endif %}
+
+{% assign isTop = false %}
+{% if navigation-mobile-link == 'top' %}
+{% assign isTop = true %}
+{% endif %}
+
+{% assign isMega = false %}
+{% if isTop %}
+{% assign affixMenu = 'mega_menu' %}
+{% for i in (1..5) %}
+
+{% assign tmp = 'mega_menu' | append:i | append:'_trigger' %}
+{% assign menu_trigger = settings[tmp] | handle %}
+{% if menu_trigger == link_handle %}
+{% assign isMega = true %}
+{% assign affixMenu = 'mega_menu' | append:i | append:'_' %}
+{% break %}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+
+{% if link.title | handle != 'paul-andrew' %}
+<li{% if hasChildren %} class="parent_submenu"{% endif %} id="mobilnavlink-{{link.title | handle}}">
+  <a href="{{link.url}}"{% if hasChildren %} class="dropdown_link"{% endif %}>{{link.title}}</a>
+  {% if hasChildren %}<span class="expand"><i></i></span>{% endif %}
+
+  {% if hasChildren and isMega == false %}
+  <ul class="dropdown_menu" style="display:none;">
+    {% for link in linklists[link_handle].links %}
+    {% include 'navigation-mobile-link' with 'child' %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+</li>
+{% endif %}
+{% endif %}

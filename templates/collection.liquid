@@ -1,0 +1,37 @@
+{% paginate collection.products by settings.collection_pagination_limit %}
+<div id="col-main" class="col-sm-24 collection-page">
+  <div id="sandBox">
+    {% if collection.products.size > 0 %}
+    <div class="row cat-grid">
+      {% for prod in collection.products %}
+      <div class="product_item item-{{prod.id}}">
+        {% include 'product-item' %}
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <h3 class="empty text-center">{{ 'collections.general.no_products' | t }}</h3>
+    {% include 'collection-default' %}
+    {% endif %}
+  </div>
+
+  <div class="advanced-pagination">
+    {% if settings.collection_infinite_scoll %}
+    {% if settings.collection_infinite_scoll_auto %}
+    {% if paginate.next %}
+    <div class="loading_img" style="display:none;">{% include 'spinner2' %}</div>
+    <div class="infinite_scoll hide"><a href="{{ paginate.next.url }}"></a></div>
+    {% endif %}
+    {% else %}
+    {% if paginate.next %}
+    <div class="loading_img" style="display:none;">{% include 'spinner2' %}</div>
+    <div class="infinite_scoll"><a class="btn btn-1 big btn-arrow" href="{{ paginate.next.url }}"><i class="icomoon-arrow-right"></i> {{ 'collections.general.load_more' | t }}</a></div>
+    {% endif %}
+    {% endif %}
+    <div class="infinite_line"></div>
+    {% else %}
+    {% include 'pagination' %}
+    {% endif %}
+  </div>
+</div>
+{% endpaginate %}

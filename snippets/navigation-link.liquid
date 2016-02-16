@@ -1,0 +1,29 @@
+{% comment %} Sanity check to prevent infinite recursion {% endcomment %}
+{% assign sanity = sanity | plus: 1 %}
+
+{% if sanity < 1000 %}
+{% capture link_handle %}{{ link.title | handle }}{% endcapture %}
+{% assign hasChildren = false %}
+{% if linklists[link_handle] and linklists[link_handle].links.size > 0 %}
+{% assign hasChildren = true %}
+{% endif %}
+
+{% assign isTop = true %}
+{% assign isMega = false %}
+
+{% if link.handle != 'home' %}
+<li class="hidden-xs hidden-sm{% if link.active %} active{% endif %}{% if isMega %} is-mega {{mega_style}}{% endif %}{% if hasChildren %} dropdown-parent{% unless isTop %}-submenu{% endunless %}{% endif %}" id="navlink-{{link.handle}}">
+  <a href="{{link.url}}">
+    {{link.title}}
+  </a>
+
+  {% if hasChildren %}
+  <ul class="dropdown-menu" style="display:none;">
+    {% for link in linklists[link_handle].links %}
+    {% include 'navigation-link' with 'child' %}
+    {% endfor %}
+  </ul>
+  {% endif %}
+</li>
+{% endif %}
+{% endif %}

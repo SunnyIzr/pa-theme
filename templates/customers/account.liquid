@@ -1,0 +1,60 @@
+{% layout settings.customer_layout %}
+
+<div id="col-main" class="account-page clearfix">
+
+  <div class="tabbable tabbable-custom tabbable-full-width container">
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a href="#tab_order_history" data-toggle="tab">
+          {{ 'customer.orders.title' | t }} ({{ customer.orders.size }})
+        </a>
+      </li>
+      <li>
+        <a class="icon-btn" href="#tab_manager_addresses" data-toggle="tab">
+          {{ 'customer.account.title' | t }} ({{ customer.addresses_count }})
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab_order_history">
+        <div id="customer_orders">
+          {% if customer.orders.size != 0 %}
+          <div class="wrap-table">
+            <table class="table-hover">
+              <thead>
+                <tr>
+                  <th class="order_number">{{ 'customer.orders.order_number' | t }}</th>
+                  <th class="date">{{ 'customer.orders.date' | t }}</th>
+                  <th class="payment_status">{{ 'customer.orders.payment_status' | t }}</th>
+                  <th class="fulfillment_status">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                  <th>{{ 'customer.orders.total' | t }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in customer.orders %}
+                <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}">
+                  <td class="number">{{ order.name | link_to: order.customer_url }}</td>
+                  <td><span class="note">{{ order.created_at | date: "%b %d, %Y" }}</span></td>
+                  <td><span class="status_{{ order.financial_status }}">{{ order.financial_status }}</span></td>
+                  <td><span class="status_{{ order.fulfillment_status }}">{{ order.fulfillment_status }}</span></td>
+                  <td><span class="total">{{ order.total_price | money }}</span></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          {% else %}
+          <p>
+            {{ 'customer.orders.none_html' | t }}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+      <!--end tab-pane-->
+      <div class="tab-pane profile-classic" id="tab_manager_addresses">
+        {% include 'customer-addresses' %}
+      </div>
+      <!--end tab-pane-->
+    </div>
+  </div>
+</div>

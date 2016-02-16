@@ -1,0 +1,13 @@
+{% if template contains "product" %}
+<div id="crumbregion" class="hidden-xs">
+  <div class="crumbs">
+    <a href="/">{{'general.breadcrumbs.home' | t}}</a>
+    <span>/</span>
+    {% if collection.handle %}
+    <a href="{{collection.url}}">{{ collection.title }}</a>
+    {% else %}
+    {{ product.vendor | link_to_vendor }}
+    {% endif %}
+  </div>
+</div>
+{% endif %}

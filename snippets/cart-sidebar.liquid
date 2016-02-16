@@ -1,0 +1,51 @@
+<div class="cart-sidebar">
+  <div id="cart-loading">
+    {% include 'spinner2' %}
+  </div>
+  <div class="widget-wrapper">
+    <div id="cart-info" class="cart-info">
+      {% if cart.items == empty %}
+      <div class="cart-empty">
+        <span></span>
+      </div>
+      <p class="message">{{ 'general.cart_info.cart_empty_html' | t }}</p>
+      {% else %}
+      <h2 class="title">{{ 'general.cart_info.your_cart' | t }}</h2>
+
+      <ul class="list-unstyled">
+        {% for item in cart.items %}
+        <li>
+          <figure>
+            <a class="cart_list_product_img" href="{{item.url }}">
+              <img src="{{ item | img_url: 'small' }}"  alt="{{ item.title | escape }}" />
+            </a>
+          </figure>
+          <a href="javascript:;" onclick="Shopify.removeItem({{item.variant_id}})" class="remove" title="{{ 'general.cart_info.remove_this_item' | t }}"><i class="icon-pa-close-x"></i></a>
+          <div class="list_content">
+            <h5>
+              <a href="{{item.url }}">
+                <span>{{ item.product.title }}</span>
+                {% if item.product.variants.size > 1 %}
+                <span class="variant_title"> - {{ item.variant.title }}</span>
+                {% endif %}
+              </a>
+            </h5>
+            <div class="quantity">{{ item.quantity }} × <span class="amount">{{ item.price | money }}</span></div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <div class="subtotal">
+        <span class="title">{{ 'general.cart_info.sub_total' | t }}</span><span class="amount">{{ cart.total_price | money }}</span>
+      </div>
+
+      <div class="buttons">
+        <a href="/cart" class="btn btn-block big">{{ 'general.cart_info.view_shopping_bag' | t }}</a>
+
+        <a href="/checkout" class="btn-arrow btn btn-1 btn-block big"><i class="icomoon-arrow-right"></i> {{ 'general.cart_info.checkout' | t }}</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

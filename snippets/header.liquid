@@ -1,0 +1,57 @@
+<div class="search-table-wraper">
+  <div class="container">
+    <form class="search-form" action="/search" method="get">
+      <input type="hidden" name="type" value="product" />
+      <div class="search-table">
+        <div class="search-button">
+          <button type="submit" class="search-submit2">
+            <i class="icon-magnifier"></i>
+          </button>
+        </div>
+        <div class="search-field">
+          <input id="input-ajax" type="text" name="q" value="" accesskey="4" autocomplete="off" placeholder="{{'general.search_info.placehold' | t}}" />
+        </div>
+        <div class="search-button">
+          <span class="search-submit2 site-search-trigger">
+            <i class="icon-pa-close-x"></i>
+          </span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="header_nav">
+  {% include 'topbar' %}
+  <div class="container">
+    <div class="navigation_wrapper">
+
+      <div id="mobile-navbar" class="visible-xs visible-sm">
+        <div class="nav-menu-icon">
+          <a class="btn-navbar" data-toggle="offcanvas">
+              <i class="icon-bar"></i>
+              <i class="icon-bar"></i>
+              <i class="icon-bar"></i>
+          </a>
+        </div>
+        <div id="mobile-site-logo">
+          <a href="{{shop.url}}" title="{{ shop.name | escape }}">
+            <i class="icon-pa-logo"></i>
+          </a>
+        </div>
+        <div id="mobilenavbar-utils">
+          {% include 'navigation-utils' %}
+        </div>
+      </div>
+
+      <div id="site-navigation-wrap">
+        <div class="navigation">
+          {%comment%} Navigation {%endcomment%}
+          {% include 'navigation' %}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

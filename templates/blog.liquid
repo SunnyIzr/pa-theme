@@ -1,0 +1,68 @@
+{% if settings.sidebar_blog_placement == 'left' %}
+<div id="sidebar" class="col-md-6{% if settings.sidebar_blog_mobile %} hidden-sm hidden-xs{% endif %}">
+  {% include 'sidebar-blog' %}
+</div>
+{% endif %}
+
+<div id="col-main" class="blog-page{% if settings.sidebar_blog_placement != 'none' %} col-md-18{% else %} col-md-24{% endif %}">
+  {% paginate blog.articles by settings.blog_pagination_limit %}
+
+  {% if blog.articles.size > 0 %}
+  <div class="blog-posts">
+    {% for article in blog.articles %}
+    <article class="blog-post clearfix">
+      <div class="blog-sidebar">
+        <div class="wrap">
+          <div class="date">
+            <span class="day">{{ article.published_at | date: "%d" }}</span>
+            <span class="month">{{ article.published_at | date: "%b, %Y" }}</span>
+          </div>
+          {% if settings.social_sharing_blog %}
+          {% include 'social-sharing' %}
+          {% endif %}
+        </div>
+      </div>
+      <div class="blog-content">
+        {% if article.excerpt.size > 0 %}
+        {% if article.excerpt contains '<img' %}
+        <div class="excerpt">
+          <a href="{{ article.url }}">
+            {{ article.excerpt }}
+          </a>
+        </div>
+        {% elsif article.excerpt contains '<iframe' %}
+        <div class="excerpt responsive-video">
+          {{ article.excerpt }}
+        </div>
+        {% else %}
+        {{ article.excerpt }}
+        {% endif %}
+        {% endif %}
+
+        <h4><a href="{{ article.url }}">{{ article.title | escape }}</a></h4>
+
+        <p class="content">{{ article.content | strip_html | truncatewords: 60 }}</p>
+        <p class="btn-more">
+          <a href="{{article.url}}">{{'blogs.article.read_more' | t}}</a>
+        </p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  {% include 'pagination' %}
+
+  {% else %}
+  <p>
+    {{'blogs.article.no_acticles' | t}}
+  </p>
+  {% endif %}
+
+  {% endpaginate %}
+</div>
+
+{% if settings.sidebar_blog_placement == 'right' %}
+<div id="sidebar" class="col-md-6{% if settings.sidebar_blog_mobile %} hidden-sm hidden-xs{% endif %}">
+  {% include 'sidebar-blog' %}
+</div>
+{% endif %}

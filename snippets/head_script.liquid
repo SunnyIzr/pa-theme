@@ -1,0 +1,51 @@
+<script>
+  {% if template contains 'index' and settings.video_active %}
+  window.general_font_size = {{settings.general_font_size | plus:0}};
+  window.video_heading_size = {{settings.video_heading_size | plus:0}};
+  window.video_caption_size = {{settings.video_caption_size | plus:0}};
+  {% endif %}
+
+  {% if template contains 'index' and settings.show_slideshow != 'none' %}
+  window.show_slideshow = {{settings.show_slideshow}};
+  window.slideshow_heading_size = {{settings.slideshow_heading_size | plus:0}};
+  window.slideshow_caption_size = {{settings.slideshow_caption_size | plus:0}};
+  window.slideshow_auto = {{settings.slideshow_auto}};
+  window.slideshow_interval = {{settings.slideshow_interval}};
+  {% endif %}
+
+  {% if template contains 'page.contact' and settings.contact_map %}
+  window.contact_zoom = {{settings.contact_zoom}};
+  window.contact_scroll = {{settings.contact_scroll}};
+  window.contact_type = '{{settings.contact_type}}';
+  window.contact_address = '{{settings.contact_address}}';
+  window.contact_icon = '{{"icon-gmap.png" | asset_url}}';
+  {% elsif template contains 'index' and settings.home_contact_enable %}
+  window.contact_zoom = {{settings.contact_zoom}};
+  window.contact_scroll = {{settings.contact_scroll}};
+  window.contact_type = '{{settings.contact_type}}';
+  window.contact_address = '{{settings.contact_address}}';
+  window.contact_icon = '{{"icon-gmap.png" | asset_url}}';
+  {% endif %}
+
+  {% if template contains 'product' %}
+  window.productspg_featured_style = '{{settings.productspg_featured_style}}';
+  window.productspg_featured_scroll = {{settings.productspg_featured_scroll}};
+  {% endif %}
+
+  {% if template contains 'collection' %}
+  window.sortby_default = '{{ collection.sort_by | default: collection.default_sort_by | escape }}';
+  {% endif %}
+
+  window.ajax_add_to_cart = {{settings.ajax_add_to_cart}};
+  window.notify_ie7_page = '{{settings.notify_ie7_page}}';
+  window.loader_gif = '{{"loader.gif" | asset_url}}';
+  window.blank_gif = '{{"blank.gif" | asset_url}}';
+  window.money_format = "{{shop.money_format}}";
+  window.show_multiple_currencies = {{settings.show_multiple_currencies}};
+  window.asset_url = '{{"blank.gif" | asset_url | remove: "blank.gif"}}';
+  window.swatch_color = {{settings.swatches_color_enable}};
+  window.swatch_size = {{settings.swatches_size_enable}};
+  window.grid_height = 320;
+  window.list_height = 360;
+  window.enable_filter_multiple_choice = true;
+</script>

@@ -1,0 +1,9 @@
+{% if customer %}
+<a href="/account" title="My Account"><i class="icon-pa-account"></i></a>
+{% assign page_tmp = pages[settings.wishlist_page] %}
+<a href="{{page_tmp.url}}" title="My Wishlist"><i class="icon-pa-heart"></i></a>
+{% else %}
+<a href="/account/login" title="My Wishlist"><i class="icon-pa-heart"></i></a>
+{% endif %}
+<a class="{% if settings.cart_info %}cart-controller{% endif %}" href="{% if settings.cart_info %}javascript:;{% else %}/cart{% endif %}" title="{{'general.cart_info.cart' | t}}"><i class="icon-pa-shopping-bag"></i></a>
+<a href="javascript:;" class="site-search-toggle" title="Search"><i class="icon-pa-search"></i></a>

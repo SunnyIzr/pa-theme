@@ -1,0 +1,37 @@
+<div class="product">
+  <div class="product-container">
+    <div class="product-wrap">
+      <div class="product-image">
+        <div class="wrap">
+          {% if prod.excerpt.size > 0 %}
+          {% if prod.excerpt contains '<img' %}
+          <div class="excerpt">
+            <a href="{{ prod.url }}">
+              {{ prod.excerpt }}
+            </a>
+          </div>
+          {% elsif prod.excerpt contains '<iframe' %}
+          <div class="excerpt responsive-video">
+            {{ prod.excerpt }}
+          </div>
+          {% else %}
+          {{ prod.excerpt }}
+          {% endif %}
+          {% else %}
+          <a href="{{prod.url}}">
+            <img src="{{'No_Image.png' | asset_url}}" alt="{{ prod.title }}" />
+          </a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="product-content">
+        <div class="product-title">
+          <a href="{{prod.url}}" title="{{ prod.title }}">
+            {{ prod.title }}
+          </a>
+        </div>
+        {% include 'product-button' %}
+      </div>
+    </div>
+  </div>
+</div>

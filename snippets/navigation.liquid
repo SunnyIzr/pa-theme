@@ -1,0 +1,68 @@
+{% if settings.nav_linklist != '' %}
+<nav id="site-navigation" class="pc_navbar">
+  <ul class="pc_nav" class="hidden-xs hidden-sm">
+    {% for link in linklists[settings.nav_linklist].links %}
+    {% include 'navigation-link' with 'top' %}
+    {% endfor %}
+
+    {% comment %}
+    {% if settings.show_header_customer and shop.customer_accounts_enabled %}
+    <li class="customer-menu-icon hidden-xs hidden-sm">
+      <a href="javascript:;">
+        <span class="icon-pa-account"></span>
+      </a>
+      <div class="dropdown-menu">
+        <ul class="list-unstyled">
+          {% if settings.allow_wishlist %}
+          <li>
+            {% if customer %}
+            {% assign page_tmp = pages[settings.wishlist_page] %}
+            <a href="{{page_tmp.url}}">{{'general.top.wishlist' | t}}</a>
+            {% else %}
+            <a href="/account/login">{{'general.top.wishlist' | t}}</a>
+            {% endif %}
+          </li>
+          {% endif %}
+          {% if customer %}
+          <li class="account">
+            <a href="/account">{{ 'general.top.my_account' | t }}</a>
+          </li>
+          <li class="logout">
+            {{ 'general.top.logout' | t | customer_logout_link }}
+          </li>
+          {% else %}
+          <li>{{ 'general.top.login' | t  | customer_login_link }}</li>
+          {% if shop.customer_accounts_optional %}
+          <li>
+            <a class="register" href="/account/register">{{ 'general.top.register' | t }}</a>
+          </li>
+          {% endif %}
+          {% endif %}
+        </ul>
+      </div>
+    </li>
+    {% endif %}
+    <li class="wishlist-menu-icon hidden-xs hidden-sm">
+      {% if customer %}
+      {% assign page_tmp = pages[settings.wishlist_page] %}
+      <a href="{{page_tmp.url}}"><span class="icon-pa-heart"></span></a>
+      {% else %}
+      <a href="/account/login"><span class="icon-pa-heart"></span></a>
+      {% endif %}
+    </li>
+    {% if settings.cart_show %}
+    <li class="cart-menu-icon hidden-xs hidden-sm">
+      <a class="{% if settings.cart_info %}cart-controller{% endif %}" href="{% if settings.cart_info %}javascript:;{% else %}/cart{% endif %}" title="{{'general.cart_info.cart' | t}}">
+        <span class="icon-pa-shopping-bag"><em>{{cart.item_count}}</em></span>
+      </a>
+    </li>
+    {% endif %}
+    {% if settings.show_header_search %}
+    <li class="search-menu-icon hidden-xs hidden-sm">
+      <a href="javascript:;" class="site-search-toggle"><span class="icon-pa-search"></span></a>
+    </li>
+    {% endif %}
+    {% endcomment %}
+  </ul>
+</nav>
+{% endif %}

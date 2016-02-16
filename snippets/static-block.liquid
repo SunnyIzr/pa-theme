@@ -1,0 +1,20 @@
+{% if settings.static_enabel %}
+<div class="static-surround">
+  <div class="static-surround-inner">
+    <div class="static-wrap">
+      <img class="static-img" src="{{'static_bg.jpg' | asset_url}}" alt="{{settings.static_heading}}" />
+    </div>
+
+    <div class="static-content">
+      <div class="inner">
+        {% if settings.static_heading != blank %}
+        <h2 data-size="{{settings.static_heading_size | plus:0}}" class="static-heading animated moveUp">{{settings.static_heading}}</h2>
+        {% endif %}
+        {% if settings.static_action != blank %}
+        <a class="static-action animated moveUp" href="{{settings.static_action_link}}">{{settings.static_action}}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,57 @@
+  <div class="row-fluid">
+    {% if settings.slide_active_1 or settings.slide_active_2 or settings.slide_active_3 or settings.slide_active_4 or settings.slide_active_5 %}
+    <div id="home-slider" class="full-width flexslider">
+      <ul class="slides">
+        {% assign count = 0 %}
+        {% for i in (1..5) %}
+          {% assign show = 'slide_active_' | append: i %}
+
+          {% if settings[show] %}
+            {% assign count = count | plus:1 %}
+            {% assign link = 'slide_link_' | append: i %}
+            {% assign image = 'slide_image_' | append: i %}
+            {% assign title = 'slide_heading_' | append: i %}
+            {% assign caption = 'slide_caption_' | append: i %}
+            {% assign cta = 'slide_call_to_action_' | append: i %}
+          <li>
+            <div class="slide-body">
+              {% if settings[cta] == empty %}
+              <a href="{{settings[link]}}">
+              {% endif %}
+
+                {% if settings.slideshow_mask %}
+                <span class="slider-mask"></span>
+                {% endif %}
+
+                <img src="{{ image | append: '.jpg' | asset_url }}" alt="{{settings[title]}}" />
+
+              {% if settings[cta] == empty %}
+              </a>
+              {% endif %}
+
+              <div class="slide-caption caption header">
+                {% if settings[title] != empty %}
+                <h2>{{ settings[title] }}</h2>
+                {% endif %}
+                {% if settings[caption] != empty %}
+                <h4>{{ settings[caption] }}</h4>
+                {% endif %}
+
+                <div class="caption sub">
+                  {% if settings[cta] != empty %}
+                  <div class="caption-link">
+                    <a class="btn" href="{{settings[link]}}">{{settings[cta]}}</a>
+                  </div>
+                  {% endif %}
+                </div>
+
+              </div>
+
+            </div>
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>

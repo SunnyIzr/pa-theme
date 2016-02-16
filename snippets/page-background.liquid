@@ -1,0 +1,33 @@
+{% assign isPage = true %}
+{% if template == 'product' or template contains 'product.' or template == 'collection' or template contains 'collection.' %}
+{% assign isPage = false %}
+{% endif %}
+{% if template == 'page.contact' or template == 'index' or template contains 'index.' %}
+{% assign isPage = false %}
+{% endif %}
+
+{% assign isSearch = false %}
+{% if template == 'search' or template contains 'search.' %}
+{% assign isSearch = true %}
+{% endif %}
+
+{% if isPage %}
+<div class="page-top">
+  <div class="container">
+    {% if isSearch %}
+    {% capture search_title %}{{ search.terms | escape }}{% endcapture %}
+    <h1 class="title">{{ 'search.general.title' | t: title: search_title }}</h1>
+    {% else %}
+    <h1 class="title">{{page_title}}</h1>
+    {% endif %}
+
+    <div class="breadcrumb">
+      <a href="/">
+        {{ 'general.breadcrumbs.home' | t }} 
+      </a>
+      <i class="fa fa-angle-right"></i>
+      {{page_title}}
+    </div>
+  </div>
+</div>
+{% endif %}

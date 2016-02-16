@@ -1,0 +1,23 @@
+{% if settings.cart_collection %}
+{% assign temp = settings.cart_collection_use %}
+{% assign collection = collections[temp] %}
+{% assign products   = collection.products %}
+{% if products.size > 0 %}
+<div class="widget-wrapper featured-products clearfix">
+  
+  {% if settings.cart_collection_heading != blank %}
+  <div class="title">
+    {{ settings.cart_collection_heading }}
+  </div>
+  {% endif %}
+
+  <div id="featured-products" class="cat-grid row clearfix">
+    {% for prod in products limit: settings.cart_collection_number %}
+    <div class="product_item item-{{prod.id}}{% if settings.animation_effect%} animated{% endif %}" data-animation="fadeInUp" data-animation-delay="{% cycle '250', '500', '750', '1000' %}">
+      {% include 'product-item' %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% endif %}

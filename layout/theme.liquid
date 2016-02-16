@@ -1,0 +1,174 @@
+<!doctype html>
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if (lt IE 8) ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
+  <link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}" type="image/x-icon" />
+  <link rel="apple-touch-icon-precomposed" href="{{ 'apple-touch-icon-precomposed.png' | asset_url }}" />
+
+  <link rel="canonical" href="{{ canonical_url }}" />
+
+  {% if page_description or page_description != '' %}
+  <meta name="description" content="{{ page_description }}" />
+  {% endif %}
+
+  {% if template contains 'index' %}
+  {% if page_title != blank and page_title != 'Welcome' %}
+  <title>{{ page_title }}</title>
+  {% else %}
+  <title>{{ shop.name }}</title>
+  {% endif %}
+  {% elsif template == '404' %}
+  <title>Page Not Found | {{ shop.name }}</title>
+  {% else %}
+  <title>{{ page_title }} | {{ shop.name }}</title>
+  {% endif %}
+
+  {% include 'fb-open-graph' %}
+
+  <script src="https://use.typekit.net/bqn6wqj.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+  {{ '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' | stylesheet_tag }}
+  {{ 'rt.webfont.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'pa.webfont.css' | asset_url | stylesheet_tag }}
+
+  {{ 'jquery.plugins.min.scss.css' | asset_url | stylesheet_tag }}
+
+  {% if template contains 'index' and settings.show_slideshow %}
+  {{ 'jquery.flexslider.scss.css' | asset_url | stylesheet_tag }}
+  {% endif %}
+
+  {% if template contains 'collection' and settings.collection_slider %}
+  {{ 'jquery.flexslider.scss.css' | asset_url | stylesheet_tag }}
+  {% endif %}
+  {{ 'bootstrap.min.3x.css' | asset_url | stylesheet_tag }}
+  {{ 'rt.global.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'rt.style.scss.css' | asset_url | stylesheet_tag }}
+  <!--[if IE 8 ]> {{ 'ie8.scss.css' | asset_url | stylesheet_tag }} <![endif]-->
+  {{ 'rt.media.css' | asset_url | stylesheet_tag }}
+
+  {{ 'paul-andrew.scss.css' | asset_url | stylesheet_tag }}
+
+  <!--[if lt IE 9]>
+    <script src="{{ 'html5shiv.js' | asset_url }}"></script>
+    <script src="{{ 'respond.min.js' | asset_url }}"></script>
+    <link href="{{ 'respond-proxy.html' | asset_url | split: '?' | first }}" id="respond-proxy" rel="respond-proxy" />
+    <link href="{{ shop.url }}/pages/respond-js" id="respond-redirect" rel="respond-redirect" />
+    <script src="{{ shop.url }}/pages/respond-js" type="text/javascript"></script>
+  <![endif]-->
+
+  {% include 'head_script' %}
+
+  {% if template contains 'customers' or template contains 'collection' %}
+  {{ "shopify_common.js" | shopify_asset_url | script_tag }}
+  {% endif %}
+
+  {% if template contains 'collection' %}
+  {{ "shopify_common.js" | asset_url | script_tag }}
+  {% endif %}
+
+  {{ 'jquery-1.8.3.min.js' | asset_url | script_tag }}
+  {{ 'jquery.easing.1.3.js' | asset_url | script_tag }}
+
+  {% if template contains 'page.contact' and settings.contact_map %}
+  {{ '//maps.google.com/maps/api/js?sensor=false' | script_tag }}
+  {{ 'jquery.gmap.min.js' | asset_url | script_tag }}
+  {% endif %}
+
+  {% if template contains 'index' and settings.home_contact_enable %}
+  {{ '//maps.google.com/maps/api/js?sensor=false' | script_tag }}
+  {{ 'jquery.gmap.min.js' | asset_url | script_tag }}
+  {% endif %}
+
+  {{ 'bootstrap.min.3x.js' | asset_url | script_tag }}
+  {{ 'modernizr.js' | asset_url | script_tag }}
+
+  {{ content_for_header }}
+
+</head>
+
+<body class="{% if customer %}customer-logged-in {% endif %}template{{ template | split: '.' | first | camelize }}{% if template == 'collection' or template contains 'collection.' %}{% if settings.collection_grid_list == 'list' %} cat-list{% endif %}{% endif %}{% if ecommerce_enabled %} ecommerce-enabled{% else %} ecommerce-disabled{% endif %}">
+  <div class="box_wrapper">
+
+    {% include 'navigation-mobile' %}
+    {% include 'cart-sidebar' %}
+
+    <div id="page" class="box">
+
+      {% if settings.header_sticky %}<div id="phantom">{% endif %}
+      <header id="header" class="clearfix{% if settings.header_sticky %} sticky{% endif %}">
+        {% include 'header' %}
+      </header>
+      {% if settings.header_sticky %}</div>{% endif %}
+
+      <section id="module-content" class="clearfix">
+
+        {% if template == 'collection' or template contains 'collection.' %}
+        {% include 'collection-top' %}
+        {% endif %}
+
+        {% if template != 'index' %}
+        {% include 'page-background' %}
+        {% endif %}
+
+        {% unless template contains 'index' or template contains 'page.contact' or template == 'product' or template contains 'product.' or template contains 'page.lookbook' %}
+        <div id="content" class="container{% if template == 'collection' %}-fluid{% endif %}">
+          <div class="row">
+            {% endunless %}
+
+            {{ content_for_layout }}
+
+            {% unless template contains 'index' or template contains 'page.contact' or template == 'product' or template contains 'product.' or template contains 'page.lookbook' %}
+          </div>
+        </div>
+        {% endunless %}
+
+      </section>
+
+      {% comment %} Footer + Copyright {% endcomment%}
+      {% include 'footer' %}
+    </div>
+
+    {% comment %} ----- Scroll to Top ----- {% endcomment %}
+    {% if settings.scroll_top_show %}
+    <div id="scroll-top" class="hidden-xs hidden-sm btn" title="Top"><i class="icon-pa-arrow-up"></i></div>
+    {% endif %}
+
+  </div>
+
+  {% comment %} ----- Declare scripts ----- {% endcomment %}
+
+  {% if template contains 'index' and settings.show_slideshow %}
+  {{ 'jquery.flexslider-min.js' | asset_url | script_tag }}
+  {% endif %}
+
+  {% if template == 'collection' or template contains 'collection.' %}
+  {{ 'jquery.history.min.js' | asset_url | script_tag }}
+  {% endif %}
+
+  {{ 'jquery.plugins.min.js' | asset_url | script_tag }}
+
+  {% if settings.smoothscroll_enable %}
+  {{ 'jquery.smoothscroll.js' | asset_url | script_tag }}
+  {% endif %}
+
+  {{ 'rt.global.js' | asset_url | script_tag }}
+  {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+  {% include 'api.jquery.custom' %}
+  {{ 'rt.script.js' | asset_url | script_tag }}
+  {{ 'rt.custom.js' | asset_url | script_tag }}
+
+  {% include 'currencies' %}
+  {% include 'notify-slider' %}
+  {% include 'popup-mailchimp' %}
+  {% include 'theme-controller' %}
+
+  {{ 'option_selection.js' | asset_url | script_tag }}
+</body>
+</html>

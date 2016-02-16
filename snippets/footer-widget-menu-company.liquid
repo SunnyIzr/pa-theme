@@ -1,0 +1,10 @@
+<div class="widget-wrapper widget-menu">
+  <h3>Company</h3>
+  <ul class="list-unstyled list-styled">
+    {% for link in linklists.footer.links %}
+    <li>
+      <a href="{{ link.url }}">{{ link.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

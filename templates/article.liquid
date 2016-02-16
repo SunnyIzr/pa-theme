@@ -1,0 +1,169 @@
+{% if settings.sidebar_blog_placement == 'left' %}
+<div id="sidebar" class="col-md-6{% if settings.sidebar_blog_mobile %} hidden-sm hidden-xs{% endif %}">
+  {% include 'sidebar-blog' %}
+</div>
+{% endif %}
+
+{% paginate article.comments by settings.comment_pagination_limit %}
+<div id="col-main" class="blog-page article{% if settings.sidebar_blog_placement != 'none' %} col-md-18{% else %} col-md-24{% endif %}">
+  <div class="blog-posts">
+    <article class="blog-post clearfix">
+      <div class="blog-sidebar">
+        <div class="wrap">
+          <div class="date">
+            <span class="day">{{ article.published_at | date: "%d" }}</span>
+            <span class="month">{{ article.published_at | date: "%b, %Y" }}</span>
+          </div>
+          {% if settings.social_sharing_blog %}
+          {% include 'social-sharing' %}
+          {% endif %}
+        </div>
+      </div>
+      <div class="blog-content">
+        {% if article.excerpt.size > 0 %}
+        {% if article.excerpt contains '<img' %}
+        <div class="excerpt">
+          <a href="{{ article.url }}">
+            {{ article.excerpt }}
+          </a>
+        </div>
+        {% elsif article.excerpt contains '<iframe' %}
+        <div class="excerpt responsive-video">
+          {{ article.excerpt }}
+        </div>
+        {% else %}
+        {{ article.excerpt }}
+        {% endif %}
+        {% endif %}
+
+        <h4><a href="{{ article.url }}">{{ article.title | escape }}</a></h4>
+        
+        {% if settings.article_tags and article.tags.size > 0 %}
+        <div class="blog-tags">
+          <ul class="list-inline">
+            {% for tag in article.tags %}
+            <li>
+              <i class="fa fa-tag"></i>
+              {{ tag | link_to_add_tag: tag }}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <div class="content">{{ article.content }}</div>
+      </div>
+    </article>
+  </div>
+  
+  {% if blog.comments_enabled? %}
+  
+  {% form article %}
+  <div id="comment-form" class="comments widget-wrapper">
+    
+    <div class="title">
+      {{'blogs.comments.title' | t}}
+    </div>
+    
+    {% if blog.moderated? %}
+    <p>
+      {{'blogs.comments.moderated' | t}}
+    </p>
+    {% endif %}
+    
+    {% if form.posted_successfully? %}
+    {% if blog.moderated? %}
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      {{'blogs.comments.success_moderated' | t}}
+    </div>
+    {% else %}
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      {{'blogs.comments.success' | t}}
+    </div>
+    {% endif %}
+    {% endif %}
+    
+    {% if form.errors %}
+    <div class="alert alert-error">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      {{ form.errors | default_errors }}
+    </div>
+    {% endif %}
+    
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="{% if form.errors contains 'author' %} error{% endif %}">
+          <label for="comment_author" class="control-label">{{'blogs.comments.name' | t}} <span class="req">*</span></label>
+          <input required type="text" id="comment_author" name="comment[author]" value="{% if form.author %}{{ form.author }}{% elsif customer %}{{ customer.first_name }} {{ customer.last_name }}{% endif %}" class="btn-block" />
+        </div>
+        <div class="{% if form.errors contains 'email' %} error{% endif %}">
+          <label for="comment_email" class="control-label">{{'blogs.comments.email' | t}} <span class="req">*</span></label>
+          <input required type="text" id="comment_email" name="comment[email]" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" class="btn-block" />
+        </div>
+        <div class="hidden-xs">
+          <button type="submit" class="btn-arrow btn btn-1 btn-block">
+            <i class="icomoon-arrow-right"></i> {{ 'blogs.comments.post' | t }}
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-16{% if form.errors contains 'body' %} error{% endif %}">
+        <label for="comment_body" class="control-label">{{'blogs.comments.message' | t}} <span class="req">*</span></label>
+        <textarea required id="comment_body" name="comment[body]" cols="40" rows="5" class="btn-block">{{form.body}}</textarea>
+      </div>
+      <div class="col-sm-24 visible-xs">
+        <button type="submit" class="btn-arrow btn btn-1 btn-block">
+          <i class="icomoon-arrow-right"></i> {{ 'blogs.comments.post' | t }}
+        </button>
+      </div>
+    </div>
+  </div>
+  {% endform %}
+  
+  {% if article.comments != blank %}
+  
+  {% comment %}
+  We're going to reference the number of comments below, so let's hold it in a variable.
+  {% endcomment %}
+  {% assign number_of_comments = article.comments_count %}
+
+  {% comment %}
+  If a comment was just submitted and it has no blank fields, we have an extra comment to count.
+  {% endcomment %}
+  {% if comment and comment.created_at %}
+  {% assign number_of_comments = article.comments_count | plus: 1 %}
+  {% endif %}
+  
+  <div id="comments" class="comments widget-wrapper">
+    <div class="title">
+      {{ 'blogs.comments.comments_with_count' | t: count: number_of_comments }}
+    </div>
+    
+    <div class="comment-list">
+      {% comment %} Loop through approved comments: {% endcomment %}        
+      {% for comment in article.comments reversed %}
+      {% include 'comment-template' %}
+      {% endfor %}  
+
+      {% comment %} Show a comment that was *just* submitted {% endcomment %}
+      {% if comment and comment.created_at %}
+      {% include 'comment-template' %}
+      {% endif %}
+    </div>
+    
+    {% include 'pagination' %}
+    
+  </div>
+  {% endif %}
+  
+  {% endif %}
+  
+</div>
+{% endpaginate %}
+
+{% if settings.sidebar_blog_placement == 'right' %}
+<div id="sidebar" class="col-md-6{% if settings.sidebar_blog_mobile %} hidden-sm hidden-xs{% endif %}">
+  {% include 'sidebar-blog' %}
+</div>
+{% endif %}
