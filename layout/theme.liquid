@@ -34,6 +34,7 @@
   <script src="https://use.typekit.net/bqn6wqj.js"></script>
   <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
+  {{ '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' | stylesheet_tag }}
   {{ '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' | stylesheet_tag }}
   {{ 'rt.webfont.scss.css' | asset_url | stylesheet_tag }}
   {{ 'pa.webfont.css' | asset_url | stylesheet_tag }}
@@ -85,11 +86,12 @@
   {{ '//maps.google.com/maps/api/js?sensor=false' | script_tag }}
   {{ 'jquery.gmap.min.js' | asset_url | script_tag }}
   {% endif %}
-
+  {{ '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js' | script_tag }}
   {{ 'bootstrap.min.3x.js' | asset_url | script_tag }}
   {{ 'modernizr.js' | asset_url | script_tag }}
 
   {{ content_for_header }}
+  {{ 'newsletter.css' | asset_url | stylesheet_tag }}
 
 </head>
 

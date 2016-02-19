@@ -2959,7 +2959,8 @@ Collections Filter Bar
 
 #home-slider{
   margin-top: 5px;
-  min-height: 240px;
+ /* min-height: 240px;*/
+  min-height: 360px;
   max-height: 900px;
 
   h2 {
@@ -4406,8 +4407,8 @@ input[type="radio"]{
     vertical-align: middle;
   }
   .window{
-    width: 840px;
-    min-height: 320px;
+    width: 980px;
+    min-height: 550px;
     cursor: default;
     display: inline-block;
     position: relative;
@@ -4419,8 +4420,8 @@ input[type="radio"]{
     {% endif %}
   }
   .content{
-    padding: 50px 70px 25px 70px;
-    width: 70%;
+    padding: 8em 50px 25px 30px;
+    width: 50%;
     text-align: center;
   }
   .mc-title{
@@ -4449,7 +4450,7 @@ input[type="radio"]{
     #mc-email{
       width: 100%;
       height: 47px;
-      text-align: center;
+      text-align: left;
       border-style: dashed;
       font-size: 0.85714em;
       color: {{settings.b_links_colour}};
@@ -4459,17 +4460,20 @@ input[type="radio"]{
     #mc-submit{
       position: static;
       height: 45px;
-      margin-top: 10px;
-      margin-bottom: 0;
+      margin-top: 25px;
+      margin-bottom: 10px;
       text-transform: uppercase!important;
-      font-size: 120%!important;
+      font-size: 100%!important;
       display: block;
       width: 100%;
-
-      background: {{settings.btn_btn1_bg_hover}}!important;
-      color: {{settings.btn_btn1_txt_hover}}!important;
+  background:#000;
+      color:#fff;
+      font-weight:100;
+    /*  background: {{settings.btn_btn1_bg_hover}}!important;
+      color: {{settings.btn_btn1_txt_hover}}!important;*/
       border: 1px solid {{settings.btn_btn1_border_hover}}!important;
 
+      
       &:hover{
         opacity: 0.66;
         filter: alpha(opacity=66);
@@ -5392,4 +5396,210 @@ input[type="radio"]{
       }
     }
   }
+}
+
+
+
+/* ================ 17-02-2016 css start here ==================== */
+.journal_section.col-md-6.col-sm-6.col-lg-6 {
+    border-right: 1px solid #fff;
+    padding: 67px 0 49px;
+   /* width: 50%;*/
+}
+.instagram_section.col-md-6.col-sm-6.col-lg-6 {
+    float: right;
+    padding: 67px 0 49px;
+  /*  width: 50%;*/
+}
+
+.journal_and_instagram_section .heading_journal_section.heading_footer {
+    font-family: futura;
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.para_journal_section {
+    color: #686868;
+    font-size: 16px;
+}
+
+.instrgram_text.left_text {
+    float: left;
+    padding: 60px 0 0 24px;
+    width: 50%;
+}
+
+.instagram_image.right_image > img {
+    float: right;
+}
+
+.heading_instgram_section.heading_footer {
+    font-family: futura;
+    font-size: 19px;
+  font-weight:700;
+    margin: 0;
+}
+
+.instrgram_text.left_text {
+    float: left;
+    width: 50%;
+}
+.image_link img {
+    display: table;
+    float: none;
+    margin: 118px auto;
+    text-align: center;
+    width: auto !important;
+}
+.journal_text.left_text {
+    float: left;
+    width: 48%;
+  padding:60px 0 0 0;
+}
+
+
+.journal_image.right_image {
+    float: right;
+    width: 48%;
+}
+.rise_of_paul_andrew .slide-caption.caption.header > h2 {
+  
+    color: #fff;
+    font-family: futura;
+    font-size: 35px;
+    padding: 60px 0 13px;
+}
+.rise_of_paul_andrew .slide-caption.caption.header > h2 {
+    color: #fff;
+    font-family: futura;
+    font-size: 26px;
+}
+.full-width.flexslider.rise_of_paul_andrew a.btn {
+    color: white;
+}
+.full-width.flexslider.rise_of_paul_andrew  a.btn {
+    background-color: rgba(0, 0, 0, 0.75);
+    border-color: #9c9c9c;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 36px;
+    text-transform: uppercase;
+}
+.rise_of_paul_section {
+    background: rgba(0, 0, 0, 0) url("//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/paul-andrew.png?5455548197225688614") no-repeat scroll 0 0 / cover ;
+}
+#header .pc_navbar .pc_nav li{
+	position:static;}
+#header #site-navigation-wrap{
+	position:inherit;
+	
+	}	
+	
+	#header .navigation_wrapper{
+		position:inherit;}
+		
+	#header .pc_navbar .pc_nav li .dropdown-menu {
+    padding: 10px 0;
+    -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+ 
+}	
+/* ================ 17-02-2016 css end here  ==================== */
+
+
+
+
+
+@media only screen 
+
+  and (max-device-width: 480px) {
+    
+  .journal_image.right_image {
+  float: right;
+  width: 100%;
+}  
+    
+    .journal_text.left_text {
+  float: left;
+  padding: 60px 0 0;
+  width: 100%;
+}
+    
+.instrgram_text.left_text {
+  padding: 32px 0 0 24px;
+}
+    
+    .journal_text.left_text {
+  padding: 20px 0 0;
+}
+
+ .slide-body > img {
+  min-width: 470px;
+}
+   .search-wrap {
+  display: none !important;
+}
+    #lightbox .window {
+  width: 80% ;
+}
+     #lightbox .window{
+ display:none;
+}
+    
+    
+    #lightbox .content {
+  padding: 10px;
+  width: 100% !important;
+}
+   #lightbox .close {
+  right: 2px;
+  top: 1px;
+}
+    
+    
+    .flexslider .caption.header h2 {
+  padding: 50px 0 80px;
+
+}
+}
+
+
+
+@media only screen   and (min-device-width: 320px) {
+
+ 
+    
+.instrgram_text.left_text {
+  padding: 32px 0 0 24px;
+}
+    
+    .journal_text.left_text {
+  padding: 20px 0 0;
+}
+  
+  .slide-body > img {
+  min-width: 470px !important;
+}
+
+  .search-wrap {
+  display: none;
+}
+  
+  #lightbox .window{
+ display:none;
+}
+  
+}
+
+
+
+.journal_and_instagram_section.container {
+  padding: 30px 0;
+}
+
+.newsletter-inner button i {
+  display: none;
 }
