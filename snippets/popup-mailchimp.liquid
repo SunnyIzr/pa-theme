@@ -1,6 +1,7 @@
 {% if settings.popup_mailchimp_show %}
 {{ 'jquery.ajaxchimp.js' | asset_url | script_tag }}
 {{ 'jquery.cookie.js' | asset_url | script_tag }}
+{% if template contains 'index' %}
 <div id="lightbox">
   <span class="mask"></span>
   <div class="wrap">
@@ -20,11 +21,13 @@
             {% if settings.popup_action != blank %}
             <form id="mc-form" action="{{ settings.popup_action }}" method="post" name="mc-embedded-subscribe-form" target="_blank">
               <input id="mc-email" type="email" name="EMAIL" placeholder="{{ 'general.mailchimp_popup.enter_your_email' | t }}" required />
-              <button id="mc-submit" class="btn btn-arrow" type="submit"><i class="icomoon-arrow-right"></i> Subscribe</button>
+              <button id="mc-submit" class="btn btn-arrow" type="submit"><i class="icomoon-arrow-right"></i> Submit</button>
 
               <label for="mc-email"></label>
             </form>
             {% endif %}
+            
+            <p class="nt_policy">By clicking submit your are agreeing to our <a href="/pages/privacy-policy">privacy policy</a>.</p>
 
             {% if settings.popup_social_show %}
             <div class="social-icons">
@@ -134,7 +137,7 @@
     </div>
   </div>
 </div>
-
+ {% endif %}
 <script>
   jQuery(document).ready(function($) {
     {% if settings.popup_expires == '0' %}
