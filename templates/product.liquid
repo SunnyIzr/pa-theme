@@ -1,14 +1,14 @@
 <div class="row" style="height:5px;"><div class="col-xs-24" ><div class="top-divider"></div></div></div>
 
 <div class="row" style="background-color:#fff; height:25px;"><div class="col-xs-24" ><div class="top-divider">
-  
+
     <div class=" row col-sx-24 product-nav" >
         <div class="next-prev-nav">
           <div class="prod-dropdown">
             {% if collection.previous_product %}
             <a href="{{collection.previous_product}}" class="prev" style=" border:none; border-radius:none;"><i class="fa fa-angle-left fa-2x"></i> </a>
-             
-             
+
+
             {% assign words = collection.previous_product | split:'/' %}
             {% assign word = words.last %}
 
@@ -39,20 +39,41 @@
           </div>
         </div>
       </div>
-    </div> 
-    
+    </div>
+
   </div>
-  
+
   </div>
 
 {% assign variant_tmp = product.selected_or_first_available_variant | default: product.variants.first %}
-<div id="col-main" class="container">  
-  <div class="row"><div class="col-xs-24"><div class="top-divider"></div></div></div>
+<div id="col-main" class="container">
+  <div class="row"><div class="col-xs-24 hidden-xs"><div class="top-divider"></div></div></div>
   <div itemscope itemtype="http://schema.org/Product">
     <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
     <div id="product" class="row clearfix">
       <div class="col-sm-12 product-images">
-        <div class="product-gallery inner">
+        <div class="flexslider visible-xs-block">
+          <ul class="slides">
+          {% for image in product.images %}
+            {% unless image.src contains '_hover' %}
+            <li><a href="{{ image | product_img_url:'master' }}" ><img src="{{ image | product_img_url:'grande' }}" alt="{{product.title}}" /></a></li>
+            {% endunless %}
+          {% endfor %}
+          </ul>
+        </div>
+        {{ 'jquery.flexslider.scss.css' | asset_url | stylesheet_tag }}
+        {{ 'jquery.flexslider-min.js' | asset_url | script_tag }}
+        <script>
+          $('.flexslider').flexslider({
+            animation: "fade",
+            prevText: "",
+            nextText: "",
+            slideshow: false,
+            controlNav: true,
+            directionNav: true,
+          });
+        </script>
+        <div class="product-gallery inner hidden-xs">
           <div class="thumbnails">
           {% for image in product.images %}
             {% unless image.src contains '_hover' %}
@@ -105,8 +126,8 @@
            <!-- added Title then collection underneith the title -->
             <h1 class="title" itemprop="name" content="{{ product.title }}">{{ product.title }}</h1>
             <p class="title2" itemprop="name" style="font-size:16px; color:#949494; font-weight:10; text-transform:uppercase; margin-bottom:10%;" content="{{ collection.title }}">{{ collection.title }}</p>
-           
-           	<!--Wasnt sure if we still needed the bread crumbs so i commeneted them out--> 
+
+           	<!--Wasnt sure if we still needed the bread crumbs so i commeneted them out-->
             <!-- {% include 'product-breadcrumb' %}-->
             {% if settings.product_sku_show %}
             <p id="sku"{% unless variant_tmp and variant_tmp.sku %} style="display:none;"{% endunless %}>{{variant_tmp.sku}}</p>
@@ -137,10 +158,10 @@
                   </h2>
                 </div>
               </div>-->
-              
+
                <div class="wrap-one">
         {% include 'product-tab' %}
-        
+
       </div>
     </div>
 
@@ -175,30 +196,30 @@
                 </div>
               </form>
               <div class="wrap" style="width:500px !important;  display:inline !important;">
-                
+
                 <ul style="display:inline !important; list-style-type: none; margin: 0;
 padding: 0;">
-                  
+
                   <li style=" display:inline !important;">
-                             <button id="btn-2" 
+                             <button id="btn-2"
                             style="background: #000000 !important;
     							   border: 1px solid #9c9c9c !important;
                            		   font-size: 17px !important;
                                    width:250px !important;
                                    height:38px !important;
-    							   font-weight: 100 !important;"><a href="#" style="color: #ffffff !important;">Where To Buy</a></button> 
+    							   font-weight: 100 !important;"><a href="#" style="color: #ffffff !important;">Where To Buy</a></button>
    				  </li>
-                           
-                          
+
+
                   <li style="display:inline !important;">
                               <div class="thebutton"><i class="fa fa-reply fa-flip-horizontal" style="margin-left:10px; margin-top:10px;"></i>
 							<div class="description"> {% include 'footer-widget-social' %}</div>
 							</div>
-                  
+
                   </li>
-                  
+
                   <style>
-                    
+
                     .thebutton{
                     margin-top:-11.5%;
                     background: #fff !important;
@@ -210,9 +231,9 @@ padding: 0;">
            			margin-left:80%;
            			border: 1px solid #f0f0f0;
                     }
-                    
-                    
-                    
+
+
+
                 .description {
                   	margin-top:-30px;
                   	margin-left:-200px;
@@ -222,33 +243,33 @@ padding: 0;">
                     width:1500px;
                     height:100px;
                 }
-                    
+
                 .description h3 {
                     opacity:0;
                 }
-                
+
                 .description h2 {
                     opacity:0;
                 }
-                  
+
                   </style>
-                  
+
                   <script>
-                  
+
                   $(".thebutton").mouseover(function() {
    					 $(this).children(".description").show();
 					}).mouseout(function() {
     			$(this).children(".description").hide();});
-                  
-                  
-                  
-                  
-                  </script>  
-      			
+
+
+
+
+                  </script>
+
                 </ul>
-     
-              <!-- button for where to buy. added by Angela Rucci --> 
-   
+
+              <!-- button for where to buy. added by Angela Rucci -->
+
               {% else %}
               <meta itemprop="price" content="{{ product.price | money }}" />
 
@@ -300,7 +321,7 @@ padding: 0;">
         </div>
       </div>
       </div></div>
-    
+
 </div>
 <div class="container-fluid">
   {% include 'related-products' %}
