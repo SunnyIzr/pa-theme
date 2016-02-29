@@ -4,17 +4,27 @@
     {% if collection.products.size > 0 %}
     <div class="row cat-grid">
       {% for prod in collection.products %}
+     
+      
       <div class="product_item item-{{prod.id}}">
         {% include 'product-item' %}
       </div>
+     
       {% endfor %}
+    
+
     </div>
+    
     {% else %}
     <h3 class="empty text-center">{{ 'collections.general.no_products' | t }}</h3>
     {% include 'collection-default' %}
     {% endif %}
+    
   </div>
+  
+ 
 
+  
   <div class="advanced-pagination">
     {% if settings.collection_infinite_scoll %}
     {% if settings.collection_infinite_scoll_auto %}
@@ -33,5 +43,6 @@
     {% include 'pagination' %}
     {% endif %}
   </div>
-</div>
 {% endpaginate %}
+
+ 

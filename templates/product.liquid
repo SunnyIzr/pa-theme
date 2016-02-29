@@ -1,5 +1,52 @@
+<div class="row" style="height:5px;"><div class="col-xs-24" ><div class="top-divider"></div></div></div>
+
+<div class="row" style="background-color:#fff; height:25px;"><div class="col-xs-24" ><div class="top-divider">
+  
+    <div class=" row col-sx-24 product-nav" >
+        <div class="next-prev-nav">
+          <div class="prod-dropdown">
+            {% if collection.previous_product %}
+            <a href="{{collection.previous_product}}" class="prev" style=" border:none; border-radius:none;"><i class="fa fa-angle-left fa-2x"></i> </a>
+             
+             
+            {% assign words = collection.previous_product | split:'/' %}
+            {% assign word = words.last %}
+
+            <div class="nav-dropdown">
+              <a href="{{collection.previous_product}}" data-fill-with-product="{{word}}">
+                <script type="text/template"><img src="[img:medium]" title="[title]" /></script>
+              </a>
+            </div>
+            {% else %}
+            <span class="prev disable" style=" border:none; border-radius:none;"><i class="fa fa-angle-left fa-2x"></i></span>
+            {% endif %}
+          </div>
+          <div class="prod-dropdown">
+            {% if collection.next_product %}
+            <a href="{{collection.next_product}}" class="next" style=" border:none; border-radius:none;"><i class="fa fa-angle-right fa-2x"></i></a>
+
+            {% assign words = collection.next_product | split:'/' %}
+            {% assign word = words.last %}
+
+            <div class="nav-dropdown">
+              <a href="{{collection.next_product}}" data-fill-with-product="{{word}}">
+                <script type="text/template"><img src="[img:medium]" title="[title]" /></script>
+              </a>
+            </div>
+            {% else %}
+            <span class="next disable" style=" border:none; border-radius:none;"><i class="fa fa-angle-right fa-2x"></i></span >
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div> 
+    
+  </div>
+  
+  </div>
+
 {% assign variant_tmp = product.selected_or_first_available_variant | default: product.variants.first %}
-<div id="col-main" class="container">
+<div id="col-main" class="container">  
   <div class="row"><div class="col-xs-24"><div class="top-divider"></div></div></div>
   <div itemscope itemtype="http://schema.org/Product">
     <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
@@ -55,9 +102,12 @@
         <div class="product_item item-{{product.id}}">
           {% include 'spinner2' %}
           <div class="inner">
-            {% include 'product-breadcrumb' %}
+           <!-- added Title then collection underneith the title -->
             <h1 class="title" itemprop="name" content="{{ product.title }}">{{ product.title }}</h1>
-
+            <p class="title2" itemprop="name" style="font-size:16px; color:#949494; font-weight:10; text-transform:uppercase; margin-bottom:10%;" content="{{ collection.title }}">{{ collection.title }}</p>
+           
+           	<!--Wasnt sure if we still needed the bread crumbs so i commeneted them out--> 
+            <!-- {% include 'product-breadcrumb' %}-->
             {% if settings.product_sku_show %}
             <p id="sku"{% unless variant_tmp and variant_tmp.sku %} style="display:none;"{% endunless %}>{{variant_tmp.sku}}</p>
             {% endif %}
@@ -77,21 +127,27 @@
               <link itemprop="availability" href="http://schema.org/OutOfStock" />
               {% endif %}
 
-              <div class="product-price">
+              <!--<div class="product-price" style="margin-top:-20px;">
                 <div id="purchase">
-                  <h2 class="detail-price" itemprop="price">
-                    <span class="price">{{ variant_tmp.price | money }}</span>
+                  <h2 class="detail-price" itemprop="price" style="color:#E50000 !important;">
+                    <span class="price" style="color:#E50000 !important;">{{ variant_tmp.price | money }}</span>
                     {% if variant_tmp.compare_at_price > variant_tmp.price %}
-                    <del class="price_compare"> {{ variant_tmp.compare_at_price | money }}</del>
+                    <del class="price_compare" style="color:#E50000!important;"> {{ variant_tmp.compare_at_price | money }}</del>
                     {% endif %}
                   </h2>
                 </div>
-              </div>
+              </div>-->
+              
+               <div class="wrap-one">
+        {% include 'product-tab' %}
+        
+      </div>
+    </div>
 
               {% if product.available %}
 
               {% assign hide_default_title = false %}
-              {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+              {% if product.variants.first.title contains 'color'%}
               {% assign hide_default_title = true %}
               {% endif %}
 
@@ -116,15 +172,83 @@
                   <div class="cart-group limited-edition-group">
                     {% include 'limited-edition' %}
                   </div>
-
-                  <div class="cart-group cart-act">
-                    <button id="add-to-cart" type="{% if settings.ajax_add_to_cart %}button{% else %}submit{% endif %}" class="{% if settings.ajax_add_to_cart %}add-to-cart {% endif %}btn btn-1">
-                      {{'products.product.add_to_cart' | t}}
-                    </button>
-                  </div>
                 </div>
               </form>
-
+              <div class="wrap" style="width:500px !important;  display:inline !important;">
+                
+                <ul style="display:inline !important; list-style-type: none; margin: 0;
+padding: 0;">
+                  
+                  <li style=" display:inline !important;">
+                             <button id="btn-2" 
+                            style="background: #000000 !important;
+    							   border: 1px solid #9c9c9c !important;
+                           		   font-size: 17px !important;
+                                   width:250px !important;
+                                   height:38px !important;
+    							   font-weight: 100 !important;"><a href="#" style="color: #ffffff !important;">Where To Buy</a></button> 
+   				  </li>
+                           
+                          
+                  <li style="display:inline !important;">
+                              <div class="thebutton"><i class="fa fa-reply fa-flip-horizontal" style="margin-left:10px; margin-top:10px;"></i>
+							<div class="description"> {% include 'footer-widget-social' %}</div>
+							</div>
+                  
+                  </li>
+                  
+                  <style>
+                    
+                    .thebutton{
+                    margin-top:-11.5%;
+                    background: #fff !important;
+    			    border: 1px solid #9c9c9c !important;
+                    font-size: 17px !important;
+                    width:38px !important;
+                    height:38px !important;
+    				font-weight: 100 !important;
+           			margin-left:80%;
+           			border: 1px solid #f0f0f0;
+                    }
+                    
+                    
+                    
+                .description {
+                  	margin-top:-30px;
+                  	margin-left:-200px;
+                    display:none;
+                    position:absolute;
+                    border:none;
+                    width:1500px;
+                    height:100px;
+                }
+                    
+                .description h3 {
+                    opacity:0;
+                }
+                
+                .description h2 {
+                    opacity:0;
+                }
+                  
+                  </style>
+                  
+                  <script>
+                  
+                  $(".thebutton").mouseover(function() {
+   					 $(this).children(".description").show();
+					}).mouseout(function() {
+    			$(this).children(".description").hide();});
+                  
+                  
+                  
+                  
+                  </script>  
+      			
+                </ul>
+     
+              <!-- button for where to buy. added by Angela Rucci --> 
+   
               {% else %}
               <meta itemprop="price" content="{{ product.price | money }}" />
 
@@ -175,49 +299,8 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-4 product-nav hidden-xs">
-        <div class="next-prev-nav">
-          <div class="prod-dropdown">
-            {% if collection.previous_product %}
-            <a href="{{collection.previous_product}}" class="prev"><i class="fa fa-angle-left"></i></a>
-
-            {% assign words = collection.previous_product | split:'/' %}
-            {% assign word = words.last %}
-
-            <div class="nav-dropdown">
-              <a href="{{collection.previous_product}}" data-fill-with-product="{{word}}">
-                <script type="text/template"><img src="[img:medium]" title="[title]" /></script>
-              </a>
-            </div>
-            {% else %}
-            <span class="prev disable"><i class="fa fa-angle-left"></i></span>
-            {% endif %}
-          </div>
-          <div class="prod-dropdown">
-            {% if collection.next_product %}
-            <a href="{{collection.next_product}}" class="next"><i class="fa fa-angle-right"></i></a>
-
-            {% assign words = collection.next_product | split:'/' %}
-            {% assign word = words.last %}
-
-            <div class="nav-dropdown">
-              <a href="{{collection.next_product}}" data-fill-with-product="{{word}}">
-                <script type="text/template"><img src="[img:medium]" title="[title]" /></script>
-              </a>
-            </div>
-            {% else %}
-            <span class="next disable"><i class="fa fa-angle-right"></i></span >
-            {% endif %}
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="wrap">
-      <div class="wrap-one">
-        {% include 'product-tab' %}
-      </div>
-    </div>
-  </div>
+      </div></div>
+    
 </div>
 <div class="container-fluid">
   {% include 'related-products' %}
@@ -286,7 +369,7 @@
 
       {% if settings.product_sku_show %}
       if (variant && variant.sku) {
-        jQuery("#sku").html(variant.sku).show();
+        jQuery("#sku").hide();
       }
       else{
         jQuery("#sku").hide();
@@ -296,8 +379,8 @@
 
     new Shopify.OptionSelectors("product-select-{{ product.id }}", { product: {{ product | json | remove:'\u003E' | remove:'\u003C' | remove:'\u00a0' }}, onVariantSelected: selectOptionsCallback, enableHistoryState: true });
 
-    {% if product.options.size == 1 %}
-    jQuery('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first | escape }}</label>');
+    {% if product.options.size >= 0 %}
+    jQuery('.selector-wrapper').hide();
     {% endif %}
 
     {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}

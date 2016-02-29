@@ -51,14 +51,14 @@
 Fonts
 ---------------------------------------------- */
 html, body {
-  text-rendering: optimizeLegibility;
-  text-rendering: geometricPrecision;
+  //text-rendering: optimizeLegibility;
+  //text-rendering: geometricPrecision;
 
   font-smooth: always;
   font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  -webkit-font-smoothing: antialiased;
-  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-font-smoothing: antialiased !important;
+  -webkit-font-smoothing: antialiased !important;
+  -webkit-font-smoothing: subpixel-antialiased !important;
   -moz-osx-font-smoothing: grayscale;
 
   -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -71,6 +71,10 @@ body {
   line-height: 1.42857143; // 20px
   color: {{ grey_dark }};
   background-color: white;
+  color: #949494;
+font-weight: 100;
+letter-spacing: .7px;
+width:100%;
 }
 
 h1, .h1 { font-size: 28px; }
@@ -123,7 +127,18 @@ Navigation
 #header a:hover {
   text-decoration: none;
 }
-
+#header .pc_navbar .pc_nav>li{
+}
+#header .pc_navbar .pc_nav>li.search-menu-icon{
+  width: 5% !important;
+  position: absolute;
+  right: 3px;
+  top: 4px;
+  z-index: 5;
+  span{
+    font-size: 19px;
+  }
+}
 li#navlink-paul-andrew a {
   display: block;
   overflow: hidden;
@@ -147,6 +162,23 @@ li#navlink-paul-andrew a {
   }
 }
 
+#site-navigation-wrap{
+  background: rgba(255,255,255,1)
+}
+  
+.templateIndex{
+  #header .pc_navbar .pc_nav>li>a{
+    color: #fff;
+  }
+  li#navlink-paul-andrew a{
+  }
+  #site-navigation-wrap{
+    background: rgba(0,0,0,0.75)
+  }
+}
+#header .search-wrap{
+  width: auto !important;
+}
 @media (min-width: 992px){
   #header.sticky.on {
     li#navlink-paul-andrew a {
@@ -156,7 +188,111 @@ li#navlink-paul-andrew a {
     }
   }
 }
+/* ----------------------------------------------
+Search Plugin Overrides
+---------------------------------------------- */
+.sb-search {
+  position: relative;
+  margin-top: 10px;
+  width: 0%;
+  min-width: 60px;
+  height: 60px;
+  float: right;
+  overflow: hidden;
+  -webkit-transition: width 0.3s;
+  -moz-transition: width 0.3s;
+  transition: width 0.3s;
+  -webkit-backface-visibility: hidden;
+}
 
+.sb-search-input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+  outline: none;
+  background: #fff;
+  width: 100%;
+  height: 60px;
+  margin: 0;
+  z-index: 10;
+  padding: 20px 65px 20px 20px;
+  font-family: inherit;
+  font-size: 20px;
+  color: #2c3e50;
+}
+
+.sb-search-input::-webkit-input-placeholder {
+  color: #b8b8b8;
+}
+
+.sb-search-input:-moz-placeholder {
+  color: #b8b8b8;
+}
+
+.sb-search-input::-moz-placeholder {
+  color: #b8b8b8;
+}
+
+.sb-search-input:-ms-input-placeholder {
+  color: #b8b8b8;
+}
+
+.sb-icon-search,
+.sb-search-submit  {
+  width: 60px;
+  height: 60px;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0;
+  margin: 0;
+  line-height: 60px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.sb-search-submit {
+  background: #fff; /* IE needs this */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; /* IE 8 */
+    filter: alpha(opacity=0); /* IE 5-7 */
+    opacity: 0;
+  color: transparent;
+  border: none;
+  outline: none;
+  z-index: -1;
+}
+
+.sb-icon-search {
+  color: #b8b8b8;
+  z-index: 90;
+  font-size: 22px;
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Open state */
+.sb-search.sb-search-open,
+.no-js .sb-search {
+  width: 300px;
+}
+
+.sb-search.sb-search-open .sb-icon-search,
+.no-js .sb-search .sb-icon-search {
+  color: #b8b8b8;
+  z-index: 11;
+}
+
+.sb-search.sb-search-open .sb-search-submit,
+.no-js .sb-search .sb-search-submit {
+  z-index: 90;
+}
 /* ----------------------------------------------
 Mobile Navigation
 ---------------------------------------------- */
@@ -374,7 +510,7 @@ Collections Grid Product
   display: none;
 
   .quick-view {
-    display: inline-block;
+    display: none;
     text-transform: uppercase;
     position: absolute;
     left: 16px;
@@ -385,6 +521,7 @@ Collections Grid Product
   }
 
   .btn-wishlist {
+    display:none;
     position: absolute;
     top: 0;
     right: 16px;
@@ -395,7 +532,7 @@ Collections Grid Product
 }
 
 .product-label{
-  display: block;
+  display: none;
   color: {{ label_red }};
   font-weight: {{ futura_light }};
   margin: 0;
@@ -443,3 +580,116 @@ General Theme Overrides
 #content, #module-content {
   background-color: #F2F2F2;
 }
+/* ----------------------------------------------
+Email Popup Overrides
+---------------------------------------------- */
+#lightbox {
+  .window{
+    background-color: #E2E2E2;  
+  }
+  .close{
+    background: rgba(255,255,255,0.7);
+    color: #000;
+    right: 0px;
+    top: 0px;
+    width: 40px;
+    height: 40px;
+    i{
+      font-size: 24px;
+      line-height: 40px;
+    }
+  }
+  .mc-title{
+    color: #575757;
+    font-size: 20px;
+  }
+  .newsletter-inner {
+    .hide-for-small{
+      font-size: 16px;
+    }
+    #mc-email{
+      border: none;
+      font-size: 19px;
+    }
+  }
+}
+/* ----------------------------------------------
+Home Overrides
+---------------------------------------------- */
+#home-slider{
+  h2{
+    font-size: 40px;
+    letter-spacing: 0;
+    font-weight: 200;
+    margin-bottom: 0;
+  }
+}
+
+#home-slider-2{
+  h2{
+    font-family: 'futura-pt';
+    font-weight: 300;
+    padding-top: 0;
+    padding-bottom: 24px;
+    //margin-top:-100%;
+    font-size: 30px;
+  }
+}
+
+@media only screen   and (max-device-width: 1010px) {
+ 
+  
+  #home-slider-2{
+  h2{
+    font-family: 'futura-pt';
+    font-weight: 300;
+    padding-top: 0;
+    padding-bottom: -30px;
+    margin-top:-50%;
+    font-size: 18px;
+  }
+    .caption-link{.btn{
+    	margin-top:-25%;
+      	width: 70%;
+    }
+    }
+    
+}
+
+
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

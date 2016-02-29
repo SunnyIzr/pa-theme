@@ -5,19 +5,24 @@
   <div class="product-tab">
     <ul class="nav nav-tabs responsive" id="product-tab">
       <li class="active"><a href="#product-description">{{'products.product.description' | t}}</a></li>
-      {% if product.metafields.c_f.details_tab %}
+      
       <li><a href="#product-details">Details</a></li>
-      {% endif %}
-      {% if product.featured_image.alt contains 'iframe' %}
-      <li><a href="#product-video">{{'products.product.video' | t}}</a></li>
-      {% endif %}
-      {% if temp.handle != blank %}
-      <li><a href="#product-shipping-return">{{'products.product.shipping_and_return' | t}}</a></li>
-      {% endif %}
+
+      <li><a href="#product-shipping-return" id="product-shipping-return" style="color:#E50000; opacity:1; text-decoration: line-through;">Shipping & Returns</a></li>
+      
       {% if settings.reviews_enable %}
       <li><a id="product-reviews-a" href="#product-reviews">{{'products.product.customer_reviews' | t}}</a></li>
       {% endif %}
     </ul>
+    
+    <!-- java script Angela added to make it so user can not click on Shipping & Returns tab -->
+    <script>
+    document.getElementById("#product-shipping-return").childNodes[0].onclick = function() {return false;};
+    </script>
+    
+    <!-- end java script -->
+    
+
 
     <div class="tab-content responsive">
       <div class="tab-pane active" id="product-description">
@@ -25,26 +30,37 @@
           {{product.content}}
         </div>
       </div>
-      {% if product.metafields.c_f.details_tab %}
-      <div class="tab-pane" id="product-details">
-          {{ product.metafields.c_f.details_tab }}
+      
+      <div class="tab-pane active" id="product-details">
+        <div itemprop="description">
+          Details: dhkhfskjlsfj dlkj asi hi dlas sho wi lorem ipsun mo li
+          
+          size: cjidl solemm loress torls 
+          colors: red, yellow, blue, green
+        </div>
       </div>
-      {% endif %}
+      
+      
+      
+      <div class="tab-pane" id="product-details">
+     
+      </div>
+      
       {% if product.featured_image.alt contains 'iframe' %}
       <div class="tab-pane" id="product-video">
         {{product.featured_image.alt}}
       </div>
       {% endif %}
-      {% if temp.handle != blank %}
       <div class="tab-pane" id="product-shipping-return">
-        {{temp.content}}
+        
       </div>
-      {% endif %}
+      
       {% if settings.reviews_enable %}
       <div id="product-reviews" class="tab-pane">
         <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
       </div>
       {% endif %}
     </div>
-  </div>
+      
+       </div>
 </div>
