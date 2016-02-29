@@ -171,9 +171,32 @@
 }
 
 @media (max-width: 767px){
+  .flexslider .flex-prev,
+  .flexslider .flex-next,
+  .flex-control-paging li a
+  {
+  opacity: 1!important;
+  }
+  .flex-control-paging li a {
+    height: 20px!important;
+    width: 20px!important;
+    background: #fff;
+    border: none!important;
+  }
+  .flex-control-paging li a.flex-active {
+    background: #333!important;
+  }
+
+  .flex-control-nav {
+    bottom: 0px!important;
+  }
+
+  .top-divider {
+    padding: 0;
+  }
 
   .page-lookbook .parts, .page-lookbook .part{ width: 100%; }
-  .owl-theme .owl-controls, .flex-direction-nav{ display: none!important; }
+  .owl-theme .owl-controls { display: none!important; }
   #product .product-sidebar{ padding-top: 30px; }
   #lightbox .window{width:300px; background-image: none;}
   #lightbox .content{padding: 40px 20px 30px 20px; width: 100%;}
@@ -210,8 +233,8 @@
   .top-description{width:100%;}
   #header #site-navigation-wrap{right: 30px;}
   .template-logo{max-width: 100px;}
-  .container{
-    padding-left: 30px; padding-right: 30px;
+  .container, .widget-wrapper {
+    padding-left: 15%; padding-right: 15%;
   }
   .filter_wrap .toggle_view{display:none;}
   #mc-form-mailchimp{padding:0 20px;}
