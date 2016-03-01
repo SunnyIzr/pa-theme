@@ -175,8 +175,16 @@
     background-color: #949494!important;
   }
 
+  h1.title, p.title2 {
+    text-align: center;
+  }
+
   .box_wrapper {
-    padding: 0 10% 0 15%!important;
+    padding: 0 10% 0 10%!important;
+  }
+
+  .flexslider {
+    border: 0!important;
   }
 
   .flexslider .flex-prev,
@@ -190,6 +198,11 @@
     width: 20px!important;
     background: #fff;
     border: none!important;
+  }
+
+  .flex-control-nav {
+    position: relative!important;
+    background-color: #f2f2f2!important;
   }
   .flex-control-paging li a.flex-active {
     background: #333!important;
@@ -207,9 +220,51 @@
     margin-right: 0!important;
   }
 
+  .product-tab .nav-tabs:after {
+    display: none;
+  }
+
+  .product-tab .nav-tabs li a {
+    font-size: 17px;
+  }
+  .product-tab .nav-tabs li {
+    margin-right: 0;
+  }
+
+  #product-tab {
+    width: 102%;
+  }
+
+  #product-tab li {
+    text-align: center;
+    width: 33%;
+  }
+
+  #arrow-nav-row {
+    margin: 0;
+    height: 40px;
+    border-top: solid 1px;
+    bottom: 4px;
+    position: relative;
+    z-index: 100;
+  }
+
+
+  #arrow-nav-mobile {
+    margin-top: 0;
+  }
+
+  .product-images {
+    padding: 0;
+  }
+
+  #mobilenavbar-utils a:hover {
+    background-color: white!important;
+  }
+
   .page-lookbook .parts, .page-lookbook .part{ width: 100%; }
   .owl-theme .owl-controls { display: none!important; }
-  #product .product-sidebar{ padding-top: 30px; }
+  #product .product-sidebar{ padding: 30px; }
   #lightbox .window{width:300px; background-image: none;}
   #lightbox .content{padding: 40px 20px 30px 20px; width: 100%;}
   .filter_wrap #filters .column{width: 100%!important; max-width: 100%; max-height:max-height; min-height: initial; overflow-y: visible; margin-bottom: 0; padding:0; min-width: initial; border: 0;}
@@ -333,6 +388,21 @@
   .static-surround .static-content .static-caption1,
   .static-surround .static-content .static-caption2{
     line-height: normal;
+  }
+}
+
+@media (max-width: 693px) {
+  .product-tab .nav-tabs li a {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 659px) {
+  .product-tab .nav-tabs li{
+    padding-top: 5px;
+  }
+  .product-tab .nav-tabs li:nth-child(3){
+    bottom: 16px;
   }
 }
 
