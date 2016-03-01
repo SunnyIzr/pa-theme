@@ -47,7 +47,7 @@
 
 {% assign variant_tmp = product.selected_or_first_available_variant | default: product.variants.first %}
 <div id="col-main" class="container">
-  <div class="row"><div class="col-xs-24 hidden-xs"><div class="top-divider"></div></div></div>
+  <div class="row"><div class="col-xs-24"><div class="top-divider"></div></div></div>
   <div itemscope itemtype="http://schema.org/Product">
     <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
     <div id="product" class="row clearfix">

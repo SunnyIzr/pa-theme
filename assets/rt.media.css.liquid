@@ -181,6 +181,7 @@
 
   .flexslider {
     border: 0!important;
+    background-color: #f2f2f2!important;
   }
 
   .flexslider .flex-prev,
@@ -197,7 +198,6 @@
   }
 
   .flex-control-nav {
-    position: relative!important;
     background-color: #f2f2f2!important;
   }
   .flex-control-paging li a.flex-active {
@@ -249,9 +249,13 @@
     z-index: 100;
   }
 
-
   #arrow-nav-mobile {
     margin-top: 0;
+  }
+
+  div#col-main.container a img {
+    position: relative;
+    bottom: 5em;
   }
 
   .product-images {
@@ -397,7 +401,7 @@
   }
 }
 
-@media (max-width: 659px) {
+@media (max-width: 528px) {
   .product-tab .nav-tabs li{
     padding-top: 5px;
   }
@@ -408,6 +412,22 @@
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
+  div#col-main.container a img {
+    bottom: 2em;
+  }
+  .product-tab .nav-tabs li:first-child {
+    text-align: left;
+  }
+
+  .product-tab .nav-tabs li a {
+    font-size: 15px;
+  }
+  .product-tab .nav-tabs li:nth-child(3){
+    bottom: 15px;
+  }
+  .flexslider .flex-control-nav.flex-control-paging {
+    display: initial;
+  }
   .filter_wrap .options-wrapper{ width: 100%; text-align: center; }
   .filter_wrap .filter_heading .title { display: none; }
 

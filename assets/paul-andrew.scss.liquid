@@ -165,7 +165,7 @@ li#navlink-paul-andrew a {
 #site-navigation-wrap{
   background: rgba(255,255,255,1)
 }
-  
+
 .templateIndex{
   #header .pc_navbar .pc_nav>li>a{
     color: #fff;
@@ -414,17 +414,20 @@ Sliders
 }
 
 @media (max-width: 480px) {
-  .flexslider {
-    .caption.header.collection-header {
-      h1, h2 { font-size: 24px; }
-    }
+  div#collection-slider {
     .flex-control-nav,
     .flex-direction-nav {
-      display: none !important;
+      display: none!important;
     }
-    .caption.header {
-      top: 30%;
-      h1, h2, { font-size: 24px; }
+
+    .flexslider {
+      .caption.header.collection-header {
+        h1, h2 { font-size: 24px; }
+      }
+      .caption.header {
+        top: 30%;
+        h1, h2, { font-size: 24px; }
+      }
     }
   }
 
@@ -585,7 +588,7 @@ Email Popup Overrides
 ---------------------------------------------- */
 #lightbox {
   .window{
-    background-color: #E2E2E2;  
+    background-color: #E2E2E2;
   }
   .close{
     background: rgba(255,255,255,0.7);
@@ -637,8 +640,8 @@ Home Overrides
 }
 
 @media only screen   and (max-device-width: 1010px) {
- 
-  
+
+
   #home-slider-2{
   h2{
     font-family: 'futura-pt';
@@ -653,11 +656,11 @@ Home Overrides
       	width: 70%;
     }
     }
-    
+
 }
 
 
-  
+
 }
 
 
