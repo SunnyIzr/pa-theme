@@ -19,7 +19,7 @@ html{
 
 #tabs-to-show-on-phone{
   	opacity:0;
-  
+
   }
 #admin_bar_iframe{ display: none; }
 
@@ -77,6 +77,11 @@ html{
 
 
 /* ================ HEADER ==================== */
+#arrow-nav-row {
+  background-color:#fff;
+  height:25px;
+}
+
 #header{
   position: relative;
   top: 0!important;
@@ -1004,10 +1009,10 @@ body.menu-opened #page:before {
           font-size: {{settings.dropdown_item_size | plus:0 | append:'px'}};
          /* color: {{settings.dropdown_item_colour}};*/
            color:#000000;
-          
+
           &:hover{
             /*color: {{settings.dropdown_colour_hover}};*/
-             color:#000000; 
+             color:#000000;
           }
         }
         .expand{
@@ -1677,7 +1682,7 @@ body.modal-active {
         left: 0;
         opacity: 0;
         filter: alpha(opacity=0);
-        
+
       }
 
       i{
@@ -3334,7 +3339,7 @@ Swatches Styles
 
 //the header for the swatched area
 .swatch  .header{
-		
+
    margin-top:-30px;
       font-size: 16px;
     font-weight: 400;
@@ -3436,9 +3441,9 @@ Swatches Styles
   margin-bottom: 15px;
 }
 .featured-products{
-  
+
   h3{
-  
+
       font-size: 18px;
     font-weight: 400;
     color: #646464;
@@ -3446,7 +3451,7 @@ Swatches Styles
 
 
 
-  
+
   }
   .title{
     margin-bottom: 0;
@@ -4517,7 +4522,7 @@ input[type="radio"]{
       color: {{settings.btn_btn1_txt_hover}}!important;*/
       border: 1px solid {{settings.btn_btn1_border_hover}}!important;
 
-      
+
       &:hover{
         opacity: 0.66;
         filter: alpha(opacity=66);
@@ -5025,7 +5030,7 @@ input[type="radio"]{
   margin-bottom: 30px;
   background:tansparent;
   height:25px;
-  margin-top:-32px; 
+  margin-top:-32px;
   margin-right:5%;
 
   .prod-dropdown {
@@ -5134,15 +5139,15 @@ input[type="radio"]{
         border-radius: 0;
         position: relative;
         z-index: 5;
-        
+
 
         &:hover{
           opacity: 0.7;
           border-bottom-color: {{settings.general_heading_colour}}!important;
           background-color: transparent;
         }
-        
-        
+
+
         #product-shipping-return{
         	color:fff !important;
         }
@@ -5518,7 +5523,7 @@ input[type="radio"]{
     width: 48%;
 }
 .rise_of_paul_andrew .slide-caption.caption.header > h2 {
-  
+
     color: #fff;
     font-family: futura;
     font-size: 35px;
@@ -5550,20 +5555,20 @@ input[type="radio"]{
 // 	position:static;}
 #header #site-navigation-wrap{
 	position:inherit;
-	
-	}	
-	
+
+	}
+
 	#header .navigation_wrapper{
 		position:inherit;}
-		
+
 	#header .pc_navbar .pc_nav li .dropdown-menu {
     padding: 10px 0;
     -webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
   -o-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
- 
-}	
+
+}
 /* ================ 17-02-2016 css end here  ==================== */
 
 
@@ -5571,22 +5576,22 @@ input[type="radio"]{
 
 
 @media only screen and (max-device-width: 480px) {
-    
+
   .journal_image.right_image {
   float: right;
   width: 100%;
-}  
-    
+}
+
     .journal_text.left_text {
   float: left;
   padding: 60px 0 0;
   width: 100%;
 }
-    
+
 .instrgram_text.left_text {
   padding: 32px 0 0 24px;
 }
-    
+
     .journal_text.left_text {
   padding: 20px 0 0;
 }
@@ -5603,8 +5608,8 @@ input[type="radio"]{
      #lightbox .window{
  display:none;
 }
-    
-    
+
+
     #lightbox .content {
   padding: 10px;
   width: 100% !important;
@@ -5613,8 +5618,8 @@ input[type="radio"]{
   right: 2px;
   top: 1px;
 }
-    
-    
+
+
     .flexslider .caption.header h2 {
   padding: 50px 0 80px;
 
@@ -5630,10 +5635,10 @@ input[type="radio"]{
 
 
 @media only screen   and (max-device-width: 420px) {
-  
+
   #tabs-to-show-on-phone{
   	opacity:1;
-  
+
   }
 
   .instrgram_text.left_text {
@@ -5642,15 +5647,15 @@ input[type="radio"]{
     width:180px;
     text-align:center;
 }
-    
+
     .journal_text.left_text {
   padding-top: 5px;
       //margin-left:-10%;
     width:180px;
       text-align:center;
 }
- 
-  
+
+
   .slide-body > img {
   min-width: 180% !important;
   margin-left:-40% !important;
@@ -5659,11 +5664,11 @@ input[type="radio"]{
   .search-wrap {
   display: none;
 }
-  
+
   #lightbox .window{
  display:none;
 }
-  
+
 }
 
 
@@ -5742,18 +5747,18 @@ opacity: 0 !important;
   #header .search-wrap {
     display: none !important;
   }
-  
+
  #lightbox .window {
   min-height: 300px !important;
 }
-  
+
   .next-prev-nav{
   text-align: right;
   position: relative;
   margin-bottom: 30px;
   background:tansparent;
   height:25px;
-  margin-top:-32px; 
+  margin-top:-32px;
   margin-left:75% !important;
 
   .prod-dropdown {
@@ -5811,41 +5816,41 @@ opacity: 0 !important;
     }
   }
 }
-  
+
 }
 
 
-//media quary to display the names of the items - angela rucci 
+//media quary to display the names of the items - angela rucci
 @media only screen   and (max-device-width: 1010px) {
- 
+
   .product .product-container .product-content {
-   opacity: 1 !important; 
-   visibility: visible !important; 
+   opacity: 1 !important;
+   visibility: visible !important;
   }
-  
+
   .slide-caption .caption .header{
   opacity:1 !important;
     top:100px !important;
   }
-  
+
   #home-slider-2 h2{
   padding-top: 0px !important;
     margin-bottom:100px !important;
   }
-  
+
   .navigation_wrapper{
   background-color: #020203;
   }
-  
+
   	#featured-products{
     .product .product-container .product-content {
      visibility: hidden !important;
      opacity:0 !important;
       z-index:-10;
     }}
-  
-  
-  
+
+
+
 }
 
 //end media quary to display the product names -angela rucci
