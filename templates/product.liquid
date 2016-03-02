@@ -195,48 +195,27 @@
                   </div>
                 </div>
               </form>
-              <div class="wrap" style="width:500px !important;  display:inline !important;">
-
-                <ul style="display:inline !important; list-style-type: none; margin: 0;
-padding: 0;">
-
-                  <li style=" display:inline !important;">
-                             <button id="btn-2"
-                            style="background: #000000 !important;
-    							   border: 1px solid #9c9c9c !important;
-                           		   font-size: 17px !important;
-                                   width:250px !important;
-                                   height:38px !important;
-    							   font-weight: 100 !important;"><a href="#" style="color: #ffffff !important;">Where To Buy</a></button>
-   				  </li>
-
-
-                  <li style="display:inline !important;">
-                              <div class="thebutton"><i class="fa fa-reply fa-flip-horizontal" style="margin-left:10px; margin-top:10px;"></i>
-							<div class="description"> {% include 'footer-widget-social' %}</div>
-							</div>
-
-                  </li>
-
+              <!-- This needs to be pulled out and completely redone. -->
+              <div class="inner-wrap">
+                <button id="btn-2">
+                  <a href="#">Where To Buy</a>
+                </button>
+              </div>
+              <div class="centerWrapper">
+                <div class="thebuttonWrapper">
+                  <div class="thebutton">
+                    <i class="fa fa-reply fa-flip-horizontal"></i>
+                    <div class="description">
+                      {% include 'footer-widget-social' %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
                   <style>
-
-                    .thebutton{
-                    margin-top:-11.5%;
-                    background: #fff !important;
-    			    border: 1px solid #9c9c9c !important;
-                    font-size: 17px !important;
-                    width:38px !important;
-                    height:38px !important;
-    				font-weight: 100 !important;
-           			margin-left:80%;
-           			border: 1px solid #f0f0f0;
-                    }
-
-
-
                 .description {
-                  	margin-top:-30px;
-                  	margin-left:-200px;
+                    margin-top:-30px;
+                    margin-left:-200px;
                     display:none;
                     position:absolute;
                     border:none;
@@ -257,16 +236,15 @@ padding: 0;">
                   <script>
 
                   $(".thebutton").mouseover(function() {
-   					 $(this).children(".description").show();
-					}).mouseout(function() {
-    			$(this).children(".description").hide();});
+             $(this).children(".description").show();
+          }).mouseout(function() {
+          $(this).children(".description").hide();});
 
 
 
 
                   </script>
 
-                </ul>
 
               <!-- button for where to buy. added by Angela Rucci -->
 
@@ -279,8 +257,6 @@ padding: 0;">
                 </div>
               </div>
               {% endif %}
-            </div>
-          </div>
           <div class="cart-group touch-group">
             <ul class="list-inline">
               {% comment %}
