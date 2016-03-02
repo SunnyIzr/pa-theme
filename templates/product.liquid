@@ -51,7 +51,7 @@
   <div itemscope itemtype="http://schema.org/Product">
     <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
     <div id="product" class="row clearfix">
-      <div class="col-sm-12 product-images">
+      <div class="col-sm-14 product-images">
         <div class="flexslider visible-xs-block">
           <ul class="slides">
           {% for image in product.images %}
@@ -119,7 +119,7 @@
           </script>
         </div>
       </div>
-      <div class="col-sm-8 product-sidebar">
+      <div class="col-sm-9 product-sidebar">
         <div class="product_item item-{{product.id}}">
           {% include 'spinner2' %}
           <div class="inner">
