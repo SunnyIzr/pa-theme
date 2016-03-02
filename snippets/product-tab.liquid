@@ -4,11 +4,11 @@
 <div class="product-tabs">
   <div class="product-tab">
     <ul class="nav nav-tabs" id="product-tab">
-      <li class="active"><a href="#product-description">{{'products.product.description' | t}}</a></li>
+      <li class="active"><a href="#product-description"><span>{{'products.product.description' | t}}</span></a></li>
 
-      <li><a href="#product-details">Details</a></li>
+      <li><a href="#product-details"><span>Details</span></a></li>
 
-      <li><a href="#product-shipping-return" id="product-shipping-return" style="color:#E50000; opacity:1; text-decoration: line-through;">Shipping & Returns</a></li>
+      <li><a href="#product-shipping-return" id="product-shipping-return" style="color:#E50000; opacity:1; text-decoration: line-through;"><span>Shipping & Returns</span></a></li>
 
       {% if settings.reviews_enable %}
       <li><a id="product-reviews-a" href="#product-reviews">{{'products.product.customer_reviews' | t}}</a></li>
