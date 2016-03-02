@@ -120,6 +120,12 @@ Top Bar
   }
 }
 
+@media (max-width: 768px) {
+  #top-bar {
+    display: none;
+  }
+}
+
 /* ----------------------------------------------
 Navigation
 ---------------------------------------------- */
@@ -641,31 +647,110 @@ Home Overrides
 
 @media only screen   and (max-device-width: 1010px) {
 
-
-  #home-slider-2{
-  h2{
-    font-family: 'futura-pt';
-    font-weight: 300;
-    padding-top: 0;
-    padding-bottom: -30px;
-    margin-top:-50%;
-    font-size: 18px;
+  #home-slider-2 {
+    h2 {
+      font-family: 'futura-pt';
+      font-weight: 300;
+      padding-top: 0;
+      padding-bottom: -30px;
+      margin-top:-50%;
+      font-size: 18px;
+    }
+    .caption-link {
+      .btn {
+      	margin-top:-25%;
+        width: 70%;
+      }
+    }
   }
-    .caption-link{.btn{
-    	margin-top:-25%;
-      	width: 70%;
-    }
-    }
+}
+
+/* -------------------------------------------------
+Product Show Page
+---------------------------------------------------*/
+
+.inner-wrap {
+  padding-top: 3em;
+  border-top: 1px solid #999999;
+  text-align: center;
+}
+
+button#btn-2 {
+  background: #000;
+  border: 1px solid #9c9c9c;
+  font-size: 17px;
+  width: 250px;
+  height: 38px;
+  font-weight: 100;
+}
+
+button#btn-2 a {
+  color: #fff;
+}
+
+.fa-flip-horizontal {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.centerWrapper {
+  text-align: center;
+}
+
+.thebuttonWrapper {
+  display: inline-block;
+}
+
+.thebutton {
+  margin-top: 25px;
+  background: #fff;
+  border: 1px solid #9c9c9c;
+  font-size: 17px;
+  width: 38px;
+  height: 38px;
+  font-weight: 100;
+}
+
+@media (max-width: 768px) {
+
+  .swatch .header {
+    border-top: 1px #999999 solid;
+    padding: 20px 0px;
+    margin: 0;
+  }
+
+  .product-tab .tab-content {
+    text-align: center;
+  }
+
+  div.header {
+    text-align: center;
+  }
+
+  div#col-main.container a img {
+    position: relative;
+    bottom: 6em;
+  }
+
+  .widget-wrapper {
+    border-top: solid 1px white;
+    padding-top: 50px;
+  }
+}
+
+@media (max-width: 740px) {
+  div#col-main.container a img {
+    bottom: 3em;
+  }
 
 }
 
-
+@media (max-width: 660px) {
+  div#col-main.container a img {
+    bottom: 1em;
+  }
 
 }
-
-
-
-
 
 
 
