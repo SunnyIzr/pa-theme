@@ -1031,6 +1031,11 @@ Stockists Page
   text-align: center;
   background-color: white;
   .stockists-hero-img {
+    a.active {
+      h2 {
+      text-decoration: underline;
+      }
+    }
     h1 {
       margin-top: 0;
       font-weight: 100;
@@ -1053,6 +1058,31 @@ Stockists Page
       width: 32%;
     }
   }
+
+  .hidden {
+    display: none;
+  }
+
+  .in-store {
+    .region {
+      height: 55px;
+      background-color: white;
+      h3 {
+        position: relative;
+        top: 10px;
+      }
+      .sortby-arrow {
+        position: relative;
+        float: right;
+        bottom: 20px;
+        right: 20px;
+        }
+      }
+    }
+}
+
+.well {
+  margin: 0;
 }
 
 @media (min-width: 769px) {

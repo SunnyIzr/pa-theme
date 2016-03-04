@@ -2,9 +2,9 @@
   <div class="stockists-hero-img">
     <h1>SHOP PAUL ANDREW WORLD-WIDE</h1>
     <p>Paul Andrew shoes are created with passion, quality materials, and dedication to craftsmanship and engineering.  We sell through only the finest retails worldwide, online and in-store.</p>
-    <a href="#"><h2>ONLINE</h2></a><a href="#"><h2>IN-STORE</h2></a>
+    <a class="active" href="#"><h2>ONLINE</h2></a><a href="#"><h2>IN-STORE</h2></a>
   </div>
-  <div class="online-vendors">
+  <div class="vendors online-vendors">
     <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-avenue32.jpg"/>
     <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-barneys.jpg"/>
     <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-bergdorfgoodman.jpg"/>
@@ -22,4 +22,24 @@
     <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-stylebop.jpg"/>
     <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-tiziana.jpg"/>
   </div>
+
+  <div class="hidden vendors in-store">
+    <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expanded">
+      <div class="region">
+        <h3>REGION</h3>
+        <i class="fa fa-angle-down fa-2x sortby-arrow"></i>
+      </div>
+    </a>
+
+
+    <div class="collapse" id="region-expanded">
+      <div class="well">
+
+      </div>
+    </div>
+  </div>
+
 </div>
+
+
+{{ 'stockists.js' | asset_url | script_tag }}
