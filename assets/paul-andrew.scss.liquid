@@ -1028,9 +1028,29 @@ Stockists Page
 ---------------------------------------------------*/
 
 .stockists-content {
+  text-align: center;
+  background-color: white;
   .stockists-hero-img {
-    background-image: url("//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-background-map.jpg");
+    h1 {
+      margin-top: 0;
+      font-weight: 100;
+    }
+    h2 {
+      display: inline-block;
+      margin: 0.5em 1em 0;
+      color: white;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    background: url("//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-background-map.jpg") no-repeat 30% center;
     background-size: cover;
-    height: 540px;
+    height: 320px;
+    padding: 15% 10%;
+  }
+  .online-vendors {
+    .vendor {
+      width: 32%;
+    }
   }
 }
