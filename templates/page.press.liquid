@@ -95,32 +95,51 @@
   <div class="hidden-xs">
     <div class="row press press-wrapper">
         <div class="col-xs-6 press">
-          <a href="#press-detail" data-toggle="collapse" aria-expanded="false" aria-controls="press-detail">
-            <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-barneys-2015-7-1.jpg"/>
-          </a>
+          <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-barneys-2015-7-1.jpg"/>
         </div>
         <div class="col-xs-6 press">
-          <a href="#press-detail" data-toggle="collapse" aria-expanded="false" aria-controls="press-detail">
-            <h2>PRESS</h2>
-            <h3>PUBLICATION</h3>
-            <p>7/2015</p>
-          </a>
+          <h2>PRESS</h2>
+          <h3>PUBLICATION</h3>
+          <p>7/2015</p>
         </div>
       <div class="col-xs-6 press">
         <!-- This image is a different height from the others.  Either there's some way to clean this up on the front end that I don't know, or the images need to be rendered the same dimensions before being send to the front from the back -->
-        <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-fn-2015-7-1.jpg"/>
+        <a href="#press-detail" data-toggle="collapse" aria-expanded="false" aria-controls="press-detail">
+          <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-fn-2015-7-1.jpg"/>
+        </a>
       </div>
       <div class="col-xs-6 press">
-        <h2>PRESS</h2>
-        <h3>PUBLICATION</h3>
-        <p>7/2015</p>
+        <a href="#press-detail" data-toggle="collapse" aria-expanded="false" aria-controls="press-detail">
+          <h2>PRESS</h2>
+          <h3>PUBLICATION</h3>
+          <p>7/2015</p>
+        </a>
       </div>
     </div>
     <div class="collapse" id="press-detail">
       <div class="well">
         <div class="row detail-well">
-          <div class="col-xs-24">
-            <h1>Press Details</h1>
+          <div class="col-xs-3"></div>
+          <div class="col-xs-12">
+            <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-fn-2015-7-1.jpg"/>
+          </div>
+          <div class="col-xs-3"></div>
+          <div class="col-xs-6">
+            <a data-toggle="collapse" href="#press-detail" aria-expanded="false" aria-controls="press-detail">
+              <div class="close-well">
+                <h3 class="glyphicon glyphicon-remove" aria-hidden="true"></h3>
+              </div>
+            </a>
+            <div class="well-text">
+              <h3>FOOTWEAR NEWS</h3>
+              <p>7/2015</p>
+              <p>prince andrew: he's the stylish, ambitious man man of the moment.  why a prolific Paul Andrew is destined for stardom.</p>
+
+              <div class='share-social-media'>
+                <h3>SHARE</h3>
+                {% include "social-media" %}
+              </div>
+            </div>
           </div>
         </div>
       </div>
