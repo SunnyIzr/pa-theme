@@ -22,5 +22,111 @@
     </div>
   </div>
 
+<!-- This code is duplicated because I'm waiting on embedding data from the backend.  In the future these blocks will be iterated through an each loop -->
+
+<!-- Need to render two different views, one for mobile and one for desktop.  Mobile with two blocks per row and desktop with four per row. -->
+
+  <!-- Mobile view start -->
+  <div class="visible-xs-block">
+    <div class="row press press-wrapper">
+      <div class="col-xs-12 press">
+        <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-barneys-2015-7-1.jpg">
+      </div>
+      <div class="col-xs-12 press">
+        <h2>PRESS</h2>
+        <h3>PUBLICATION</h3>
+        <p>7/2015</p>
+      </div>
+    </div>
+    <div class="row press press-wrapper">
+      <div class="col-xs-12 col-xs-push-12 press">
+        <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-fn-2015-7-1.jpg">
+      </div>
+      <div class="col-xs-12 col-xs-pull-12 press">
+        <h2>PRESS</h2>
+        <h3>PUBLICATION</h3>
+        <p>7/2015</p>
+      </div>
+    </div>
+    <div class="row press press-wrapper">
+      <div class="col-xs-12 press">
+        <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-grazia-uk-2015-9-1.jpg">
+      </div>
+      <div class="col-xs-12 press">
+        <h2>PRESS</h2>
+        <h3>PUBLICATION</h3>
+        <p>7/2015</p>
+      </div>
+    </div>
+    <div class="row press press-wrapper">
+      <div class="col-xs-12 col-xs-push-12 press">
+        <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-hb-spain-2015-8-2.jpg">
+      </div>
+      <div class="col-xs-12 col-xs-pull-12 press">
+        <h2>PRESS</h2>
+        <h3>PUBLICATION</h3>
+        <p>7/2015</p>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile view end -->
+
+  <!-- Desktop view start -->
+  <div class="hidden-xs">
+    <div class="row press press-wrapper">
+        <div class="col-xs-6 press">
+          <a href="#press-detail" data-toggle="collapse" aria-expanded="false" aria-controls="press-detail">
+            <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-barneys-2015-7-1.jpg"/>
+          </a>
+        </div>
+        <div class="col-xs-6 press">
+          <a href="#press-detail" data-toggle="collapse" aria-expanded="false" aria-controls="press-detail">
+            <h2>PRESS</h2>
+            <h3>PUBLICATION</h3>
+            <p>7/2015</p>
+          </a>
+        </div>
+      <div class="col-xs-6 press">
+        <!-- This image is a different height from the others.  Either there's some way to clean this up on the front end that I don't know, or the images need to be rendered the same dimensions before being send to the front from the back -->
+        <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-fn-2015-7-1.jpg"/>
+      </div>
+      <div class="col-xs-6 press">
+        <h2>PRESS</h2>
+        <h3>PUBLICATION</h3>
+        <p>7/2015</p>
+      </div>
+    </div>
+    <div class="collapse" id="press-detail">
+      <div class="well">
+        <div class="row detail-well">
+          <div class="col-xs-24">
+            <h1>Press Details</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row press press-wrapper">
+      <div class="col-xs-6 col-xs-push-6 press">
+        <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-grazia-uk-2015-9-1.jpg">
+      </div>
+      <div class="col-xs-6 col-xs-pull-6 press">
+        <h2>PRESS</h2>
+        <h3>PUBLICATION</h3>
+        <p>7/2015</p>
+      </div>
+      <div class="col-xs-6 col-xs-push-6 press">
+        <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-hb-spain-2015-8-2.jpg">
+      </div>
+      <div class="col-xs-6 col-xs-pull-6 press">
+        <h2>PRESS</h2>
+        <h3>PUBLICATION</h3>
+        <p>7/2015</p>
+      </div>
+    </div>
+  </div>
+<!-- Desktop View End -->
+
+<!-- It's worth noting that the push-pull classes added to the divs surrounding images and text will need to be added with JavaScript after the dom is loaded with the data from the backend. -->
 
 </div>
