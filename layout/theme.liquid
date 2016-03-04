@@ -119,7 +119,7 @@
         {% include 'page-background' %}
         {% endif %}
 
-        {% unless template contains 'index' or template contains 'page.contact' or template contains 'page.press' or template == 'product' or template contains 'product.' or template contains 'page.lookbook' %}
+        {% unless template contains 'index' or template contains 'page.contact' or template contains 'page.press' or template contains 'page.stockists' or template == 'product' or template contains 'product.' or template contains 'page.lookbook' %}
         <div id="content" class="container{% if template == 'collection' %}-fluid{% endif %}">
           <div class="row">
             {% endunless %}

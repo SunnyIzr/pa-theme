@@ -10,6 +10,10 @@
 {% assign isPage = false %}
 {% endif %}
 
+{% if template == 'page.stockists' or template == 'index' or template contains 'index.' %}
+{% assign isPage = false %}
+{% endif %}
+
 {% assign isSearch = false %}
 {% if template == 'search' or template contains 'search.' %}
 {% assign isSearch = true %}
