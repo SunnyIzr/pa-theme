@@ -171,10 +171,98 @@
 }
 
 @media (max-width: 767px){
+  body {
+    background-color: #949494!important;
+  }
+
+  h1.title, p.title2 {
+    text-align: center;
+  }
+
+  .flexslider {
+    border: 0!important;
+    background-color: #f2f2f2!important;
+  }
+
+  .flexslider .flex-prev,
+  .flexslider .flex-next,
+  .flex-control-paging li a
+  {
+  opacity: 1!important;
+  }
+  .flex-control-paging li a {
+    height: 20px!important;
+    width: 20px!important;
+    background: #fff;
+    border: none!important;
+  }
+
+  .flex-control-nav {
+    background-color: #f2f2f2!important;
+  }
+  .flex-control-paging li a.flex-active {
+    background: #333!important;
+  }
+
+  .flex-control-nav {
+    bottom: 0px!important;
+  }
+
+  .top-divider {
+    padding: 0;
+  }
+
+  .container-fluid .row.cat-grid {
+    margin-right: 0!important;
+  }
+
+  .product-tab .nav-tabs:after {
+    display: none;
+  }
+
+  .product-tab .nav-tabs li a {
+    font-size: 17px;
+  }
+  .product-tab .nav-tabs li {
+    margin-right: 0;
+  }
+
+  #product {
+    margin-right: -14px;
+  }
+
+  #product-tab {
+    width: 102%;
+  }
+
+  #product-tab li {
+    text-align: center;
+    width: 33%;
+  }
+
+  #arrow-nav-row {
+    margin: 0;
+    height: 40px;
+    border-top: solid 1px;
+    bottom: 4px;
+    position: relative;
+    z-index: 100;
+  }
+
+  #arrow-nav-mobile {
+    margin-top: 0;
+  }
+  .product-images {
+    padding: 0;
+  }
+
+  #mobilenavbar-utils a:hover {
+    background-color: white!important;
+  }
 
   .page-lookbook .parts, .page-lookbook .part{ width: 100%; }
-  .owl-theme .owl-controls, .flex-direction-nav{ display: none!important; }
-  #product .product-sidebar{ padding-top: 30px; }
+  .owl-theme .owl-controls { display: none!important; }
+  #product .product-sidebar{ padding: 30px; }
   #lightbox .window{width:300px; background-image: none;}
   #lightbox .content{padding: 40px 20px 30px 20px; width: 100%;}
   .filter_wrap #filters .column{width: 100%!important; max-width: 100%; max-height:max-height; min-height: initial; overflow-y: visible; margin-bottom: 0; padding:0; min-width: initial; border: 0;}
@@ -210,9 +298,6 @@
   .top-description{width:100%;}
   #header #site-navigation-wrap{right: 30px;}
   .template-logo{max-width: 100px;}
-  .container{
-    padding-left: 30px; padding-right: 30px;
-  }
   .filter_wrap .toggle_view{display:none;}
   #mc-form-mailchimp{padding:0 20px;}
   body{
@@ -304,8 +389,37 @@
   }
 }
 
+@media (max-width: 693px) {
+  .product-tab .nav-tabs li a {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 528px) {
+  .product-tab .nav-tabs li{
+    padding-top: 5px;
+  }
+  .product-tab .nav-tabs li:nth-child(3){
+    bottom: 16px;
+  }
+}
+
 /* Landscape phones and down */
 @media (max-width: 480px) {
+
+  .product-tab .nav-tabs li:first-child {
+    text-align: left;
+  }
+
+  .product-tab .nav-tabs li a {
+    font-size: 15px;
+  }
+  .product-tab .nav-tabs li:nth-child(3){
+    bottom: 15px;
+  }
+  .flexslider .flex-control-nav.flex-control-paging {
+    display: initial;
+  }
   .filter_wrap .options-wrapper{ width: 100%; text-align: center; }
   .filter_wrap .filter_heading .title { display: none; }
 

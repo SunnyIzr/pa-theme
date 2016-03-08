@@ -7,10 +7,10 @@
 
       <div class="toggle_filter">
         <span class="filter-controller" data-show="{{ 'collections.general.show_filters' | t }}" data-hide="{{ 'collections.general.hide_filters' | t }}">{{ 'collections.general.show_filters' | t }} <i class="icon"></i></span>
-      </div>
+      </div> 
 
       <div class="toggle_sortby">
-        <span class="sortby-controller">Sort By<i class="icon"></i></span>
+        <span class="sortby-controller" data-hide="{{ 'collections.general.hide_filters' | t }}">Sort By<i class="icon"></i></span>
       </div>
 
       {% comment %}
@@ -33,6 +33,7 @@
   </div>
 
   <div id="filters">
+    <!-- THIS DIV HAS ALL THE CODE FOR THE FILTERS -->
     <div class="filter_close">
       <button class="icon-pa-close-x"></button>
     </div>
@@ -73,6 +74,13 @@
       {% endif %}
 
       {% include 'collection-filter' %}
+      <a class='clear-filter' href='#'>Clear All Filters</a>
+    </div>
+  </div>
+  
+  <div id="sorts">
+    <div class="wrap">
+      {% include 'collection-sort' %}
     </div>
   </div>
 </div>

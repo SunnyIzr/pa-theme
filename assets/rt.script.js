@@ -326,6 +326,7 @@ var roar = {
   },
   mapSingleFilter: function() {
     jQuery("#module-content").on("click", ".advanced-filter .field", function(e) {
+      
       var t = jQuery(this),
           r = t.data("handle"),
           o = [];
@@ -409,6 +410,10 @@ var roar = {
       var t = jQuery(this),
           r = jQuery("body");
       t.hasClass("is_filter") ? (r.removeClass("filter-opened"), t.removeClass("is_filter"), t.children("span").text(t.attr("data-show"))) : (r.addClass("filter-opened"), t.addClass("is_filter"), t.children("span").text(t.attr("data-hide")))
+    }), jQuery(".sortby-controller").click(function(e){
+      var t = jQuery(this),
+          r = jQuery("body");
+      t.hasClass("is_sort") ? (r.removeClass("filter-opened"),r.removeClass("sort-opened"), t.removeClass("is_sort"), t.children("span").text(t.attr("data-show"))) : (r.addClass("filter-opened"),r.addClass("sort-opened"), t.addClass("is_sort"), t.children("span").text(t.attr("data-hide")))
     })
   },
   getHeightOfProductCase: function() {

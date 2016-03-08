@@ -16,14 +16,17 @@
   <div class="filter_title"><span>{{ cat_item }}</span></div>
   <div class="advanced-filter filter_container {{ cat_item | downcase }}">
     <ul class="list-unstyled fields">
-      {% for custom_tag in collection.tags %}
+      {% assign active_tags = collection.tags %}
+      {% for custom_tag in collection.all_tags %}
       {% if custom_tag contains cat_item %}
       {% assign cat_item_down = cat_item | downcase %}
       
       {% if current_tags contains custom_tag %}
       <li><span class="field active" data-group="{{ cat_item }}" data-handle="{{ custom_tag | handleize }}">{{ custom_tag | remove_first: cat_item | remove: '_' }}</span></li>
-      {% else %}
+      {% elsif active_tags contains custom_tag%}
       <li><span class="field" data-group="{{ cat_item }}" data-handle="{{ custom_tag | handleize }}">{{ custom_tag | remove_first: cat_item | remove: '_' }}</span></li>
+      {% else %}
+      <li><span class="field inactive" data-group="{{ cat_item }}" data-handle="{{ custom_tag | handleize }}">{{ custom_tag | remove_first: cat_item | remove: '_' }}</span></li>
       
       {% endif %}
       {% endif %}

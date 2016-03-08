@@ -1,0 +1,91 @@
+<style>
+
+body{
+  min-width: 100%;
+}
+.page-top{
+  display:none !important;
+} 
+
+.container{
+  width:100%!important;
+}
+
+</style>
+
+<div class="about-content">
+  <div class="about-hero-img">
+    <div class="about-content-text">
+      <p>"I believe in a new kind of luxery for shoes, where chic and elegance have equal power to form and function"</p>
+      <img src="{{ 'PaulSigniture.png' | asset_url }}">
+      <div class="mobileSigniture">
+        <img src="{{ 'PaulMobileSigniture.png' | asset_url }}">
+      </div>
+    </div>
+  </div>
+  
+  <div class="about-read-more">
+    <h2>About Paul Andrew</h2>
+    <p>A designer of relentless curiosity and invention, Paul Andrew finds inspiration in eclectic places: modern art, classic film, exotic cities ‐ but above all, the individual who wears his shoes.Passionate about the incomparable fit of handmade footwear, Paul believes that luxury cannot exist without comfort.</p>
+    <br>
+    <p>Paul’s singular vision is informed by his extensive fashion pedigree, cultivated within iconic fashion houses, such as Donna Karan, Calvin Klein, Narciso Rodriguez and Alexander McQueen. In 2013, he launched his namesake collection, and propelled by the support of his design mentors and relationships with the finest manufacturers in Italy, Paul Andrew took the industry by storm. Just two years later, in 2014, Paul won the CFDA/Vogue Fashion Fund, becoming the first footwear designer ever to receive the top honor. </p>
+    <button id="btn-2" style="margin-top:5%;">
+      <a href="#">Read More</a>
+    </button>
+  </div>
+  <div class="elements-of-design-image">
+    <h2>ELEMENTS OF DESIGN</h2> 
+    <p>
+      “Footwear requires both a keen eye for proportion, color, and decoration, 
+      but also the constant attention to comfort, fit, and performance."
+    </p>
+  </div>
+  <div class="elements-of-design-text">
+    <div class="col-md-6">
+      <div class="lefttext">
+        <p>1) Triple dyed suede creates saturated color, but also means it’s more durable and longer lasting.</p>
+        <p>2) Not only is the wing detail beautiful but also holds the foot in the pump.</p>
+        <p>3) The inclination of the arch is specifically designed for the modern foot, making it one of the most comfortable on the market.</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="righttext">
+        <p>4) The Insole is lined with industrial memory foam making it easier to wear for longer hours.</p>
+        <p>5) The underslung heel balances the weight of the body perfectly. </p>
+        <p>6) The resin heel contains a steel pin which means that even on the higher stilettos the heel still feels strong and secure.</p>
+      </div>
+    </div>
+  </div> <!-- END ELEMNTS OF DESIGN DIV-->
+  <br>
+  <div class="Pauls-Favorites">
+    <h2>Paul's Favorites</h2>
+    <p>Ut tota equidem disputando ius, appetere accusata iracundia.</p>
+    
+    <div id="featured-products" class="row cat-grid">
+      {% assign collection = collections[settings.featured_products_home_collection] %}
+      {% for prod in collection.products limit: settings.featured_products_home_num %}
+      <div class="product_item item-{{prod.id}}">
+        {% include 'product-item' %}
+      </div>
+      {% endfor %}
+    </div>
+    
+  </div><!--END PAULS FAVORITES-->
+          
+  <div id='bottom-content' class="journal_and_instagram_section container">
+    <div class="row">
+      <div class="journal_section col-xs-12 col-md-6 col-sm-6 col-lg-12" style="border-right:1px solid #f2f2f2;">
+        <div class="journal_image right_image"><img src="//cdn.shopify.com/s/files/1/1171/4544/files/vogue-spy.png?994769845205606128" alt="journal image" /></div>
+        <div class="journal_text left_text"><span class="heading_journal_section heading_footer">JOURNAL</span>
+          <p class="para_journal_section">See the highlights from Paul Andrew - from the latets events to celebrity muses.</p>
+        </div>
+      </div>
+      <div class="instagram_section col-xs-12 col-md-6 col-sm-6 col-lg-12">
+        <div class="instagram_image right_image"><img src="//cdn.shopify.com/s/files/1/1171/4544/files/instagram.png?14100615472835731983" alt="instgram image" /></div>
+        <div class="instrgram_text left_text"><span class="heading_instgram_section heading_footer">INSTGRAM</span>
+          <p class="para_journal_section">Follow us on Instgram form the latest snippet.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!--END ABOUT CONTENT DIV -->

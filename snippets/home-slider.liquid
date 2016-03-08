@@ -1,3 +1,21 @@
+<div id='home-slider' class="jumbotron_hero">
+  <div class="slide-caption caption header">
+    
+    <h2>Spring/Summer 2016</h2>
+
+    <div class="caption sub">
+      <div class="caption-link">
+        <a class="btn" href="/collections/spring-summer-2016">See The Collection</a>
+      </div>
+    </div>
+
+  </div>
+  <a class='arrow-link' href='#col-main'>{{ 'arrow2.png' | asset_url | img_tag }}</a>
+</div>
+
+
+  {% comment %}
+  
   <div class="row-fluid">
     {% if settings.slide_active_1 or settings.slide_active_2 or settings.slide_active_3 or settings.slide_active_4 or settings.slide_active_5 %}
     <div id="home-slider" class="full-width flexslider">
@@ -22,6 +40,7 @@
                 {% if settings.slideshow_mask %}
                 <span class="slider-mask"></span>
                 {% endif %}
+                
 
                 <img src="{{ image | append: '.jpg' | asset_url }}" alt="{{settings[title]}}" />
 
@@ -55,3 +74,4 @@
     </div>
     {% endif %}
   </div>
+  {% endcomment %}

@@ -1,0 +1,351 @@
+<div class="press-page-content">
+  <a href="#sortby-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="sortby-expanded">
+    <div class="sortby">
+      <h3>SORT</h3>
+      <i class="fa fa-angle-down fa-2x sortby-arrow"></i>
+    </div>
+  </a>
+  <div class="collapse" id="sortby-expanded">
+    <div class="well">
+      <div class="row">
+        <div class="col-xs-2 col-sm-4"></div>
+        <div class="col-xs-10 col-sm-8"><a href="#">PRESENT - PAST</a></div>
+        <div class="col-xs-10 col-sm-8"><a href="#">PUBLICATION A-Z</a></div>
+        <div class="col-xs-2 col-sm-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2 col-sm-4"></div>
+        <div class="col-xs-10 col-sm-8"><a href="#">PAST - PRESENT</a></div>
+        <div class="col-xs-10 col-sm-8"><a href="#">PUBLICATION Z-A</a></div>
+        <div class="col-xs-2 col-sm-4"></div>
+      </div>
+    </div>
+  </div>
+
+<!-- This code is duplicated because I'm waiting on embedding data from the backend.  In the future these blocks will be iterated through an each loop -->
+
+<!-- Need to render two different views, one for mobile and one for desktop.  Mobile with two blocks per row and desktop with four per row. -->
+
+  <!-- Mobile view start -->
+  <div class="visible-xs-block">
+    <div class="row press press-wrapper">
+      <div class="col-xs-12 press">
+        <a data-toggle="collapse" href="#mobileExpandDetail1" aria-expanded="false" aria-controls="mobileExpandDetail1">
+          <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-barneys-2015-7-1.jpg">
+        </a>
+      </div>
+      <div class="col-xs-12 press">
+        <a data-toggle="collapse" href="#mobileExpandDetail1" aria-expanded="false" aria-controls="mobileExpandDetail1">
+          <h2>PRESS</h2>
+          <h3>PUBLICATION</h3>
+          <p>7/2015</p>
+        </a>
+      </div>
+    </div>
+    <div class="collapse" id="mobileExpandDetail1">
+      <div class="well" id="mobile-well">
+        <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-barneys-2015-7-1.jpg"/>
+        <div class="well-text">
+          <h3>FOOTWEAR NEWS</h3>
+          <p>7/2015</p>
+          <p>prince andrew: he's the stylish, ambitious man man of the moment.  why a prolific Paul Andrew is destined for stardom.</p>
+        </div>
+        <h3>SHARE</h3>
+
+        {% include "social-media" %}
+        <a data-toggle="collapse" href="#mobileExpandDetail1" aria-expanded="false" aria-controls="mobileExpandDetail1">
+          <div class="close-well">
+            {{ 'close.png' | asset_url | img_tag }}
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="row press press-wrapper">
+      <div class="col-xs-12 col-xs-push-12 press">
+        <a data-toggle="collapse" href="#mobileExpandDetail2" aria-expanded="false" aria-controls="mobileExpandDetail2">
+          <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-fn-2015-7-1.jpg"/>
+        </a>
+      </div>
+      <div class="col-xs-12 col-xs-pull-12 press">
+        <a data-toggle="collapse" href="#mobileExpandDetail2" aria-expanded="false" aria-controls="mobileExpandDetail2">
+          <h2>PRESS</h2>
+          <h3>PUBLICATION</h3>
+          <p>7/2015</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="collapse" id="mobileExpandDetail2">
+      <div class="well" id="mobile-well">
+        <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-fn-2015-7-1.jpg"/>
+        <div class="well-text">
+          <h3>FOOTWEAR NEWS</h3>
+          <p>7/2015</p>
+          <p>prince andrew: he's the stylish, ambitious man man of the moment.  why a prolific Paul Andrew is destined for stardom.</p>
+        </div>
+        <h3>SHARE</h3>
+
+        {% include "social-media" %}
+        <a data-toggle="collapse" href="#mobileExpandDetail2" aria-expanded="false" aria-controls="mobileExpandDetail2">
+          <div class="close-well">
+            {{ 'close.png' | asset_url | img_tag }}
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="row press press-wrapper">
+      <div class="col-xs-12 press">
+        <a data-toggle="collapse" href="#mobileExpandDetail3" aria-expanded="false" aria-controls="mobileExpandDetail3">
+          <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-grazia-uk-2015-9-1.jpg">
+        </a>
+      </div>
+      <div class="col-xs-12 press">
+        <a data-toggle="collapse" href="#mobileExpandDetail3" aria-expanded="false" aria-controls="mobileExpandDetail3">
+          <h2>PRESS</h2>
+          <h3>PUBLICATION</h3>
+          <p>7/2015</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="collapse" id="mobileExpandDetail3">
+      <div class="well" id="mobile-well">
+        <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-grazia-uk-2015-9-1.jpg"/>
+        <div class="well-text">
+          <h3>FOOTWEAR NEWS</h3>
+          <p>7/2015</p>
+          <p>prince andrew: he's the stylish, ambitious man man of the moment.  why a prolific Paul Andrew is destined for stardom.</p>
+        </div>
+        <h3>SHARE</h3>
+
+        {% include "social-media" %}
+        <a data-toggle="collapse" href="#mobileExpandDetail3" aria-expanded="false" aria-controls="mobileExpandDetail3">
+          <div class="close-well">
+            {{ 'close.png' | asset_url | img_tag }}
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="row press press-wrapper">
+      <div class="col-xs-12 col-xs-push-12 press">
+        <a data-toggle="collapse" href="#mobileExpandDetail4" aria-expanded="false" aria-controls="mobileExpandDetail4">
+          <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-hb-spain-2015-8-2.jpg">
+        </a>
+      </div>
+      <div class="col-xs-12 col-xs-pull-12 press">
+        <a data-toggle="collapse" href="#mobileExpandDetail4" aria-expanded="false" aria-controls="mobileExpandDetail4">
+          <h2>PRESS</h2>
+          <h3>PUBLICATION</h3>
+          <p>7/2015</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="collapse" id="mobileExpandDetail4">
+      <div class="well" id="mobile-well">
+        <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-hb-spain-2015-8-2.jpg"/>
+        <div class="well-text">
+          <h3>FOOTWEAR NEWS</h3>
+          <p>7/2015</p>
+          <p>prince andrew: he's the stylish, ambitious man man of the moment.  why a prolific Paul Andrew is destined for stardom.</p>
+        </div>
+        <h3>SHARE</h3>
+
+        {% include "social-media" %}
+        <a data-toggle="collapse" href="#mobileExpandDetail4" aria-expanded="false" aria-controls="mobileExpandDetail4">
+          <div class="close-well">
+            {{ 'close.png' | asset_url | img_tag }}
+          </div>
+        </a>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- Mobile view end -->
+
+  <!-- Desktop view start -->
+  <div class="hidden-xs">
+    <div class="row press press-wrapper">
+        <div class="col-xs-6 press">
+          <a href="#press-detail1" data-toggle="collapse" aria-expanded="false" aria-controls="press-detail1">
+            <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-barneys-2015-7-1.jpg"/>
+          </a>
+        </div>
+        <div class="col-xs-6 press">
+          <a href="#press-detail1" data-toggle="collapse" aria-expanded="false" aria-controls="press-detail1">
+            <h2>PRESS</h2>
+            <h3>PUBLICATION</h3>
+            <p>7/2015</p>
+          </a>
+        </div>
+
+      <div class="col-xs-6 press">
+        <!-- This image is a different height from the others.  Either there's some way to clean this up on the front end that I don't know, or the images need to be rendered the same dimensions before being send to the front from the back -->
+        <a href="#press-detail2" data-toggle="collapse" aria-expanded="false" aria-controls="press-detail2">
+          <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-fn-2015-7-1.jpg"/>
+        </a>
+      </div>
+      <div class="col-xs-6 press">
+        <a href="#press-detail2" data-toggle="collapse" aria-expanded="false" aria-controls="press-detail2">
+          <h2>PRESS</h2>
+          <h3>PUBLICATION</h3>
+          <p>7/2015</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="collapse" id="press-detail1">
+      <div class="well">
+        <div class="row detail-well">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-12">
+            <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-barneys-2015-7-1.jpg"/>
+          </div>
+          <div class="col-xs-3"></div>
+          <div class="col-xs-6 detail-content">
+            <a data-toggle="collapse" href="#press-detail1" aria-expanded="false" aria-controls="press-detail1">
+              <div class="close-well">
+                {{ 'close.png' | asset_url | img_tag }}
+              </div>
+            </a>
+            <div class="well-text">
+              <h3>FOOTWEAR NEWS</h3>
+              <p>7/2015</p>
+              <p>prince andrew: he's the stylish, ambitious man man of the moment.  why a prolific Paul Andrew is destined for stardom.</p>
+
+              <div class='share-social-media'>
+                <h3>SHARE</h3>
+                {% include "social-media" %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="collapse" id="press-detail2">
+      <div class="well">
+        <div class="row detail-well">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-12">
+            <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-fn-2015-7-1.jpg"/>
+          </div>
+          <div class="col-xs-3"></div>
+          <div class="col-xs-6 detail-content">
+            <a data-toggle="collapse" href="#press-detail2" aria-expanded="false" aria-controls="press-detail2">
+              <div class="close-well">
+                {{ 'close.png' | asset_url | img_tag }}
+              </div>
+            </a>
+            <div class="well-text">
+              <h3>FOOTWEAR NEWS</h3>
+              <p>7/2015</p>
+              <p>prince andrew: he's the stylish, ambitious man man of the moment.  why a prolific Paul Andrew is destined for stardom.</p>
+
+              <div class='share-social-media'>
+                <h3>SHARE</h3>
+                {% include "social-media" %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row press press-wrapper">
+      <div class="col-xs-6 col-xs-push-6 press">
+        <a href="#press-detail3" data-toggle="collapse" aria-expanded="false" aria-controls="press-detail3">
+          <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-grazia-uk-2015-9-1.jpg">
+        </a>
+      </div>
+      <div class="col-xs-6 col-xs-pull-6 press">
+        <a href="#press-detail3" data-toggle="collapse" aria-expanded="false" aria-controls="press-detail3">
+          <h2>PRESS</h2>
+          <h3>PUBLICATION</h3>
+          <p>7/2015</p>
+        </a>
+      </div>
+      <div class="col-xs-6 col-xs-push-6 press">
+        <a href="#press-detail4" data-toggle="collapse" aria-expanded="false" aria-controls="press-detail4">
+          <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-hb-spain-2015-8-2.jpg">
+        </a>
+      </div>
+      <div class="col-xs-6 col-xs-pull-6 press">
+        <a href="#press-detail4" data-toggle="collapse" aria-expanded="false" aria-controls="press-detail4">
+          <h2>PRESS</h2>
+          <h3>PUBLICATION</h3>
+          <p>7/2015</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="collapse" id="press-detail3">
+      <div class="well">
+        <div class="row detail-well">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-12">
+            <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-grazia-uk-2015-9-1.jpg"/>
+          </div>
+          <div class="col-xs-3"></div>
+          <div class="col-xs-6 detail-content">
+            <a data-toggle="collapse" href="#press-detail3" aria-expanded="false" aria-controls="press-detail3">
+              <div class="close-well">
+                {{ 'close.png' | asset_url | img_tag }}
+              </div>
+            </a>
+            <div class="well-text">
+              <h3>FOOTWEAR NEWS</h3>
+              <p>7/2015</p>
+              <p>prince andrew: he's the stylish, ambitious man man of the moment.  why a prolific Paul Andrew is destined for stardom.</p>
+
+              <div class='share-social-media'>
+                <h3>SHARE</h3>
+                {% include "social-media" %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapse" id="press-detail4">
+      <div class="well">
+        <div class="row detail-well">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-12">
+            <img src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/press-hb-spain-2015-8-2.jpg"/>
+          </div>
+          <div class="col-xs-3"></div>
+          <div class="col-xs-6 detail-content">
+            <a data-toggle="collapse" href="#press-detail4" aria-expanded="false" aria-controls="press-detail4">
+              <div class="close-well">
+                {{ 'close.png' | asset_url | img_tag }}
+              </div>
+            </a>
+            <div class="well-text">
+              <h3>FOOTWEAR NEWS</h3>
+              <p>7/2015</p>
+              <p>prince andrew: he's the stylish, ambitious man man of the moment.  why a prolific Paul Andrew is destined for stardom.</p>
+
+              <div class='share-social-media'>
+                <h3>SHARE</h3>
+                {% include "social-media" %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+<!-- Desktop View End -->
+
+<!-- It's worth noting that the push-pull classes added to the divs surrounding images and text will need to be added with JavaScript after the dom is loaded with the data from the backend. -->
+
+</div>

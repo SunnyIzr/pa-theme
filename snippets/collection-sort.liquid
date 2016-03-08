@@ -1,0 +1,14 @@
+<div class="column">
+  <div class="advanced-sortby">
+    <ul class="list-unstyled fields">
+      {% assign sort_opts = 'manual,title-ascending,title-descending' | split: ',' %}
+      
+      
+      {% for sort_opt in sort_opts %}
+      
+      <li><span class="field active" data-sort='{{ sort_opt }}'>{% if sort_opt == 'manual'%}Default View{%elsif sort_opt == 'title-ascending' %}Style Name A-Z{% elsif sort_opt == 'title-descending' %}Style Name Z-A{% endif %}</span></li>
+      
+      {% endfor %}
+    </ul>
+  </div>
+</div>
