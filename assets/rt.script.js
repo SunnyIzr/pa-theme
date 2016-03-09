@@ -324,6 +324,13 @@ var roar = {
   handleSortby: function() {
     "undefined" != typeof window.sortby_default && window.sortby_default && (jQuery(".advanced-sortby .field").removeClass("active"), jQuery(".advanced-sortby .fields").find("[data-sort='" + window.sortby_default + "']").addClass("active"))
   },
+  clearFilter: function(){
+    jQuery(document).on("click", ".clear-filter", function(e) {
+      e.preventDefault();
+      delete Shopify.queryParams.constraint
+      roar.filterAjaxClick()
+    })  
+  },
   mapSingleFilter: function() {
     jQuery("#module-content").on("click", ".advanced-filter .field", function(e) {
       
@@ -367,7 +374,7 @@ var roar = {
     })
   },
   mapFilters: function() {
-    roar.handleGridList(), roar.handleFilters(), roar.mapSingleFilter(), roar.mapSingleCollection(), roar.mapSingleSortby(), roar.mapSinglePagination()
+    roar.handleGridList(), roar.handleFilters(), roar.mapSingleFilter(), roar.clearFilter(), roar.mapSingleCollection(), roar.mapSingleSortby(), roar.mapSinglePagination()
   },
   filterCreateUrl: function(e) {
     var t = jQuery.param(Shopify.queryParams).replace(/%2B/g, "+");
@@ -409,11 +416,54 @@ var roar = {
       e.stopPropagation();
       var t = jQuery(this),
           r = jQuery("body");
-      t.hasClass("is_filter") ? (r.removeClass("filter-opened"), t.removeClass("is_filter"), t.children("span").text(t.attr("data-show"))) : (r.addClass("filter-opened"), t.addClass("is_filter"), t.children("span").text(t.attr("data-hide")))
+      if ( t.hasClass('is_filter') ){
+        r.removeClass("filter-opened")
+        r.removeClass("filter-only")
+        t.removeClass("is_filter")
+        t.children("span").text(t.attr("data-show"))
+      } else if ( r.hasClass('sort-opened')) {
+        r.removeClass("filter-opened")
+        r.removeClass("sort-opened")
+        $('.is_sort').removeClass("is_sort")
+        t.children("span").text(t.attr("data-show"))
+        setTimeout(function(){
+          r.addClass("filter-opened")
+          r.addClass("filter-only")
+          t.addClass("is_filter")
+          t.children("span").text(t.attr("data-hide"))
+        },250)
+      } else {
+        r.addClass("filter-opened")
+        r.addClass("filter-only")
+        t.addClass("is_filter")
+        t.children("span").text(t.attr("data-hide"))
+      }
     }), jQuery(".sortby-controller").click(function(e){
       var t = jQuery(this),
           r = jQuery("body");
-      t.hasClass("is_sort") ? (r.removeClass("filter-opened"),r.removeClass("sort-opened"), t.removeClass("is_sort"), t.children("span").text(t.attr("data-show"))) : (r.addClass("filter-opened"),r.addClass("sort-opened"), t.addClass("is_sort"), t.children("span").text(t.attr("data-hide")))
+      if ( t.hasClass('is_sort') ){
+        r.removeClass("filter-opened")
+        r.removeClass("sort-opened")
+        t.removeClass("is_sort")
+        t.children("span").text(t.attr("data-show"))
+      } else if (r.hasClass('filter-only')){
+        r.removeClass("filter-opened")
+        r.removeClass("filter-only")
+        $('.is_filter').removeClass("is_filter")
+        t.children("span").text(t.attr("data-show"))
+        setTimeout(function(){
+          r.addClass("filter-opened")
+          r.addClass("sort-opened")
+          t.addClass("is_sort")
+          t.children("span").text(t.attr("data-hide"))
+        },250)
+      }else{
+        r.addClass("filter-opened")
+        r.addClass("sort-opened")
+        t.addClass("is_sort")
+        t.children("span").text(t.attr("data-hide"))
+      }
+      
     })
   },
   getHeightOfProductCase: function() {
