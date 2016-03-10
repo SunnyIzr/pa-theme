@@ -1,6 +1,11 @@
 <div class="row" style="height:5px;"><div class="col-xs-24" ><div class="top-divider hidden-xs"></div></div></div>
 
-<div class="row" id="arrow-nav-row"><div class="col-xs-24" ><div class="top-divider">
+<div class="row" id="arrow-nav-row">
+  <div class='back-button-link'>
+    <a href="" onClick="history.go(-1);return true;">< Back</a>
+  </div>
+  <div class="col-xs-24" >
+    <div class="top-divider">
 
     <div class=" row col-sx-24 product-nav" >
         <div id="arrow-nav-mobile" class="next-prev-nav">
@@ -21,6 +26,7 @@
             <span class="prev disable" style=" border:none; border-radius:none;"><i class="fa fa-angle-left fa-2x"></i></span>
             {% endif %}
           </div>
+          <div class='dropdown-sep'></div>
           <div class="prod-dropdown">
             {% if collection.next_product %}
             <a href="{{collection.next_product}}" class="next" style=" border:none; border-radius:none;"><i class="fa fa-angle-right fa-2x"></i></a>
@@ -56,7 +62,7 @@
           <ul class="slides">
           {% for image in product.images %}
             {% unless image.src contains '_hover' %}
-            <li><a href="{{ image | product_img_url:'master' }}" ><img src="{{ image | product_img_url:'grande' }}" alt="{{product.title}}" /></a></li>
+            <li><a href="{{ image | product_img_url:'master' }}" ><img src="{{ image | product_img_url:'1024x1024' }}" alt="{{product.title}}" /></a></li>
             {% endunless %}
           {% endfor %}
           </ul>
@@ -74,18 +80,20 @@
           });
         </script>
         <div class="product-gallery inner hidden-xs">
+          {% comment %}
           <div class="thumbnails">
           {% for image in product.images %}
             {% unless image.src contains '_hover' %}
-            <a class="thumbnail" href="{{ image | product_img_url:'master' }}" data-src="{{image | product_img_url:'grande'}}"><img src="{{ image | product_img_url:'small' }}" alt="{{product.title}}" /></a>
+            <a class="thumbnail" href="{{ image | product_img_url:'master' }}" data-src="{{image | product_img_url:'1024x1024'}}"><img src="{{ image | product_img_url:'small' }}" alt="{{product.title}}" /></a>
             {% endunless %}
           {% endfor %}
           </div>
+          {% endcomment %}
 
           {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
           <div class="main">
             <div class="main-img-link" href="{{featured_image | product_img_url:'master'}}" title="{{product.title}}">
-              <img itemprop="image" id="main-image" class="main-img" src="{{product.featured_image | product_img_url:'grande'}}" alt="{{product.title}}" />
+              <img itemprop="image" id="main-image" class="main-img" src="{{product.featured_image | product_img_url:'1024x1024'}}" alt="{{product.title}}" />
               {% include 'spinner' %}
             </div>
             <div class="gallery-icon">
@@ -129,9 +137,7 @@
 
            	<!--Wasnt sure if we still needed the bread crumbs so i commeneted them out-->
             <!-- {% include 'product-breadcrumb' %}-->
-            {% if settings.product_sku_show %}
-            <p id="sku"{% unless variant_tmp and variant_tmp.sku %} style="display:none;"{% endunless %}>{{variant_tmp.sku}}</p>
-            {% endif %}
+            
 
             {% if settings.reviews_enable %}
               <a class="smoothscroll" href="#product-reviews-a">
@@ -189,6 +195,10 @@
                       {% endfor %}
                     </select>
                   </div>
+                  
+                 {% include 'product-swatches' %}
+                  
+                  
 
                   <div class="cart-group limited-edition-group">
                     {% include 'limited-edition' %}
@@ -246,7 +256,6 @@
                   </script>
 
 
-              <!-- button for where to buy. added by Angela Rucci -->
 
               {% else %}
               <meta itemprop="price" content="{{ product.price | money }}" />
@@ -311,15 +320,15 @@
 
     var selectOptionsCallback = function(variant, selector) {
       // BEGIN SWATCHES
-      if (variant) {
-        for (i=0;i<variant.options.length;i++) {
-          if (parseFloat(jQuery.fn.jquery) < 1.6) {
-            jQuery('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]').attr('checked', 'checked');
-          }
-          else {
-            jQuery('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]').prop('checked', true);
-          }
-        }
+      // if (variant) {
+      //   for (i=0;i<variant.options.length;i++) {
+      //     if (parseFloat(jQuery.fn.jquery) < 1.6) {
+      //       jQuery('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]').attr('checked', 'checked');
+      //     }
+      //     else {
+      //       jQuery('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]').prop('checked', true);
+      //     }
+      //   }
       }// END SWATCHES
 
       roar_pseudo.initProduct();

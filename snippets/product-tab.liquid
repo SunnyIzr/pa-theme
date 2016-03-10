@@ -8,19 +8,12 @@
 
       <li><a href="#product-details"><span>Details</span></a></li>
 
-      <li><a href="#product-shipping-return" id="product-shipping-return" style="color:#E50000; opacity:1; text-decoration: line-through;"><span>Shipping & Returns</span></a></li>
 
       {% if settings.reviews_enable %}
       <li><a id="product-reviews-a" href="#product-reviews">{{'products.product.customer_reviews' | t}}</a></li>
       {% endif %}
     </ul>
 
-    <!-- java script Angela added to make it so user can not click on Shipping & Returns tab -->
-    <script>
-    document.getElementById("#product-shipping-return").childNodes[0].onclick = function() {return false;};
-    </script>
-
-    <!-- end java script -->
 
 
 
@@ -31,36 +24,12 @@
         </div>
       </div>
 
-      <div class="tab-pane active" id="product-details">
-        <div itemprop="description">
-          Details: dhkhfskjlsfj dlkj asi hi dlas sho wi lorem ipsun mo li
-
-          size: cjidl solemm loress torls
-          colors: red, yellow, blue, green
+      <div class="tab-pane" id="product-details">
+        <div itemprop="prod-details">
+          {{product.content}}
         </div>
       </div>
-
-
-
-      <div class="tab-pane" id="product-details">
-
-      </div>
-
-      {% if product.featured_image.alt contains 'iframe' %}
-      <div class="tab-pane" id="product-video">
-        {{product.featured_image.alt}}
-      </div>
-      {% endif %}
-      <div class="tab-pane" id="product-shipping-return">
-
-      </div>
-
-      {% if settings.reviews_enable %}
-      <div id="product-reviews" class="tab-pane">
-        <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
-      </div>
-      {% endif %}
     </div>
 
-       </div>
+  </div>
 </div>

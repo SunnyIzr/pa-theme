@@ -779,6 +779,99 @@ Product Overrides
   }
 }
 
+#product{
+  h1.title{
+    text-transform: none;
+  }
+}
+.next-prev-nav {
+  margin-top: -27px;
+  margin-right: 4%;
+  .prod-dropdown>a{
+    color: #555555;
+    i{
+      font-size: 20px;
+    }
+  }
+  .prod-dropdown .nav-dropdown{
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.1);
+  }
+}
+
+.dropdown-sep{
+  display: inline-block;
+  height: 13px;
+  border-left: 2px solid #555555;
+}
+
+.back-button-link{
+  margin-left: 50px;
+  position: absolute;
+  z-index: 1;
+  a{
+    font-weight: 400;
+  }
+}
+.product-tab .nav-tabs li.active a,
+.product-tab .nav-tabs li.active a:focus,
+.product-tab .nav-tabs li a:hover{
+  border: none !important;
+}
+
+.product-tab .nav-tabs li.active a span,
+.product-tab .nav-tabs li.active a:focus span,
+.product-tab .nav-tabs li a:hover span{
+  border-bottom: 1px solid #555555 !important;
+}
+
+.product-tabs .product-tab{
+  .details{
+    ul{
+      list-style-type: none;
+      padding: 0;
+      padding-left: 5px;
+      li{
+        text-indent: -5px;
+        width: 100%;
+      }
+      li:before{
+        content: "- ";
+        text-indent: -5px;
+      }
+    }
+  }
+}
+
+
+#product .main-img-link{
+  // overflow: hidden;
+}
+
+#product .product-images #main-image {
+    width: 100%;
+    // margin-top: -200px;
+}
+
+#product .product-images .inner {
+    display: table;
+    position: relative;
+    width: 80%;
+    margin-left: 9%;
+  }
+  
+  
+.widget-wrapper{
+  h3.text-center{
+    border-top: 5px solid #fff;
+    padding-bottom: 13px;
+    padding-top: 35px;
+  }
+}
+
+#featured-products.row.cat-grid {
+    margin-right: -1px;
+    margin-bottom: -30px;
+}
 /* ----------------------------------------------
 General Theme Overrides
 ---------------------------------------------- */
@@ -793,6 +886,17 @@ General Theme Overrides
 
   .box_wrapper {
     width: 1500px;
+  }
+}
+
+#product-description{
+  .details{
+    display: none;
+  }
+}
+#product-details{
+  .desc{
+    display: none;
   }
 }
 

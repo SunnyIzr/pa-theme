@@ -1,0 +1,21 @@
+<div class="swatch color clearfix" data-option-index="1">
+  <div class="header"><span>Color</span></div>
+{% for prod in collections.all.products %}
+  {% if prod.title == product.title %}
+    {% assign color = prod.variants.first.options.first %}
+    {% for tag in prod.tags %}{% if tag contains "colorswatch" %}
+      {% assign image_file =  tag | remove: "colorswatch-" %}
+    {% endif %}{% endfor %}
+  
+    <div data-value="{{ color }}" class="swatch-element colorblack available ">
+      <a href='{{ prod.url }}'>
+        <div class="tooltip">{{ color }}</div>
+        <label for="swatch-1-{{ prod.id }}" style="background-color:black; background-image: url({{ image_file | asset_url }})">
+        </label>
+      </a>
+    </div>
+
+  {% endif %}
+{% endfor %}
+
+</div>
