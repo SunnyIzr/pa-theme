@@ -10,7 +10,7 @@ $('div.list-group').on('click', function(event) {
   $('#UNITEDSTATES').toggleClass('hidden');
 });
 
-$('div.list-element').on('click', function(event) {
+$('div.country').on('click', function(event) {
   // $("#" + event.target.innerHTML.replace(/\s+/g, '')).toggleClass('hidden');
   $('#UNITEDSTATES').toggleClass('hidden');
 });

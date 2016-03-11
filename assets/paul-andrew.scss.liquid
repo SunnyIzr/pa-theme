@@ -607,15 +607,15 @@ div#sorts {
 .filter_wrap .fields .field:hover,
 .filter_wrap .fields .field.active{
   color: #555555;
-  text-decoration: none; 
+  text-decoration: none;
 }
 .filter_wrap .fields .field:before,
 .filter_wrap .fields .field.inactive:before{
-  background-color: #9c9c9c; 
+  background-color: #9c9c9c;
 }
 .filter_wrap .fields .field:hover:before,
 .filter_wrap .fields .field.active:before{
-  background-color: #555555; 
+  background-color: #555555;
 }
 
 .filter_wrap .fields .field.inactive{
@@ -653,7 +653,7 @@ Collections Grid Product
 .product {
   position: relative;
   background-color: transparent;
-  
+
   .product-image a {
     // position: relative;
   }
@@ -858,8 +858,8 @@ Product Overrides
     width: 80%;
     margin-left: 9%;
   }
-  
-  
+
+
 .widget-wrapper{
   h3.text-center{
     border-top: 5px solid #fff;
@@ -1210,13 +1210,28 @@ Contact Page
 /* -------------------------------------------------
 Press Page
 ---------------------------------------------------*/
+.collapsing {
+  .carousel-control {
+    &.left, &.right {
+      display: none;
+    }
+  }
+}
+
 .press-page-content {
+    .carousel-control {
+      &.left, &.right {
+        background-image: none;
+      }
+    }
+
     background-color: #F2F2F2;
     .well-text {
       padding: 0 6em 2em;
       border-bottom: 1px solid #F2F2F2;
     }
     .close-well {
+      padding: 20px;
       border-top: 1px solid #f2f2f2;
     }
     #mobile-well {
@@ -1227,30 +1242,51 @@ Press Page
   .sortby {
     h3 {
       margin: 0;
+      font-weight: 400;
     }
-    height: 66px;
-    background-color: white;
-    border-top: 1px solid #F2F2F2;
+    height: 40px;
+    background-color: #F2F2F2;
+    border-top: 1px solid white;
     text-align: center;
-    padding: 20px;
+    padding: 10px;
   }
   .sortby-arrow {
     position: relative;
-    float: right;
-    bottom: 20px;
+    bottom: 19px;
+    left: 40px;
   }
   #sortby-expanded {
     .well{
       text-align: center;
-      height: 80px;
+      height: 100px;
       border: 0;
-      background-color: #F2F2F2;
+      background-color: white;
       margin: 0;
+      padding-top: 20px;
+      .filter_wrap {
+        max-height: 100px;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+        li {
+          display: inline-block;
+          padding: 5px;
+        }
+      }
+      @media(min-width: 768px) {
+        height: 70px;
+        ul {
+          li {
+            padding: 5px 30px;
+          }
+        }
+      }
     }
   }
   #press-detail {
     .well {
-      background: white;
+      background-color: white;
     }
   }
   .press-wrapper {
@@ -1260,6 +1296,55 @@ Press Page
     margin: 0px;
     width: 100%;
     background-color: #F2F2F2;
+    .press-preview-wrapper {
+      position: relative;
+      width: 50%;
+      .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: black;
+        z-index: 2;
+        opacity: 0;
+        transition: 100ms all ease-in;
+        a {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+        }
+      }
+      @media (max-width: 768px) {
+        &:hover {
+          .overlay {
+            opacity: 0;
+          }
+        }
+      }
+      &:hover {
+        .overlay {
+          opacity: 0.2;
+        }
+      }
+
+      .press-text {
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: 50%;
+        top: 0;
+        .text-wrapper {
+          position: absolute;
+          width: 100%;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+      .right-text {
+        left: 0;
+        right: 50%;
+      }
+    }
   }
   .press-wrapper:nth-child(even) {
     background-color: white;
@@ -1269,6 +1354,12 @@ Press Page
     text-align: center;
     h2 {
       color: #49a6a5;
+      font-weight: 100;
+      font-size: 13px;
+    }
+    h3 {
+      font-size: 13px;
+      margin-top: 10px;
     }
   }
   .detail-well {
@@ -1290,10 +1381,13 @@ Press Page
       border: none;
       h3{
         color: #545454;
-        font-size: 19px;
-        font-weight: 800;
+        font-size: 16px;
+        font-weight: 500;
       }
       .share-social-media {
+        h3 {
+          font-size: 13px;
+        }
         margin-top: 175%;
         text-align: center;
         @media (max-width: 1350px) {
@@ -1307,6 +1401,12 @@ Press Page
         }
       }
     }
+  }
+  .white-background {
+    background-color: white;
+  }
+  .press-img-desktop {
+    padding: 20px 0;
   }
 }
 .collapsing {
@@ -1332,11 +1432,13 @@ Stockists Page
     h1 {
       margin-top: 0;
       font-weight: 100;
+      color: white;
     }
     h2 {
       display: inline-block;
       margin: 0.5em 1em 0;
       color: white;
+      font-size: 15px;
       &:hover {
         text-decoration: underline;
       }
@@ -1347,8 +1449,33 @@ Stockists Page
     padding: 15% 10%;
   }
   .online-vendors {
-    .vendor {
-      width: 32%;
+    background-color: #e6e6e6;
+    font-size: 0;
+    .vendor-container:last-child {
+      border-right: 1px solid white;
+    }
+    .vendor-container {
+      border-left: 1px solid white;
+      border-bottom: 1px solid white;
+      position: relative;
+      display: inline-block;
+      height: 100%;
+      width: 33.33%;
+      &:hover {
+        .overlay {
+          opacity: 0.0;
+        }
+      }
+      .overlay {
+        position: absolute;
+        background-color: black;
+        opacity: 0.1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transition: all 100ms ease-in;
+      }
     }
   }
 
@@ -1357,33 +1484,45 @@ Stockists Page
   }
 
   .in-store {
+    .well {
+      margin-bottom: 40px;
+      i {
+        position: relative;
+        top: 30px;
+      }
+    }
     background-color: #F2F2F2;
     .in-store-vendors {
       padding-top: 1px;
       background-color: #F2F2F2;
+      border-top: 1px solid #CCC;;
       h2 {
         margin-top: 40px;
       }
       .stores {
+        vertical-align: top;
         text-align: center;
-        padding: 0 20px;
+        padding: 0;
         margin: 50px 0;
         .store {
+          vertical-align: top;
           width: 42%;
           display: inline-block;
-          margin-left: 5%;
           text-align: left;
         }
         h2 {
           font-weight: 200;
           color: #49a6a5;
           margin-bottom: 0;
+          font-size: 13px;
         }
         h3 {
           margin: 5px 0;
+          font-size: 13px;
         }
         p {
           margin: 0;
+          font-size: 13px;
         }
       }
     }
@@ -1400,10 +1539,14 @@ Stockists Page
       background-color: #F2F2F2;
       .sortby-arrow {
         position: relative;
-        float: right;
-        bottom: 10px;
+        top: -7px;
         right: 20px;
+        float: right;
+        @media (min-width: 768px) {
+        bottom: 10px;
+        }
       }
+
     }
     .panel-default {
       border: none;
@@ -1425,18 +1568,18 @@ Stockists Page
       padding: 0;
     }
     .region {
-      height: 55px;
+      height: 50px;
       background-color: white;
       h3 {
-        position: relative;
-        top: 10px;
+        display: inline-block;
       }
       .sortby-arrow {
-        position: relative;
+        top: 15px;
+        right: 15px;
         float: right;
-        bottom: 20px;
-        right: 20px;
+        position: relative;
         }
+
       }
     }
 }
@@ -1446,7 +1589,7 @@ Stockists Page
   padding: 0;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   .stores-desktop {
     padding-bottom: 200px;
     padding-left: 5%;
@@ -1459,26 +1602,44 @@ Stockists Page
       font-weight: 200;
       color: #49a6a5;
       margin-bottom: 0;
+      font-size: 13px;
     }
     h3 {
       margin: 5px 0;
+      font-size: 13px;
     }
     p {
       margin: 0;
+      font-size: 13px;
     }
   }
   .stockists-content {
+    .in-store {
+      .region {
+        .sortby-arrow {
+          float: initial !important;
+          left: 7px !important;
+          top: 10px !important;
+        }
+      }
+    }
     .stockists-hero-img {
       padding: 7.5% 30%;
     }
     .online-vendors {
-      .vendor {
-        width: 15%;
+      .vendor-container:first-child {
+        border: none;
+      }
+      .vendor-container {
+        width: 16.66%;
       }
     }
   }
   .desktop-regions {
     padding: 20px 0 80px 8%;
+    h4 {
+      font-weight: 400;
+    }
   }
   .desktop-region {
     width: 22%;
@@ -1486,8 +1647,12 @@ Stockists Page
     vertical-align: top;
     text-align: left;
     h3 {
-      text-decoration: underline;
-      margin-bottom: 20px;
+      margin-bottom: 0;
+    }
+    .list-element:first-child {
+      padding-bottom: 5px;
+      margin-right:60px;
+      border-bottom: 1px solid #9C9C9C;
     }
   }
 }
@@ -1584,7 +1749,7 @@ About Page
   }
   text-align: center;
   background-color: #F2F2F2;
-  //--------------------START HERO IMAGE SECTION-------------// 
+  //--------------------START HERO IMAGE SECTION-------------//
   .about-hero-img {
     a.active {
       h2 {
@@ -1607,26 +1772,26 @@ About Page
     background-size: 100% 100%;
     height: 580px;
     padding: 15% 10%;
-    
+
     .about-content-text{
     background: transparent;
     width: 400px;
-      
+
     }
-    
-    
-    
+
+
+
     .about-content-text p{
      color: #fff;
      font-size: 25px;
       line-height: 1.2em;
     }
-    
+
     .about-content-text img{
      width:140px;
       height:100px;
     }
-    
+
     .mobileSigniture img{
     opacity:0;
     }
@@ -1635,44 +1800,44 @@ About Page
 //--------------------START ABOUT PAUL READ MORE SECTION-//
   .about-read-more{
   margin: 5% 20% 5% 20%;
-    
+
     #btn-2{
      height:40px;
       width:210px;
     background: transparent !important;
     border: 1px solid #9c9c9c !important;
-	
+
       a{
-      	font-weight:400 !important; 
+      	font-weight:400 !important;
         font-size: 16px;
         color: #000;
-      
+
       }
   }
-   
+
     h2{text-align:center;
     	margin-bottom: 3%;}
     p{text-align: justify;
       font-size:18px;
     	line-height:1.2em;}
   }
-  
+
   //--------------------END ABOUT PAUL READ MORE SECTION-//
   //--------------------START ELEMENTS OF DESIGN --------//
   .elements-of-design-image{
   	background: url("ELEMNTS_OF_DESIGN.png") no-repeat center;
     background-size: 100% 100%;
     height: 750px;
-  
+
     h2{
       	padding-top:5%;
       	//padding-bottom:2%;
     	font-size:36px;
       	color:#fff;
       	font-weight:100;
-    
+
     }
-    
+
     p{
       	margin-left:25%;
       	width:650px;
@@ -1681,33 +1846,33 @@ About Page
       	color:#fff;
     }
   }
-  
+
   .elements-of-design-text{
   	width:100%;
     margin-top:5%;
     margin-bottom:5%;
-    
+
    .lefttext p{
     	margin-left:50%;
       	width:800px;
       	padding-right:100%;
       	font-size:16px;
      	text-align: justify;
-          
+
     }
-    
+
     .righttext p{
     	margin-left:20%;
       	width:800px;
       	padding-left:100%;
       	font-size:16px;
       	text-align: justify;
-          
+
     }
   }
   //--------------------END ELEMENTS OF DESIGN ----------//
   //--------------------START PAULS FAVORITES -----------//
-  
+
   .Pauls-Favorites{
   width: 100%;
     margin-top:15%;
@@ -1716,7 +1881,7 @@ About Page
   //--------------------END PAULS FAVORITES -------------//
   //--------------------START INSTAGRAM AND MEDIA--------//
 
-  
+
   #bottom-content{
   background:#fff;
   padding-left:5%;
@@ -1724,7 +1889,7 @@ About Page
   }
   //--------------------END INSTAGRAM AND MEDIA----------//
 }
- 
+
 
 //--MEDIA QUARY FOR phones ------------------------------//
 @media (max-width: 769px) {
@@ -1734,7 +1899,7 @@ About Page
   }
   text-align: center;
   background-color: #F2F2F2;
-  //--------------------START MOBILE HERO IMAGE SECTION-------------// 
+  //--------------------START MOBILE HERO IMAGE SECTION-------------//
   .about-hero-img {
     a.active {
       h2 {
@@ -1756,19 +1921,19 @@ About Page
     background: url("ABOUT_PAUL_MOBILE.png") no-repeat center;
     background-size: 100% 100%;
     height: 580px;
-    
+
     .about-content-text{
     background: #fff;
     color:#000;
     width: 150%;
-    height: 300px; 
+    height: 300px;
     margin-top: 500px;
     margin-left:-20%;
-      
+
     }
-    
-    
-    
+
+
+
     .about-content-text p{
       margin-right:3%;
       padding-top:15%;
@@ -1779,11 +1944,11 @@ About Page
       line-height: 1.2em;
       z-index:1000 !important;
     }
-    
+
     .about-content-text img{
      opacity:0;
     }
-    
+
     .mobileSigniture img {
     opacity:1;
     margin-top: -20%;
@@ -1796,44 +1961,44 @@ About Page
 //--------------------START MOBILE ABOUT PAUL READ MORE SECTION-//
   .about-read-more{
   margin: 80% 5% 5% 5%;
-    
+
     #btn-2{
      height:40px;
       width:210px;
     background: transparent !important;
     border: 1px solid #9c9c9c !important;
-	
+
       a{
-      	font-weight:400 !important; 
+      	font-weight:400 !important;
         font-size: 16px;
         color: #000;
-      
+
       }
   }
-   
+
     h2{text-align:center;
     	margin-bottom: 5%;}
     p{text-align: justify;
       font-size:18px;
     	line-height:1.2em;}
   }
-  
+
   //--------------------END ABOUT PAUL READ MORE SECTION-//
   //--------------------START ELEMENTS OF DESIGN --------//
   .elements-of-design-image{
   	background: url("ELEMNTS_OF_DESIGN_MOBILE.png") no-repeat center;
     background-size: 100% 100%;
     height: 750px;
-  
+
     h2{
       	padding-top:20%;
       	//padding-bottom:2%;
     	font-size:36px;
       	color:#fff;
       	font-weight:100;
-    
+
     }
-    
+
     p{
       	margin-left:0%;
       	width:100%;
@@ -1842,33 +2007,33 @@ About Page
       	color:#fff;
     }
   }
-  
+
   .elements-of-design-text{
   	width:100%;
     margin-top:5%;
     margin-bottom:5%;
-    
+
    .lefttext p{
     	margin-left:0%;
       	width:200%;
       	//padding-right:100%;
       	font-size:16px;
      	text-align: justify;
-          
+
     }
-    
+
     .righttext p{
     	margin-left:-100%;
       	width:200%;
       	padding-left:100%;
       	font-size:16px;
       	text-align: justify;
-          
+
     }
   }
   //--------------------END ELEMENTS OF DESIGN ----------//
   //--------------------START PAULS FAVORITES -----------//
-  
+
   .Pauls-Favorites{
   width: 100%;
     margin-top:15%;
@@ -1877,7 +2042,7 @@ About Page
   //--------------------END PAULS FAVORITES -------------//
   //--------------------START INSTAGRAM AND MEDIA--------//
 
-  
+
   #bottom-content{
   background:#fff;
   padding-left:0;
