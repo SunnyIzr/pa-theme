@@ -62,7 +62,7 @@ body{
     <p>Ut tota equidem disputando ius, appetere accusata iracundia.</p>
     
     <div id="featured-products" class="row cat-grid">
-      {% assign collection = collections[settings.featured_products_home_collection] %}
+      {% assign collection = collections['pauls-favorites'] %}
       {% for prod in collection.products limit: settings.featured_products_home_num %}
       <div class="product_item item-{{prod.id}}">
         {% include 'product-item' %}
