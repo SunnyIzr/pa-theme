@@ -2200,6 +2200,18 @@ Collections Filter Bar
 
 }
 
+#sorts {
+  width: 100%;
+  cursor: default;
+  transition: height 0.3s ease-out;
+  -webkit-transition: right .33s cubic-bezier(0.694,0.0482,0.335,1);
+  -moz-transition: right .33s cubic-bezier(0.694,0.0482,0.335,1);
+  -o-transition: right .33s cubic-bezier(0.694,0.0482,0.335,1);
+  -ms-transition: right .33s cubic-bezier(0.694,0.0482,0.335,1);
+  transition: right .33s cubic-bezier(0.694,0.0482,0.335,1);
+
+}
+
 .filter-opened .filter_wrap {
   max-height: 360px;
   transition: all 0.3s ease-in;
@@ -5404,7 +5416,7 @@ input[type="radio"]{
 }
 .menu-mobile{
   background-color: #F2F2F2;
-  #navlink-paul-andrew { display:none; }
+  #navlink-main-paul-andrew { display:none; }
   .top-bar-nav{
     padding: 0;
     list-style: none;
@@ -5492,8 +5504,8 @@ input[type="radio"]{
 
 .heading_instgram_section.heading_footer {
     font-family: futura;
-    font-size: 19px;
-  font-weight:700;
+    font-size: 15px;
+    font-weight:700;
     margin: 0;
 }
 
@@ -5629,6 +5641,12 @@ input[type="radio"]{
 
 }
 
+@media only screen   and (max-device-width: 780px) {
+  .slide-body > img {
+    min-width: 200% !important;
+    margin-left:-50% !important;
+  }
+}
 
 
 @media only screen   and (max-device-width: 420px) {
@@ -5717,11 +5735,14 @@ width: 500% !important;
 	margin-left:-40% !important;
 }
 
-#navlink-spring-summer-2016, #navlink-pre-spring-2016, #navlink-all{
+#navlink-bridal,
+#navlink-spring-summer-2016,
+#navlink-pre-spring-2016,
+#navlink-all{
 	margin-left:-80% !important;
 }
 
-#navlink-about-us, #navlink-press{
+#navlink-paul-andrew, #navlink-press{
 	margin-left: 40% !important;
 }
 //end full bleed navigation - angela rucci
@@ -5831,11 +5852,6 @@ opacity: 0 !important;
   .slide-caption .caption .header{
   opacity:1 !important;
     top:100px !important;
-  }
-
-  #home-slider-2 h2{
-  padding-top: 0px !important;
-    margin-bottom:100px !important;
   }
 
 

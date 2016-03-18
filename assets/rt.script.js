@@ -408,7 +408,7 @@ var roar = {
     })
   },
   handleFilters: function() {
-    jQuery("#page").click(function(e) {
+    jQuery("#page").click(function(e) {      
       jQuery(e.target).closest("#filters").length > 0 || (jQuery("body").hasClass("filter-opened") && jQuery("#filters").css("min-height") == "100%") && (jQuery(".filter-controller").removeClass("is_filter"), jQuery("html,body").removeClass("filter-opened"))
     }), jQuery("#filters").on("click", ".filter_close", function(e) {
       e.stopPropagation(), jQuery(".filter-controller").removeClass("is_filter"), jQuery("html,body").removeClass("filter-opened")
@@ -419,7 +419,7 @@ var roar = {
       if ( t.hasClass('is_filter') ){
         r.removeClass("filter-opened")
         r.removeClass("filter-only")
-        t.removeClass("is_filter")
+        $('.filter-controller').removeClass("is_filter")
         t.children("span").text(t.attr("data-show"))
       } else if ( r.hasClass('sort-opened')) {
         r.removeClass("filter-opened")
@@ -429,22 +429,23 @@ var roar = {
         setTimeout(function(){
           r.addClass("filter-opened")
           r.addClass("filter-only")
-          t.addClass("is_filter")
+          $('.filter-controller').addClass("is_filter")
           t.children("span").text(t.attr("data-hide"))
         },250)
       } else {
         r.addClass("filter-opened")
         r.addClass("filter-only")
-        t.addClass("is_filter")
+        $('.filter-controller').addClass("is_filter")
         t.children("span").text(t.attr("data-hide"))
       }
     }), jQuery(".sortby-controller").click(function(e){
+      e.stopPropagation();
       var t = jQuery(this),
           r = jQuery("body");
       if ( t.hasClass('is_sort') ){
         r.removeClass("filter-opened")
         r.removeClass("sort-opened")
-        t.removeClass("is_sort")
+        $('.sortby-controller').removeClass("is_sort")
         t.children("span").text(t.attr("data-show"))
       } else if (r.hasClass('filter-only')){
         r.removeClass("filter-opened")
@@ -454,13 +455,12 @@ var roar = {
         setTimeout(function(){
           r.addClass("filter-opened")
           r.addClass("sort-opened")
-          t.addClass("is_sort")
+          $('.sortby-controller').addClass("is_sort")
           t.children("span").text(t.attr("data-hide"))
         },250)
       }else{
-        r.addClass("filter-opened")
-        r.addClass("sort-opened")
-        t.addClass("is_sort")
+        r.addClass("filter-opened sort-opened")
+        $('.sortby-controller').addClass("is_sort")
         t.children("span").text(t.attr("data-hide"))
       }
       

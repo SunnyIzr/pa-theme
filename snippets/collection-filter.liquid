@@ -36,9 +36,6 @@
 </div>
 {% endunless %}
 {% endfor %}
-<style>
-  .filter_wrap #filters .column{width: {{100 | divided_by:numColumns | append:'%'}}}
-</style>
 {% endif %}
 {% elsif settings.collection_sidebar_filters == 'tags' %}
 {% if collection.all_tags.size > 0 %}
@@ -58,3 +55,4 @@
 </div>
 {% endif %}
 {% endif %}
+

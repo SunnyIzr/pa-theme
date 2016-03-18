@@ -44,8 +44,7 @@
         <div class="advanced-collection filter_container">
           <ul class="list-unstyled fields">
             {% for coll in collections %}
-            {% unless coll.handle == 'frontpage' or coll.handle == 'all' %}
-
+            {% unless coll.handle == 'frontpage' or coll.handle == 'all' or coll.handle == 'pauls-favorites' %}
             {% unless coll.handle == collection.handle %}
             <li>
               <a class="field" href="{{ coll.url }}{% if collection.sort_by != blank %}?sort_by={{ collection.sort_by }}{% endif %}">{{ coll.title | escape }}</a>
@@ -75,6 +74,9 @@
 
       {% include 'collection-filter' %}
       <a class='clear-filter' href='#'>Clear All Filters</a>
+      <div class='close-filter-section'>
+        <img class='filter-controller' src="{{ 'close-arrow.png' | asset_url }}">
+      </div>
     </div>
   </div>
   

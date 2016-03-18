@@ -1,8 +1,8 @@
 <div class="row" style="height:5px;"><div class="col-xs-24" ><div class="top-divider hidden-xs"></div></div></div>
 
-<div class="row" id="arrow-nav-row">
+<div class="row hidden-xs" id="arrow-nav-row">
   <div class='back-button-link'>
-    <a href="" onClick="history.go(-1);return true;">< Back</a>
+    <a href="{{ collection.url }}" >< Back</a>
   </div>
   <div class="col-xs-24" >
     <div class="top-divider">
@@ -131,9 +131,14 @@
         <div class="product_item item-{{product.id}}">
           {% include 'spinner2' %}
           <div class="inner">
+            {% for tag in product.tags %}
+              {% if tag contains 'Styles_' %}
+                {% assign current_style = tag | remove: "Styles_" %}
+              {% endif %}
+            {% endfor %}
            <!-- added Title then collection underneith the title -->
             <h1 class="title" itemprop="name" content="{{ product.title }}">{{ product.title }}</h1>
-            <p class="title2" itemprop="name" style="font-size:16px; color:#949494; font-weight:10; text-transform:uppercase; margin-bottom:10%;" content="{{ collection.title }}">{{ collection.title }}</p>
+            <p class="title2" itemprop="name" style="font-size:16px; color:#949494; font-weight:10; text-transform:capitalize; margin-bottom:10%;" content="{{ collection.title }}">{{ current_style }}</p>
 
            	<!--Wasnt sure if we still needed the bread crumbs so i commeneted them out-->
             <!-- {% include 'product-breadcrumb' %}-->
@@ -210,7 +215,56 @@
                 <button id="btn-2">
                   <a href="#">Where To Buy</a>
                 </button>
+                <div class='touch-group'>
+                  <div class="share sharing-buttons thebuttonWrapper">
+                    
+                    <i class="thebutton fa fa-reply fa-flip-horizontal"></i>
+
+                    <div class="sharing-bubble fixed">
+                      {% include 'social-sharing' %}
+                    </div>
+                  </div>
+                </div>
               </div>
+              {% comment %}
+              <div class="cart-group touch-group">
+                <ul class="list-inline">
+                  
+                  <li>
+                    <div class="share sharing-buttons">
+                      
+                      <i class="fa fa-reply fa-flip-horizontal"></i>
+
+                      <div class="sharing-bubble fixed">
+                        {% include 'social-sharing' %}
+                      </div>
+                    </div>
+                  </li>
+                  
+                  {% assign tmp = settings.product_size_charts %}
+                  {% assign temp = pages[tmp] %}
+                  {% if temp.handle != blank %}
+                  <li>
+                    <a href="{{temp.url}}" class="size" target="_blank">
+                      <i class="icon-docs"></i>
+                      <span>{{'products.product.size_charts' | t}}</span>
+                    </a>
+                  </li>
+                  {% endif %}
+
+                  {% assign tmp = settings.product_touch_us %}
+                  {% assign temp = pages[tmp] %}
+                  {% if temp.handle != blank %}
+                  <li>
+                    <a href="{{temp.url}}" class="touch" target="_blank">
+                      <i class="icon-bubbles"></i>
+                      <span>{{'products.product.touch_us' | t}}</span>
+                    </a>
+                  </li>
+                  {% endif %}
+                </ul>
+              </div>
+              
               <div class="centerWrapper">
                 <div class="thebuttonWrapper">
                   <div class="thebutton">
@@ -221,39 +275,8 @@
                   </div>
                 </div>
               </div>
+              {% endcomment %}
             </div>
-                  <style>
-                .description {
-                    margin-top:-30px;
-                    margin-left:-200px;
-                    display:none;
-                    position:absolute;
-                    border:none;
-                    width:1500px;
-                    height:100px;
-                }
-
-                .description h3 {
-                    opacity:0;
-                }
-
-                .description h2 {
-                    opacity:0;
-                }
-
-                  </style>
-
-                  <script>
-
-                  $(".thebutton").mouseover(function() {
-             $(this).children(".description").show();
-          }).mouseout(function() {
-          $(this).children(".description").hide();});
-
-
-
-
-                  </script>
 
 
 
@@ -266,43 +289,6 @@
                 </div>
               </div>
               {% endif %}
-          <div class="cart-group touch-group">
-            <ul class="list-inline">
-              {% comment %}
-              <li>
-                <div class="share sharing-buttons">
-                  <i class="icon-cursor"></i>
-                  <span>{{'products.product.share' | t}}</span>
-
-                  <div class="sharing-bubble fixed">
-                    {% include 'social-sharing' %}
-                  </div>
-                </div>
-              </li>
-              {% endcomment %}
-              {% assign tmp = settings.product_size_charts %}
-              {% assign temp = pages[tmp] %}
-              {% if temp.handle != blank %}
-              <li>
-                <a href="{{temp.url}}" class="size" target="_blank">
-                  <i class="icon-docs"></i>
-                  <span>{{'products.product.size_charts' | t}}</span>
-                </a>
-              </li>
-              {% endif %}
-
-              {% assign tmp = settings.product_touch_us %}
-              {% assign temp = pages[tmp] %}
-              {% if temp.handle != blank %}
-              <li>
-                <a href="{{temp.url}}" class="touch" target="_blank">
-                  <i class="icon-bubbles"></i>
-                  <span>{{'products.product.touch_us' | t}}</span>
-                </a>
-              </li>
-              {% endif %}
-            </ul>
-          </div>
         </div>
       </div>
       </div></div>

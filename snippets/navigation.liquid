@@ -66,3 +66,12 @@
   </ul>
 </nav>
 {% endif %}
+
+<script>
+$('a.dropdown_link').click(function(e){
+  if ( $(window).width() < 992 ){
+    e.preventDefault();
+    $(this).parent().find('span.expand').click()
+  }
+})
+</script>

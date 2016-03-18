@@ -1,64 +1,312 @@
-{% if settings.sidebar_blog_placement == 'left' %}
-<div id="sidebar" class="col-md-6{% if settings.sidebar_blog_mobile %} hidden-sm hidden-xs{% endif %}">
-  {% include 'sidebar-blog' %}
-</div>
+{% comment %}
+  Normal: Descending Publish Date (Newest - Oldest)
+  Page 2: Ascending Publish Date (Oldest - Newest)
+  Page 3: Ascending Title (A-Z)
+  Page 4
+  : Descending Title (Z-A)
+{% endcomment %}
+
+
+{% assign ary = [1..3] %}
+  
+{% if current_page == 3 or current_page == 4 %}
+  {% assign articles = blog.articles | sort: 'title' %}
+{% else %}
+  {% assign articles = blog.articles %}
 {% endif %}
 
-<div id="col-main" class="blog-page{% if settings.sidebar_blog_placement != 'none' %} col-md-18{% else %} col-md-24{% endif %}">
-  {% paginate blog.articles by settings.blog_pagination_limit %}
+{% assign article_ids = blog.articles | map: 'id' %}
+{% assign indices = '' %}
 
-  {% if blog.articles.size > 0 %}
-  <div class="blog-posts">
-    {% for article in blog.articles %}
-    <article class="blog-post clearfix">
-      <div class="blog-sidebar">
-        <div class="wrap">
-          <div class="date">
-            <span class="day">{{ article.published_at | date: "%d" }}</span>
-            <span class="month">{{ article.published_at | date: "%b, %Y" }}</span>
-          </div>
-          {% if settings.social_sharing_blog %}
-          {% include 'social-sharing' %}
-          {% endif %}
-        </div>
+{% for article_id in article_ids %}
+  {% assign indices = indices | append: forloop.index0 } | append: ',' %} 
+{% endfor %}
+
+
+{% assign index_ary = indices | split: ','  %}
+
+{% if current_page == 2 or current_page == 4 %}
+
+  {% for index in index_ary reversed %}
+    {% assign mod = forloop.index0 | modulo: 2 %}
+    {% if mod == 0 %}
+      {% assign ids = ids | append: index | append: ',' %}
+    {% elsif mod == 1 %}
+      {% assign ids = ids | append: index | append: '|' %}
+    {% endif %}
+  {% endfor %}
+
+{% else %}
+  
+  {% for index in index_ary %}
+    {% assign mod = forloop.index0 | modulo: 2 %}
+    {% if mod == 0 %}
+      {% assign ids = ids | append: index | append: ',' %}
+    {% elsif mod == 1 %}
+      {% assign ids = ids | append: index | append: '|' %}
+    {% endif %}
+  {% endfor %}
+  
+{% endif %}
+
+
+
+{% assign rows = ids | split: '|' %}
+
+
+<div class="press-page-content">
+  <div class='filter-controls'>
+    {% if blog.handle == 'journal' %}
+    <a href="#filter-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="sortby-expanded">
+      <div class="sortby">
+        <h3>REFINE</h3>
+        <i class="icon-pa-arrow-down sortby-arrow"></i>
       </div>
-      <div class="blog-content">
-        {% if article.excerpt.size > 0 %}
-        {% if article.excerpt contains '<img' %}
-        <div class="excerpt">
-          <a href="{{ article.url }}">
-            {{ article.excerpt }}
+    </a>
+    {% endif %}
+    <a href="#sortby-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="sortby-expanded">
+      <div class="sortby">
+        <h3>SORT</h3>
+        <i class="icon-pa-arrow-down sortby-arrow"></i>
+      </div>
+    </a>
+  </div>
+  <div class="collapse" id="sortby-expanded">
+    <div class="well">
+      <div class="filter_wrap">
+        <ul class="list-unstyled fields">
+          <li data-target='?page=1'>
+            <span class="field">
+              PRESENT - PAST
+            </span>
+          </li>
+
+          <li data-target='?page=3'>
+            <span class="field">
+              PUBLICATION A-Z
+            </span>
+          </li>
+
+          <li data-target='?page=2'>
+            <span class="field">
+              PAST - PRESENT
+            </span>
+          </li>
+
+          <li data-target='?page=4'>
+            <span class="field">
+              PUBLICATION Z-A
+            </span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <div class="collapse" id="filter-expanded">
+    <div class="well">
+      <div class="filter_wrap">
+        <ul class="list-unstyled fields">
+          <li>
+            <a href='{{ blog.url }}/tagged/press'>
+              <span class="field">
+                IN PRINT
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a href='{{ blog.url }}/tagged/interviews'>
+              <span class="field">
+                INTERVIEWS
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a href='{{ blog.url }}/tagged/vip'>
+              <span class="field">
+                VIP
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a href='{{ blog.url }}/tagged/events'>
+              <span class="field">
+                NEWS & EVENTS
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            <a href='{{ blog.url }}/tagged/social'>
+              <span class="field">
+                BEST OF SOCIAL
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  
+  <div class="visible-xs-block panel-group" id="mobile-accordion" aria-multiselectable="true">
+  
+    {% for article in articles %}
+    {% assign mod = forloop.index | modulo: 2 %}
+    {% assign content = article.content | split: '</p>' | first | strip_html %}
+    {% assign images = article.content | split: '<p>' | last | remove: '</p>' %}
+    
+    <div class="panel panel-default">
+      <div id="headingOne" class="row press press-wrapper">
+        <div class="col-xs-12 {% if mod == 0 %} col-xs-push-12 {% endif %} press">
+          <a data-toggle="collapse" data-parent="#mobile-accordion" href="#mobileExpandDetail-{{ article.id }}" aria-expanded="false" aria-controls="mobileExpandDetail-{{ article.id }}">
+            <img src="{{ article | img_url: 'grande' }}">
           </a>
         </div>
-        {% elsif article.excerpt contains '<iframe' %}
-        <div class="excerpt responsive-video">
-          {{ article.excerpt }}
+        <div class="col-xs-12 {% if mod == 0 %} col-xs-pull-12 {% endif %} press">
+          <a data-toggle="collapse" data-parent="#mobile-accordion" href="#mobileExpandDetail-{{ article.id }}" aria-expanded="false" aria-controls="mobileExpandDetail-{{ article.id }}">
+            <h2>{{ article.tags.first }}</h2>
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.excerpt | strip_html }}</p>
+          </a>
         </div>
-        {% else %}
-        {{ article.excerpt }}
-        {% endif %}
-        {% endif %}
-
-        <h4><a href="{{ article.url }}">{{ article.title | escape }}</a></h4>
-
-        <p class="content">{{ article.content | strip_html | truncatewords: 60 }}</p>
-        <p class="btn-more">
-          <a href="{{article.url}}">{{'blogs.article.read_more' | t}}</a>
-        </p>
       </div>
-    </article>
+      <div class="collapse" id="mobileExpandDetail-{{ article.id }}" aria-labelledby="headingOne">
+        <div class="well" id="mobile-well">
+
+          <div id="mobile-carousel-{{article.id}}" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                {{ images }}
+            </div>
+            <a class="left carousel-control" href="#mobile-carousel-{{article.id}}" role="button" data-slide="prev">
+              <img src="{{ 'left-icon.png' | asset_url }}">
+            </a>
+            <a class="right carousel-control" href="#mobile-carousel-{{article.id}}" role="button" data-slide="next">
+              <img src="{{ 'right-icon.png' | asset_url }}">
+            </a>
+          </div>
+
+
+
+          <div class="well-text">
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.excerpt | strip_html }}</p>
+            <p>{{ content }}</p>
+          </div>
+          <h3>SHARE</h3>
+
+          {% include "social-media" %}
+          <a data-toggle="collapse" data-parent="#mobile-accordion" href="#mobileExpandDetail-{{ article.id }}" aria-expanded="false" aria-controls="mobileExpandDetail-{{ article.id }}">
+            <div class="close-well">
+              {{ 'close.png' | asset_url | img_tag }}
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
     {% endfor %}
+  
+  
+  </div>
+  
+
+
+  <div class="hidden-xs panel-group" id="desktop-accordion" aria-multiselectable="true">
+  
+    
+    {% for row in rows %}
+    {% assign row_int = row | plus: 0 %}
+    {% assign row_mod = forloop.index | modulo: 2 %}
+    {% assign entry_ids = row | split: ',' %}
+    <div class="panel panel-default">
+      
+      <div id="headingOneDesktop" class="row press press-wrapper">
+        
+        {% for entry_id in entry_ids %}
+        {% assign entry_int = entry_id | plus: 0 %}
+        {% assign article = articles[entry_int] %}
+        
+        <div class="press-preview-wrapper">
+          <div class='overlay'>
+            <a href="#press-detail-{{article.id}}" data-parent="#desktop-accordion" data-toggle="collapse" aria-expanded="false" ></a>
+          </div>
+            <div class="col-xs-12 press {% if row_mod == 0 %}col-xs-push-12{% endif %}">
+              <img src="{{ article | img_url: 'grande' }}"/>
+            </div>
+            <div class="col-xs-12 press press-text{% if row_mod == 0 %} col-xs-pull-12 right-text{% endif %}">
+              <div class="text-wrapper">
+                <h2>{{ article.tags.first }}</h2>
+                <h3>{{ article.title | upcase }}</h3>
+                <p>{{ article.excerpt | strip_html }}</p>
+              </div>
+            </div>
+
+        </div>
+        
+        {% endfor %}
+
+      </div>
+      
+      {% for entry_id in entry_ids %}
+      {% assign entry_int = entry_id | plus: 0 %}
+      {% assign article = articles[entry_int] %}
+      
+      {% assign content = article.content | split: '</p>' | first | strip_html %}
+      {% assign images = article.content | split: '<p>' | last | remove: '</p>' %}
+
+      <div class="collapse" id="press-detail-{{article.id}}">
+        <div class="well">
+          <div class="row detail-well">
+            <div class="col-xs-17 press-img-desktop">
+
+              <div id="desktop-carousel-{{forloop.index}}-{{entry_id}}" class="carousel slide" data-ride="carousel">
+                
+                <div class="carousel-inner" role="listbox">
+                  {{ images }}
+                </div>
+                
+              </div>
+
+              <a class="left carousel-control" href="#desktop-carousel-{{forloop.index}}-{{entry_id}}" data-slide="prev">
+                <img src="{{ 'left-icon.png' | asset_url }}"/>
+              </a>
+              <a class="right carousel-control" href="#desktop-carousel-{{forloop.index}}-{{entry_id}}" data-slide="next">
+                <img src="{{ 'right-icon.png' | asset_url }}"/>
+              </a>
+
+            </div>
+            <div class="col-xs-2"></div>
+            <div class="col-xs-6 detail-content">
+              <a data-toggle="collapse" href="#press-detail-{{article.id}}" aria-expanded="false">
+                <div class="close-well">
+                  {{ 'close.png' | asset_url | img_tag }}
+                </div>
+              </a>
+              <div class="well-text">
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.excerpt | strip_html }}</p>
+                <p>{{ content }}</p>
+
+                <div class='share-social-media'>
+                  <h3>SHARE</h3>
+                  {% include "social-media" %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {% endfor %}
+
+    </div>
+    {% endfor %}
+
   </div>
 
-  {% include 'pagination' %}
-
-  {% else %}
-  <p>
-    {{'blogs.article.no_acticles' | t}}
-  </p>
-  {% endif %}
-
-  {% endpaginate %}
 </div>
 
 {% if settings.sidebar_blog_placement == 'right' %}
@@ -66,3 +314,50 @@
   {% include 'sidebar-blog' %}
 </div>
 {% endif %}
+
+<script>
+$('.carousel-inner img').addClass('item');
+$(".carousel-inner img:nth-child(1)").addClass('active')
+
+currentUrl = window.location.href
+
+if ( currentUrl.indexOf('page=2') > -1 ){
+  $( $(".list-unstyled.fields li")[2] ).find(' span.field').addClass('active')
+} else if ( currentUrl.indexOf('page=3') > -1 ){
+  $( $(".list-unstyled.fields li")[1] ).find(' span.field').addClass('active')
+} else if ( currentUrl.indexOf('page=4') > -1 ){
+  $( $(".list-unstyled.fields li")[3] ).find(' span.field').addClass('active')
+} else {
+  $( $(".list-unstyled.fields li")[0] ).find(' span.field').addClass('active')
+}
+
+$("#sortby-expanded .list-unstyled.fields li").click(function(){
+  target = $(this).data('target')
+  rootUrl = window.location.href.split('?')[0]
+  newUrl = rootUrl + target
+  window.location.href = newUrl
+})
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

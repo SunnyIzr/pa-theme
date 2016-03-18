@@ -1,6 +1,7 @@
 config.yml
 env.yml
 Rakefile
+blog-import.rb
 
 
 .DS_store

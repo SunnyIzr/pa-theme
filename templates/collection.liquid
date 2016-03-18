@@ -1,14 +1,49 @@
-{% paginate collection.products by settings.collection_pagination_limit %}
+{% paginate collection.products by 8 %}
 <div id="col-main" class="col-sm-24 collection-page">
   <div id="sandBox">
     {% if collection.products.size > 0 %}
     <div class="row cat-grid">
+      
       {% for prod in collection.products %}
+        {% if  forloop.index == 5 and paginate.current_page == 1 %}
+          
+          {% if collection.handle == 'pre-spring-2016' %}
+            {% include 'collection-block-mobile' %}
+          {% endif %}
+        
+        {% endif %}
+        
+        {% if  forloop.index == 3 and paginate.current_page == 2 %}
+          
+          {% if collection.handle == 'pre-spring-2016' %}
+            {% include 'collection-block-mobile' %}
+          {% endif %}
+        
+        {% endif %}
+        
+        {% if  forloop.index == 6 and paginate.current_page == 2 %}
+          
+          {% if collection.handle == 'pre-spring-2016' %}
+            {% include 'collection-block' %}
+          {% endif %}
+          
+        {% endif %}
+        {% if  forloop.index == 4 and paginate.current_page == 4 %}
+          
+          {% if collection.handle == 'pre-spring-2016' %}
+            {% include 'collection-block' %}
+          {% endif %}
+          
+        {% endif %}
+      {% comment %}
+      {% endcomment %}
      
       
-      <div class="product_item item-{{prod.id}}">
-        {% include 'product-item' %}
-      </div>
+        <div class="product_item item-{{prod.id}}">
+        
+          {% include 'product-item' %}
+            
+        </div>
      
       {% endfor %}
     

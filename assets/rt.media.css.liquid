@@ -63,7 +63,7 @@
 @media (min-width: 991px) and (max-width : 1199px){
   .filter_wrap #filters .column{min-width:200px;}
   .cat-grid .product_item, #featured-products .product_item{
-    width: {{100.0 | divided_by: settings.collection_per_row_ipad1 }}%;
+    width: 24.9%;
   }
   .cat-list #sandBox .product_item .product-image{
     width: {{100.0 | divided_by: settings.collection_per_row_ipad1 }}%;
@@ -87,7 +87,7 @@
     padding-right: 0;
   }
   .cat-grid .product_item, #featured-products .product_item {
-    width: {{100.0 | divided_by: settings.collection_per_row_ipad2 }}%;
+    width: 49.9%;
   }
   .cat-list #sandBox .product_item .product-image{
     width: {{100.0 | divided_by: settings.collection_per_row_ipad2 }}%;
@@ -274,6 +274,17 @@
   body.filter-opened .filter_wrap #filters {
     right: 0;
   }
+  
+  .filter_wrap #sorts .column{width: 100%!important; max-width: 100%; max-height:max-height; min-height: initial; overflow-y: visible; margin-bottom: 0; padding:0; min-width: initial; border: 0;}
+  .filter_wrap #sorts .wrap{padding: 0 20px;}
+  .filter_wrap #sorts .filter_close{display:block;}
+  .filter_wrap #sorts{
+    right: -280px; position: fixed; z-index: 10000; height: 100%; min-height: 100%; top: 0 !important; width: 280px; overflow-y: scroll!important; overflow-x: hidden; outline: none; left: auto; background: {{settings.b_scaffolding_bg}};
+  }
+  body.filter-opened .filter_wrap #sorts {
+    right: 0;
+  }
+  
   .filter-opened #page{
     cursor: url({{'cursor-close.png' | asset_url}}), progress;
   }
@@ -430,7 +441,7 @@
   .static-surround .static-content .static-caption1{ margin-bottom: 5px; }
   .static-surround .static-content .static-caption2{ margin-bottom: 5px; }
   .cat-grid .product_item, #featured-products .product_item{
-    width: {{100.0 | divided_by: settings.collection_per_row_iphone2 }}%;
+    width: 49.9%;
   }
   #home-slider .cameraContent{
     bottom: 0;

@@ -71,14 +71,14 @@
                 <img src="{{ 'test-img2.jpg' | asset_url }}"/>
               </div>
             </div>
+            <a class="left carousel-control" href="#mobile-carouselOne" role="button" data-slide="prev">
+              <img src="{{ 'left-icon.png' | asset_url }}">
+            </a>
+            <a class="right carousel-control" href="#mobile-carouselOne" role="button" data-slide="next">
+              <img src="{{ 'right-icon.png' | asset_url }}">
+            </a>
           </div>
 
-          <a class="left carousel-control" href="#mobile-carouselOne" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="false"></span>
-          </a>
-          <a class="right carousel-control" href="#mobile-carouselOne" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="false"></span>
-          </a>
 
 
           <div class="well-text">
@@ -126,14 +126,14 @@
                 <img src="{{ 'test-img4.jpg' | asset_url }}"/>
               </div>
             </div>
+            <a class="left carousel-control" href="#mobile-carouselTwo" role="button" data-slide="prev">
+              <img src="{{ 'left-icon.png' | asset_url }}">
+            </a>
+            <a class="right carousel-control" href="#mobile-carouselTwo" role="button" data-slide="next">
+              <img src="{{ 'right-icon.png' | asset_url }}">
+            </a>
           </div>
 
-          <a class="left carousel-control" href="#mobile-carouselTwo" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="false"></span>
-          </a>
-          <a class="right carousel-control" href="#mobile-carouselTwo" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="false"></span>
-          </a>
 
           <div class="well-text">
             <h3>FOOTWEAR NEWS</h3>
@@ -180,14 +180,14 @@
                 <img src="{{ 'test-img6.jpg' | asset_url }}"/>
               </div>
             </div>
+            <a class="left carousel-control" href="#mobile-carouselThree" role="button" data-slide="prev">
+              <img src="{{ 'left-icon.png' | asset_url }}">
+            </a>
+            <a class="right carousel-control" href="#mobile-carouselThree" role="button" data-slide="next">
+              <img src="{{ 'right-icon.png' | asset_url }}">
+            </a>
           </div>
 
-          <a class="left carousel-control" href="#mobile-carouselThree" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="false"></span>
-          </a>
-          <a class="right carousel-control" href="#mobile-carouselThree" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="false"></span>
-          </a>
 
           <div class="well-text">
             <h3>FOOTWEAR NEWS</h3>
@@ -237,10 +237,10 @@
           </div>
 
           <a class="left carousel-control" href="#mobile-carouselFour" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="false"></span>
+            <img src="{{ 'left-icon.png' | asset_url }}">
           </a>
           <a class="right carousel-control" href="#mobile-carouselFour" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="false"></span>
+            <img src="{{ 'right-icon.png' | asset_url }}">
           </a>
 
           <div class="well-text">
@@ -272,22 +272,23 @@
   <div class="hidden-xs panel-group" id="desktop-accordion" aria-multiselectable="true">
 
     <div class="panel panel-default">
+      
       <div id="headingOneDesktop" class="row press press-wrapper">
 
         <div class="press-preview-wrapper">
           <div class='overlay'>
             <a href="#press-detail1" data-parent="#desktop-accordion" data-toggle="collapse" aria-expanded="false" aria-controls="press-detail1"></a>
           </div>
-            <div class="col-xs-12 press">
-              <img src="{{ 'test-img1.jpg' | asset_url }}"/>
+          <div class="col-xs-12 press">
+            <img src="{{ 'test-img1.jpg' | asset_url }}"/>
+          </div>
+          <div class="col-xs-12 press press-text">
+            <div class="text-wrapper">
+              <h2>PRESS</h2>
+              <h3>PUBLICATION</h3>
+              <p>7/2015</p>
             </div>
-            <div class="col-xs-12 press press-text">
-              <div class="text-wrapper">
-                <h2>PRESS</h2>
-                <h3>PUBLICATION</h3>
-                <p>7/2015</p>
-              </div>
-            </div>
+          </div>
 
         </div>
 
@@ -313,11 +314,28 @@
       <div class="collapse" id="press-detail1" aria-labelledby="headingOneDesktop">
         <div class="well">
           <div class="row detail-well">
-            <div class="col-xs-3"></div>
-            <div class="col-xs-12 press-img-desktop">
-              <img src="{{ 'test-img1.jpg' | asset_url }}"/>
+            <div class="col-xs-17 press-img-desktop">
+
+              <div id="desktop-carouselOne" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <img src="{{ 'test-img1.jpg' | asset_url }}"/>
+                  </div>
+                  <div class="item">
+                    <img src="{{ 'test-img2.jpg' | asset_url }}"/>
+                  </div>
+                </div>
+              </div>
+
+              <a class="left carousel-control" href="#desktop-carouselOne" data-slide="prev">
+                <img src="{{ 'left-icon.png' | asset_url }}"/>
+              </a>
+              <a class="right carousel-control" href="#desktop-carouselOne" data-slide="next">
+                <img src="{{ 'right-icon.png' | asset_url }}"/>
+              </a>
+
             </div>
-            <div class="col-xs-3"></div>
+            <div class="col-xs-2"></div>
             <div class="col-xs-6 detail-content">
               <a data-toggle="collapse" href="#press-detail1" aria-expanded="false" aria-controls="press-detail1">
                 <div class="close-well">
@@ -342,11 +360,29 @@
       <div class="collapse" id="press-detail2" aria-labelledby="headingOneDesktop">
         <div class="well">
           <div class="row detail-well">
-            <div class="col-xs-3"></div>
+            <div class="col-xs-4"></div>
             <div class="col-xs-12 press-img-desktop">
-              <img src="{{ 'test-img3.jpg' | asset_url }}"/>
+
+              <div id="desktop-carouselTwo" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <img src="{{ 'test-img3.jpg' | asset_url }}"/>
+                  </div>
+                  <div class="item">
+                    <img src="{{ 'test-img4.jpg' | asset_url }}"/>
+                  </div>
+                </div>
+              </div>
+
+              <a class="left carousel-control" href="#desktop-carouselTwo" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="false"></span>
+              </a>
+              <a class="right carousel-control" href="#desktop-carouselTwo" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="false"></span>
+              </a>
+
             </div>
-            <div class="col-xs-3"></div>
+            <div class="col-xs-2"></div>
             <div class="col-xs-6 detail-content">
               <a data-toggle="collapse" href="#press-detail2" aria-expanded="false" aria-controls="press-detail2">
                 <div class="close-well">
@@ -382,7 +418,7 @@
           </div>
           <div class="col-xs-12 col-xs-pull-12 press press-text right-text">
             <div class="text-wrapper">
-              <h2>PRESS</h2>
+              <h2>NEW</h2>
               <h3>PUBLICATION</h3>
               <p>7/2015</p>
             </div>
@@ -411,11 +447,29 @@
       <div class="collapse" id="press-detail3" aria-labelledby="headingTwoDesktop">
         <div class="well">
           <div class="row detail-well">
-            <div class="col-xs-3"></div>
+            <div class="col-xs-4"></div>
             <div class="col-xs-12 press-img-desktop">
-              <img src="{{ 'test-img5.jpg' | asset_url }}"/>
+
+              <div id="desktop-carouselThree" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <img src="{{ 'test-img5.jpg' | asset_url }}"/>
+                  </div>
+                  <div class="item">
+                    <img src="{{ 'test-img6.jpg' | asset_url }}"/>
+                  </div>
+                </div>
+              </div>
+
+              <a class="left carousel-control" href="#desktop-carouselThree" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="false"></span>
+              </a>
+              <a class="right carousel-control" href="#desktop-carouselThree" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="false"></span>
+              </a>
+
             </div>
-            <div class="col-xs-3"></div>
+            <div class="col-xs-2"></div>
             <div class="col-xs-6 detail-content">
               <a data-toggle="collapse" data-parent="#desktop-accordion" href="#press-detail3" aria-expanded="false" aria-controls="press-detail3">
                 <div class="close-well">
@@ -440,11 +494,29 @@
       <div class="collapse" id="press-detail4" aria-labelledby="headingTwoDesktop">
         <div class="well">
           <div class="row detail-well">
-            <div class="col-xs-3"></div>
+            <div class="col-xs-4"></div>
             <div class="col-xs-12 press-img-desktop">
-              <img src="{{ 'test-img7.jpg' | asset_url }}"/>
+
+              <div id="desktop-carouselFour" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <img src="{{ 'test-img7.jpg' | asset_url }}"/>
+                  </div>
+                  <div class="item">
+                    <img src="{{ 'test-img8.jpg' | asset_url }}"/>
+                  </div>
+                </div>
+              </div>
+
+              <a class="left carousel-control" href="#desktop-carouselFour" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="false"></span>
+              </a>
+              <a class="right carousel-control" href="#desktop-carouselFour" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="false"></span>
+              </a>
+
             </div>
-            <div class="col-xs-3"></div>
+            <div class="col-xs-2"></div>
             <div class="col-xs-6 detail-content">
               <a data-toggle="collapse" data-parent="#desktop-accordion" href="#press-detail4" aria-expanded="false" aria-controls="press-detail4">
                 <div class="close-well">

@@ -1,55 +1,32 @@
-{% comment %}
-<div id='home-slider2' class="jumbotron_hero">
-  <div class="slide-caption caption header">
-    
-    <h2>The Rise of Paul Andrew</h2>
-
-    <div class="caption sub">
-      <div class="caption-link">
-        <a class="btn" href="/collections/spring-summer-2016">See His Story</a>
-      </div>
-    </div>
-
-  </div>
-  <div id="chevron"></div>
-</div>
-{% endcomment %}
-
-
 <div id='home-slider-2' class="rise_of_paul_and_journel_section">
-<div class="full-width flexslider rise_of_paul_andrew">
-  <ul class="slides">
-    <li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;" class="flex-active-slide">
-      <div class="slide-body"><span class="slider-mask"></span> <img alt="Spring/Summer 2016" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/paul-andrew.png?5455548197225688614" draggable="false" />
-        <div class="slide-caption caption header" style="top: 402.5px; opacity: 1;">
-          <h2>THE RISE OF PAUL ANDREW</h2>
-          <div class="caption sub">
-            <div class="caption-link"><a href="/collections/spring-summer-2016" class="btn">SEE HIS STORY</a></div>
-            <div class="image_link"><a href='#bottom-content'>{{ 'arrow2.png' | asset_url | img_tag }}</a></div>
-          </div>
+  
+  
+<div class="bottom-hero">
+  <img class='hero hidden-xs' src='{{ "paul-andrew.png" | asset_url }}'>
+  <img class='hero visible-xs' src='{{ "ABOUT_PAUL_MOBILE.png" | asset_url }}'>
+  <div class="hero-text">
+    <h2>THE RISE OF PAUL ANDREW</h2>
+    <a href="/collections/spring-summer-2016" class="btn">SEE HIS STORY</a>
+    <a class='arrow-link' data-target='#bottom-content' href='#bottom-content'>{{ 'arrow2.png' | asset_url | img_tag }}</a>
+  </div>
+</div>
+
+
+
+  <div id='bottom-content' class="journal_and_instagram_section container">
+    <div class="row">
+      <div class="journal_section bottom-section col-xs-24 col-sm-12 col-md-12 col-lg-12">
+        <div class="journal_image right_image"><img src="//cdn.shopify.com/s/files/1/1171/4544/files/vogue-spy.png?994769845205606128" alt="journal image" /></div>
+        <div class="journal_text left_text"><span class="heading_journal_section heading_footer">JOURNAL</span>
+          <p class="para_journal_section">See the highlights from Paul Andrew - from the latets events to celebrity muses.</p>
         </div>
       </div>
-    </li>
-  </ul>
-  <ul class="flex-direction-nav">
-    <li><a href="#" class="flex-prev flex-disabled" tabindex="-1"></a></li>
-    <li><a href="#" class="flex-next flex-disabled" tabindex="-1"></a></li>
-  </ul>
-</div>
-<div id='bottom-content' class="journal_and_instagram_section container">
-  <div class="row">
-    <div class="journal_section col-xs-12 col-md-6 col-sm-6 col-lg-12">
-      <div class="journal_image right_image"><img src="//cdn.shopify.com/s/files/1/1171/4544/files/vogue-spy.png?994769845205606128" alt="journal image" /></div>
-      <div class="journal_text left_text"><span class="heading_journal_section heading_footer">JOURNAL</span>
-        <p class="para_journal_section">See the highlights from Paul Andrew - from the latets events to celebrity muses.</p>
-      </div>
-    </div>
-    <div class="instagram_section col-xs-12 col-md-6 col-sm-6 col-lg-12">
-      <div class="instagram_image right_image"><img src="//cdn.shopify.com/s/files/1/1171/4544/files/instagram.png?14100615472835731983" alt="instgram image" /></div>
-      <div class="instrgram_text left_text"><span class="heading_instgram_section heading_footer">INSTGRAM</span>
-        <p class="para_journal_section">Follow us on Instgram form the latest snippet.</p>
+      <div class="instagram_section bottom-section col-xs-24 col-sm-12 col-md-12 col-lg-12">
+        <div class="instagram_image right_image"><img src="//cdn.shopify.com/s/files/1/1171/4544/files/instagram.png?14100615472835731983" alt="instgram image" /></div>
+        <div class="instrgram_text left_text"><span class="heading_instgram_section heading_footer">INSTGRAM</span>
+          <p class="para_journal_section">Follow us on Instgram form the latest snippet.</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>

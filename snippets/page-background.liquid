@@ -2,11 +2,11 @@
 {% if template == 'product' or template contains 'product.' or template == 'collection' or template contains 'collection.' %}
 {% assign isPage = false %}
 {% endif %}
-{% if template == 'page.contact' or template == 'index' or template contains 'index.' %}
+{% if template == 'page.contact' or template == 'index' or template contains 'index.' or template =='page.about' %}
 {% assign isPage = false %}
 {% endif %}
 
-{% if template == 'page.press' or template == 'index' or template contains 'index.' %}
+{% if template == 'page.press' or template == 'index' or template contains 'index.'  or template contains 'blog' %}
 {% assign isPage = false %}
 {% endif %}
 
