@@ -4,9 +4,9 @@
 <div class="product-tabs">
   <div class="product-tab">
     <ul class="nav nav-tabs" id="product-tab">
-      <li class="active"><a href="#product-description"><span>{{'products.product.description' | t}}</span></a></li>
+      <li class="active" data-target='.product-description'><a href="#product-description"><span>{{'products.product.description' | t}}</span></a></li>
 
-      <li><a href="#product-details"><span>Details</span></a></li>
+      <li data-target='.product-details'><a href="#product-details"><span>Details</span></a></li>
 
 
       {% if settings.reviews_enable %}
@@ -18,13 +18,13 @@
 
 
     <div class="tab-content">
-      <div class="tab-pane active" id="product-description">
+      <div class="tab-pane active product-description" id="product-description">
         <div itemprop="description">
           {{product.content}}
         </div>
       </div>
 
-      <div class="tab-pane" id="product-details">
+      <div class="tab-pane product-details" id="product-details">
         <div itemprop="prod-details">
           {{product.content}}
         </div>

@@ -2,11 +2,11 @@
   
   
 <div class="bottom-hero">
-  <img class='hero hidden-xs' src='{{ "paul-andrew.png" | asset_url }}'>
-  <img class='hero visible-xs' src='{{ "ABOUT_PAUL_MOBILE.png" | asset_url }}'>
+  <img class='hero hidden-xs' src='{{ "bottom_hero_desktop.jpg" | asset_url }}'>
+  <img class='hero visible-xs' src='{{ "bottom_hero_mobile.jpg" | asset_url }}'>
   <div class="hero-text">
-    <h2>THE RISE OF PAUL ANDREW</h2>
-    <a href="/collections/spring-summer-2016" class="btn">SEE HIS STORY</a>
+    <h2 style='color: #000;'>{{ settings.bottom_hero_header_text }}</h2>
+    <a href="/collections/mens-spring-summer-2017" class="btn">{{ settings.bottom_hero_button_text }}</a>
     <a class='arrow-link' data-target='#bottom-content' href='#bottom-content'>{{ 'arrow2.png' | asset_url | img_tag }}</a>
   </div>
 </div>
@@ -16,16 +16,20 @@
   <div id='bottom-content' class="journal_and_instagram_section container">
     <div class="row">
       <div class="journal_section bottom-section col-xs-24 col-sm-12 col-md-12 col-lg-12">
-        <div class="journal_image right_image"><img src="//cdn.shopify.com/s/files/1/1171/4544/files/vogue-spy.png?994769845205606128" alt="journal image" /></div>
-        <div class="journal_text left_text"><span class="heading_journal_section heading_footer">JOURNAL</span>
-          <p class="para_journal_section">See the highlights from Paul Andrew - from the latets events to celebrity muses.</p>
-        </div>
+        <a href='{{ settings.bottom_left_link }}'>
+          <div class="journal_image right_image"><img src="{{ 'bottom_left_link_image.png' | asset_url }}" alt="journal image" /></div>
+          <div class="journal_text left_text"><span class="heading_journal_section heading_footer">{{ settings.bottom_left_link_header_text }}</span>
+            <p class="para_journal_section">{{ settings.bottom_left_link_subheader_text }}</p>
+          </div>
+        </a>
       </div>
       <div class="instagram_section bottom-section col-xs-24 col-sm-12 col-md-12 col-lg-12">
-        <div class="instagram_image right_image"><img src="//cdn.shopify.com/s/files/1/1171/4544/files/instagram.png?14100615472835731983" alt="instgram image" /></div>
-        <div class="instrgram_text left_text"><span class="heading_instgram_section heading_footer">INSTGRAM</span>
-          <p class="para_journal_section">Follow us on Instgram form the latest snippet.</p>
-        </div>
+        <a href='{{ settings.bottom_right_link }}' target='_blank'>
+          <div class="instagram_image right_image"><img src="{{ 'bottom_right_link_image.png' | asset_url }}" alt="instgram image" /></div>
+          <div class="instrgram_text left_text"><span class="heading_instgram_section heading_footer">{{ settings.bottom_right_link_header_text }}</span>
+            <p class="para_journal_section">{{ settings.bottom_right_link_subheader_text }}</p>
+          </div>
+        </a>
       </div>
     </div>
   </div>

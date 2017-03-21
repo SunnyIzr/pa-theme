@@ -140,18 +140,24 @@
  {% endif %}
 <script>
   jQuery(document).ready(function($) {
-    {% if settings.popup_expires == '0' %}
-    jQuery.removeCookie('popup_cookie');
-    {% endif %}
+    // jQuery.removeCookie('popup_cookie');
+
 
     var $_popup_cookie = jQuery.cookie('popup_cookie');
+    
     if ($_popup_cookie == undefined){
-      jQuery('#lightbox').show();
+      setTimeout(function(){
+        jQuery('#lightbox').show();
+        jQuery.cookie('popup_cookie', 'yes', { expires: 14 });
+      },10000)
     }
+
+    // jQuery('#lightbox').show();
+    
     jQuery('body').click(function(e) {
         if(!(jQuery(e.target).closest('#lightbox .window').length > 0)) {
           if(jQuery("#mc-popup-hide").is(':checked')){
-            jQuery.cookie('popup_cookie', 'yes', { expires: {{settings.popup_expires}} });
+            jQuery.cookie('popup_cookie', 'yes', { expires: 14 });
           }
           jQuery('#lightbox').fadeOut();
         }
@@ -163,12 +169,20 @@
         jQuery('#lightbox').fadeOut();
       });
 
+
+
+    
     var $_form = jQuery('#mc-form');
     var $_action = $_form.attr('action');
     $_form.ajaxChimp({
       url: $_action,
       callback: function(resp){
-        //
+        if ( resp.result = 'success' ) {
+          $('.newsletter-inner').html("<p>Thank you for signing up. Expect a confirmation email shortly.</p>")
+        }
+        setTimeout(function(){
+          $('#lightbox').find('.close').click()
+        },1000)
       }
     });
 

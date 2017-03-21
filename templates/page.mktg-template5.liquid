@@ -1,0 +1,39 @@
+<div class='mktg-content'>
+  <div class='hero-section'>
+    <img src='{{ "mktg_temp5_hero_desktop.jpg" | asset_url }}' class='hidden-xs hero'>
+    <img src='{{ "mktg_temp5_hero_mobile.jpg" | asset_url }}' class='visible-xs hero'>
+  </div>
+  
+  <div class='content-section'>
+    <h2>{{ settings.mktg_temp5_content_header }}</h2>
+    <h3>{{ settings.mktg_temp5_content_subheader }}</h3>
+    
+    <p>{{ settings.mktg_temp5_content_body }}</p>
+  </div>
+  
+  
+  {% if settings.mktg_temp5_img_grid_display %}
+  <div class='img-grid-section'>
+    <img src='{{ "mktg_temp5_img_grid1.jpg" | asset_url }}'><img src='{{ "mktg_temp5_img_grid2.jpg" | asset_url }}'><img src='{{ "mktg_temp5_img_grid3.jpg" | asset_url }}'><img src='{{ "mktg_temp5_img_grid4.jpg" | asset_url }}'><img src='{{ "mktg_temp5_img_grid5.jpg" | asset_url }}'><img src='{{ "mktg_temp5_img_grid6.jpg" | asset_url }}'><img src='{{ "mktg_temp5_img_grid7.jpg" | asset_url }}'><img src='{{ "mktg_temp5_img_grid8.jpg" | asset_url }}'>
+  </div>
+  {% endif %}
+  
+  {% if settings.mktg_temp5_collection_display %}
+  <div class='product-grid-section'>
+    <h2>{{ settings.mktg_temp5_collection_header }}</h2>
+    <h3>{{ settings.mktg_temp5_collection_subheader }}</h3>
+    
+    <div class="row cat-grid">
+      {% assign collection = collections[settings.mktg_temp5_collection] %}
+      {% for prod in collection.products %}
+      <div class="product_item item-{{prod.id}}">
+        {% include 'product-item' %}
+      </div>
+      {% endfor %}
+    </div>
+    
+    <a href='/collections/all' class='btn btn-primary'>View All Shoes</a>
+  </div>
+  {% endif %}
+  
+</div>

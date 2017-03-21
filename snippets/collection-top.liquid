@@ -43,6 +43,18 @@
         <div class="filter_title">Collections</div>
         <div class="advanced-collection filter_container">
           <ul class="list-unstyled fields">
+            {% for link in linklists['collections'].links %}
+              {% if link.active %}
+                <li>
+                  <span class="field active">{{ link.title }}</span>
+                </li>
+              {% else %}
+                <li>
+                  <a class="field" href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {% endif %}
+            {%endfor%}
+            {% comment %}
             {% for coll in collections %}
             {% unless coll.handle == 'frontpage' or coll.handle == 'all' or coll.handle == 'pauls-favorites' %}
             {% unless coll.handle == collection.handle %}
@@ -57,16 +69,7 @@
 
             {% endunless %}
             {% endfor %}
-
-            {% if collection.handle == 'all' %}
-            <li>
-              <span class="field active">{{'collections.general.all' | t}}</span>
-            </li>
-            {% else %}
-            <li>
-              <a class="field" href="/collections/all{% if collection.sort_by != blank %}?sort_by={{ collection.sort_by }}{% endif %}">{{'collections.general.all' | t}}</a>
-            </li>
-            {% endif %}
+            {% endcomment %}
           </ul>
         </div>
       </div>
@@ -74,8 +77,8 @@
 
       {% include 'collection-filter' %}
       <a class='clear-filter' href='#'>Clear All Filters</a>
-      <div class='close-filter-section'>
-        <img class='filter-controller' src="{{ 'close-arrow.png' | asset_url }}">
+      <div class='close-filter-section filter-controller'>
+        <img class='' src="{{ 'close-arrow.png' | asset_url }}">
       </div>
     </div>
   </div>
@@ -94,6 +97,7 @@
 {{ 'jquery.ba-dotimeout.min.js' | asset_url | script_tag }}
 {% endif %}
 <script>
+
   var val_default = '{{ collection.sort_by | default: collection.default_sort_by | escape }}';
   {% if settings.collection_infinite_scoll %}
   {% if settings.collection_infinite_scoll_auto %}
@@ -119,6 +123,7 @@
             jQuery("#sandBox > .row").append(filteredData);
             roar.buildProductItem();
             pInfScrLoading = false;
+            removeCollectionBlocks()
             setTimeout(function() {
               jQuery('.loading_img').fadeOut();
             }, 500);
@@ -196,6 +201,14 @@
   });
   {% endif %}
   {% endif %}
+  
+  if ( window.location.href.indexOf('sort_by=title-ascending') > 0 ){
+   $('.collect-block').hide()
+  }
+  
+  if ( window.location.href.indexOf('sort_by=title-descending') > 0 ){
+   $('.collect-block').hide()
+  }
 </script>
 {% include 'spinner' %}
 {% endif %}

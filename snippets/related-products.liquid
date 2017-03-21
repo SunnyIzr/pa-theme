@@ -1,4 +1,7 @@
 {% comment %} ----- Related Products ----- {% endcomment %}
+
+
+{% comment %}
 {% if settings.productspg_related_products %}
 
   {% assign number_of_related_products_to_show = settings.productspg_featured_limit %}
@@ -50,3 +53,6 @@
   </div>
 </div>
 {% endif %}
+{% endcomment %}
+
+<div id="awarp-product-related" data-id="{{ product.id }}" data-collection_id="{{ collection.id }}" data-collection_handle="{{ collection.handle }}"></div>

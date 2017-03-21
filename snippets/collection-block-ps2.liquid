@@ -1,0 +1,59 @@
+<div class="product_item collect-block {% if platform == 'desktop' %}hidden-xs{%else%}visible-xs{%endif%}">
+  <div class="product">
+    
+    <div class="product-container">
+  
+        
+        
+      <div id='carousel-ps-2-{{ platform }}' class='block-slides carousel slide' data-ride='carousel'>
+        <div class='carousel-inner' role='listbox'>
+            
+          <div class='block-slide item active'>
+            <img class='collection-background' src="{{ 'block-ps-1-6.jpg' | asset_url }}">
+            <div class='story-block'>
+              <div class='inner-content'>
+
+                <h4>SATURATED SUEDES</h4>
+                <div class='sep'></div>
+                <p>The secret to Paul Andrew's super-saturated suedes is the triple-dying process, which not only delivers bold, bright colors, but also the height of durability.</p>
+              </div>
+            </div>
+          </div>
+
+
+        
+        </div>
+        
+      
+      </div>
+      {% comment %}
+      <a class="left carousel-control" href="#carousel-ps-2-{{ platform }}" data-slide="prev">
+        <img src="{{ 'left-icon.png' | asset_url }}"/>
+      </a>
+      <a class="right carousel-control" href="#carousel-ps-2-{{ platform }}" data-slide="next">
+        <img src="{{ 'right-icon.png' | asset_url }}"/>
+      </a>
+      {% endcomment %}
+
+      <div class="product-wrap">
+        <div class="product-image">
+          <div class="wrap">
+            {% include 'spinner2' %}
+            <a>
+              <img style='' src="{{ 'block-ph.jpg' | asset_url }}" class="main-image img-responsive" alt="{{ prod.title }}" />
+            </a>
+          </div>
+        </div>
+        <div class="product-content">
+          <div class="inner">
+            <div class="product-title">
+              <a href="#">
+                Collection Block
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

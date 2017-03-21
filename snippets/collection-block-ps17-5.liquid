@@ -1,0 +1,50 @@
+<div class="product_item collect-block {% if platform == 'desktop' %}hidden-xs{%else%}visible-xs{%endif%}">
+  <div class="product">
+    
+    <div class="product-container">
+  
+        
+        
+      <div id='carousel-aw3-{{ platform }}' class='block-slides carousel slide' data-ride='carousel'>
+        <div class='carousel-inner' role='listbox'>
+            
+          <div class='block-slide item active'>
+            <img class='collection-background' src="{{ 'ps17-block5.jpg' | asset_url }}">
+            <div class='story-block'>
+              <div class='inner-content'>
+
+                <h4>Hand Embroidery</h4>
+                <div class='sep'></div>
+                <p>Beautifullly hand embroidered satin flowers, elegently place on mesh with corresponding delicate bead work.</p>
+              </div>
+            </div>
+          </div>
+
+        
+        </div>
+        
+      
+      </div>
+
+      <div class="product-wrap">
+        <div class="product-image">
+          <div class="wrap">
+            {% include 'spinner2' %}
+            <a>
+              <img style='' src="{{ 'block-ph.jpg' | asset_url }}" class="main-image img-responsive" alt="{{ prod.title }}" />
+            </a>
+          </div>
+        </div>
+        <div class="product-content">
+          <div class="inner">
+            <div class="product-title">
+              <a href="#">
+                Collection Block
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,9 +1,13 @@
+{{ 'abigimage.jquery.css' | asset_url | stylesheet_tag }}
+
 <div class="row" style="height:5px;"><div class="col-xs-24" ><div class="top-divider hidden-xs"></div></div></div>
 
 <div class="row hidden-xs" id="arrow-nav-row">
-  <div class='back-button-link'>
-    <a href="{{ collection.url }}" >< Back</a>
-  </div>
+  {% if collection %}
+    <div class='back-button-link'>
+      <a href="{{ collection.url }}" >< BACK</a>
+    </div>
+  {% endif %}
   <div class="col-xs-24" >
     <div class="top-divider">
 
@@ -22,11 +26,11 @@
                 <script type="text/template"><img src="[img:medium]" title="[title]" /></script>
               </a>
             </div>
-            {% else %}
-            <span class="prev disable" style=" border:none; border-radius:none;"><i class="fa fa-angle-left fa-2x"></i></span>
             {% endif %}
           </div>
+          {% if collection.previous_product or collection.next_product %}
           <div class='dropdown-sep'></div>
+          {% endif %}
           <div class="prod-dropdown">
             {% if collection.next_product %}
             <a href="{{collection.next_product}}" class="next" style=" border:none; border-radius:none;"><i class="fa fa-angle-right fa-2x"></i></a>
@@ -39,8 +43,6 @@
                 <script type="text/template"><img src="[img:medium]" title="[title]" /></script>
               </a>
             </div>
-            {% else %}
-            <span class="next disable" style=" border:none; border-radius:none;"><i class="fa fa-angle-right fa-2x"></i></span >
             {% endif %}
           </div>
         </div>
@@ -49,7 +51,7 @@
 
   </div>
 
-  </div>
+</div>
 
 {% assign variant_tmp = product.selected_or_first_available_variant | default: product.variants.first %}
 <div id="col-main" class="container">
@@ -58,73 +60,16 @@
     <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
     <div id="product" class="row clearfix">
       <div class="col-sm-14 product-images">
-        <div class="flexslider visible-xs-block">
-          <ul class="slides">
-          {% for image in product.images %}
-            {% unless image.src contains '_hover' %}
-            <li><a href="{{ image | product_img_url:'master' }}" ><img src="{{ image | product_img_url:'1024x1024' }}" alt="{{product.title}}" /></a></li>
-            {% endunless %}
-          {% endfor %}
-          </ul>
-        </div>
-        {{ 'jquery.flexslider.scss.css' | asset_url | stylesheet_tag }}
-        {{ 'jquery.flexslider-min.js' | asset_url | script_tag }}
-        <script>
-          $('.flexslider').flexslider({
-            animation: "slide",
-            prevText: "",
-            nextText: "",
-            slideshow: false,
-            controlNav: true,
-            directionNav: true,
-          });
-        </script>
-        <div class="product-gallery inner hidden-xs">
-          {% comment %}
-          <div class="thumbnails">
-          {% for image in product.images %}
-            {% unless image.src contains '_hover' %}
-            <a class="thumbnail" href="{{ image | product_img_url:'master' }}" data-src="{{image | product_img_url:'1024x1024'}}"><img src="{{ image | product_img_url:'small' }}" alt="{{product.title}}" /></a>
-            {% endunless %}
-          {% endfor %}
-          </div>
-          {% endcomment %}
+        <div class="product-gallery inner">
 
           {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
           <div class="main">
             <div class="main-img-link" href="{{featured_image | product_img_url:'master'}}" title="{{product.title}}">
-              <img itemprop="image" id="main-image" class="main-img" src="{{product.featured_image | product_img_url:'1024x1024'}}" alt="{{product.title}}" />
+              <img itemprop="image" id="main-image" class="main-img bigImg" src="{{product.featured_image | product_img_url:'1024x1024'}}" data-href="{{ product.featured_image | product_img_url:'1024x1024'}}" alt="{{product.title}}" />
               {% include 'spinner' %}
             </div>
-            <div class="gallery-icon">
-              <i class="fa fa-expand"></i>
-              <div class="icon_spinner2 svg" style="display:none;">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="34px" height="34px">
-                  <circle cx="17" cy="17" r="16" stroke-width="2px" stroke="{{settings.b_scaffolding_bg}}" fill="none"></circle>
-                </svg>
-              </div>
-            </div>
             {% include 'wishlist-product' %}
-            <div class="product-label{% if variant_tmp.compare_at_price > variant_tmp.price %} sale{% endif %}">
-              {% if settings.use_saleoff == 'saleoff_txt' %}
-              {{settings.saleoff_txt}}
-              {% endif %}
-            </div>
           </div>
-          <script>
-            jQuery(document).ready(function(){
-              jQuery('.gallery-icon').on('click', function(){
-                var gallery = [];
-                {% for image in product.images %}
-                  {% unless image.src contains '_hover' %}
-                  gallery.push('{{ image | product_img_url: 'master' }}');
-                  {% endunless %}
-                {% endfor %}
-                roar.showThemeGallery(gallery, jQuery(this));
-                return false;
-              });
-            });
-          </script>
         </div>
       </div>
       <div class="col-sm-9 product-sidebar">
@@ -140,8 +85,6 @@
             <h1 class="title" itemprop="name" content="{{ product.title }}">{{ product.title }}</h1>
             <p class="title2" itemprop="name" style="font-size:16px; color:#949494; font-weight:10; text-transform:capitalize; margin-bottom:10%;" content="{{ collection.title }}">{{ current_style }}</p>
 
-           	<!--Wasnt sure if we still needed the bread crumbs so i commeneted them out-->
-            <!-- {% include 'product-breadcrumb' %}-->
             
 
             {% if settings.reviews_enable %}
@@ -159,16 +102,6 @@
               <link itemprop="availability" href="http://schema.org/OutOfStock" />
               {% endif %}
 
-              <!--<div class="product-price" style="margin-top:-20px;">
-                <div id="purchase">
-                  <h2 class="detail-price" itemprop="price" style="color:#E50000 !important;">
-                    <span class="price" style="color:#E50000 !important;">{{ variant_tmp.price | money }}</span>
-                    {% if variant_tmp.compare_at_price > variant_tmp.price %}
-                    <del class="price_compare" style="color:#E50000!important;"> {{ variant_tmp.compare_at_price | money }}</del>
-                    {% endif %}
-                  </h2>
-                </div>
-              </div>-->
 
                <div class="wrap-one">
         {% include 'product-tab' %}
@@ -176,107 +109,79 @@
       </div>
     </div>
 
-              {% if product.available %}
+    {% if product.available %}
 
-              {% assign hide_default_title = false %}
-              {% if product.variants.first.title contains 'color'%}
-              {% assign hide_default_title = true %}
-              {% endif %}
+    {% assign hide_default_title = false %}
+    {% if product.variants.first.title contains 'color'%}
+    {% assign hide_default_title = true %}
+    {% endif %}
 
-              <form action="/cart/add" method="post" class="cart product-form" enctype="multipart/form-data">
-                <div id="product-actions-{{ product.id }}"  class="options clearfix">
-                  <div class="variants-wrapper clearfix{% if hide_default_title %} hide{% endif %}">
-                    <select id="product-select-{{ product.id }}" name="id" style="display: none;">
-                      {% for variant in product.variants %}
-                      {% if variant.available %}
+    <form action="/cart/add" method="post" class="cart product-form" enctype="multipart/form-data">
+      <div id="product-actions-{{ product.id }}"  class="options clearfix">
+        <div class="variants-wrapper clearfix{% if hide_default_title %} hide{% endif %}">
+          <select id="product-select-{{ product.id }}" name="id" style="display: none;">
+            {% for variant in product.variants %}
+            {% if variant.available %}
 
-                      <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+            <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
 
-                      {% else %}
-                      <option disabled="disabled">
-                        {{ variant.title }} - {{'products.product.sold_out' | t}}
-                      </option>
-                      {% endif %}
-                      {% endfor %}
-                    </select>
-                  </div>
-                  
-                 {% include 'product-swatches' %}
-                  
-                  
+            {% else %}
+            <option disabled="disabled">
+              {{ variant.title }} - {{'products.product.sold_out' | t}}
+            </option>
+            {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+        
+       {% include 'product-swatches' %}
+        
+        
 
-                  <div class="cart-group limited-edition-group">
-                    {% include 'limited-edition' %}
-                  </div>
-                </div>
-              </form>
-              <!-- This needs to be pulled out and completely redone. -->
-              <div class="inner-wrap">
-                <button id="btn-2">
-                  <a href="#">Where To Buy</a>
-                </button>
-                <div class='touch-group'>
-                  <div class="share sharing-buttons thebuttonWrapper">
-                    
-                    <i class="thebutton fa fa-reply fa-flip-horizontal"></i>
+        <div class="cart-group limited-edition-group">
+          {% include 'limited-edition' %}
+        </div>
+      </div>
+      {% if settings.ecommerce_enabled %}
+      <div class="inner-wrap">
+        <button type='submit' id="btn-3">Add to Cart</button>
+        <div class='touch-group'>
+          <div class="share sharing-buttons thebuttonWrapper">
+            
+            <!-- <i class="thebutton fa fa-reply fa-flip-horizontal"></i> -->
+            <button class='thebutton'>
+              <img src='{{ "share.png" | asset_url }}'>
+            </button>
 
-                    <div class="sharing-bubble fixed">
-                      {% include 'social-sharing' %}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {% comment %}
-              <div class="cart-group touch-group">
-                <ul class="list-inline">
-                  
-                  <li>
-                    <div class="share sharing-buttons">
-                      
-                      <i class="fa fa-reply fa-flip-horizontal"></i>
-
-                      <div class="sharing-bubble fixed">
-                        {% include 'social-sharing' %}
-                      </div>
-                    </div>
-                  </li>
-                  
-                  {% assign tmp = settings.product_size_charts %}
-                  {% assign temp = pages[tmp] %}
-                  {% if temp.handle != blank %}
-                  <li>
-                    <a href="{{temp.url}}" class="size" target="_blank">
-                      <i class="icon-docs"></i>
-                      <span>{{'products.product.size_charts' | t}}</span>
-                    </a>
-                  </li>
-                  {% endif %}
-
-                  {% assign tmp = settings.product_touch_us %}
-                  {% assign temp = pages[tmp] %}
-                  {% if temp.handle != blank %}
-                  <li>
-                    <a href="{{temp.url}}" class="touch" target="_blank">
-                      <i class="icon-bubbles"></i>
-                      <span>{{'products.product.touch_us' | t}}</span>
-                    </a>
-                  </li>
-                  {% endif %}
-                </ul>
-              </div>
-              
-              <div class="centerWrapper">
-                <div class="thebuttonWrapper">
-                  <div class="thebutton">
-                    <i class="fa fa-reply fa-flip-horizontal"></i>
-                    <div class="description">
-                      {% include 'footer-widget-social' %}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {% endcomment %}
+            <div class="sharing-bubble fixed">
+              {% include 'social-sharing' %}
             </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </form>
+    {% unless settings.ecommerce_enabled %}
+    <div class="inner-wrap">
+      <button id="btn-2">
+        <a href="/pages/stockists">Where To Buy</a>
+      </button>
+      <div class='touch-group'>
+        <div class="share sharing-buttons thebuttonWrapper">
+          
+          <!-- <i class="thebutton fa fa-reply fa-flip-horizontal"></i> -->
+          <button class='thebutton'>
+            <img src='{{ "share.png" | asset_url }}'>
+          </button>
+
+          <div class="sharing-bubble fixed">
+            {% include 'social-sharing' %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endunless %}
+  </div>
 
 
 
@@ -298,86 +203,52 @@
   {% include 'related-products' %}
 </div>
 
-{% if product.available %}
-<script>
-  jQuery(document).ready(function($){
-    if(window.swatch_color || window.swatch_size)
-      roar.createVariantsSwatch({{product | json}}, jQuery('#product .product-sidebar'));
+{% comment %}
+  {% include 'instagram-feed' %}
+  {{ 'instafeed.js' | asset_url | script_tag }}
+{% endcomment %}
 
-    var selectOptionsCallback = function(variant, selector) {
-      // BEGIN SWATCHES
-      // if (variant) {
-      //   for (i=0;i<variant.options.length;i++) {
-      //     if (parseFloat(jQuery.fn.jquery) < 1.6) {
-      //       jQuery('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]').attr('checked', 'checked');
-      //     }
-      //     else {
-      //       jQuery('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]').prop('checked', true);
-      //     }
-      //   }
-      }// END SWATCHES
 
-      roar_pseudo.initProduct();
-
-      var cart = jQuery('#add-to-cart');
-      var price = jQuery('#purchase .detail-price');
-      if (variant && variant.available) {
-        var cart_txt = "{{'products.product.add_to_cart' | t}}";
-
-        if (variant.featured_image) {
-          var originalImage = jQuery("#main-image");
-          var newImage = variant.featured_image;
-          var element = originalImage[0];
-          Shopify.Image.switchImage(newImage, element, function (newImageSizedSrc, newImage, element) {
-            jQuery(element).parents('a').attr('href', newImageSizedSrc);
-            jQuery(element).attr('src', newImageSizedSrc);
-          });
-        }
-
-        cart.removeClass('disabled').removeAttr('disabled').find('.del').html(cart_txt);
-
-        if(variant.compare_at_price == null){
-          price.html('<span class="price">'+Shopify.formatMoney(variant.price, window.money_format)+'</span>');
-          jQuery('.product-label').removeClass('sale');
-        }
-        else {
-          price.html('<span class="price">'+Shopify.formatMoney(variant.price, window.money_format) + '</span>' + '<del class="price_compare">' + Shopify.formatMoney(variant.compare_at_price, window.money_format) + '</del>');
-          jQuery('.product-label').addClass('sale');
-        }
-      }
-      else {
-        var sold_out_txt = "{{'products.product.sold_out' | t}}";
-        var unavailable_txt = "{{'products.product.unavailable' | t}}";
-        cart.addClass('disabled').attr('disabled', 'disabled');
-        var message = variant ? sold_out_txt : unavailable_txt;
-        cart.find('.del').html(message);
-        price.html('<span class="unavailable">' + message + '</span>');
-        jQuery('.product-label').removeClass('sale');
-      }
-      var id = '{{product.id}}';
-      var p = cart.closest('.item-' + id);
-      jQuery('.price-btn .sub_price', p).attr('data-price', variant.price).html(Shopify.formatMoney(variant.price, window.money_format));
-      roar.subPrice(cart, id);
-
-      {% if settings.product_sku_show %}
-      if (variant && variant.sku) {
-        jQuery("#sku").hide();
-      }
-      else{
-        jQuery("#sku").hide();
-      }
-      {% endif %}
-    };
-
-    new Shopify.OptionSelectors("product-select-{{ product.id }}", { product: {{ product | json | remove:'\u003E' | remove:'\u003C' | remove:'\u00a0' }}, onVariantSelected: selectOptionsCallback, enableHistoryState: true });
-
-    {% if product.options.size >= 0 %}
-    jQuery('.selector-wrapper').hide();
-    {% endif %}
-
-    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
-    jQuery('.selector-wrapper').hide();
-    {% endif %}
+{{ 'abigimage.jquery.js' | asset_url | script_tag }}
+<script type="text/javascript">
+  $(document).on('mousemove', '.abigimage-img',function(e){
+      var amountMovedY = (e.pageY * -1 );
+      $(this).css('top', amountMovedY + 'px');
   });
+  
+
+  $.each($('#instafeed a'),function(k,v){
+    width = $(v).width()
+    $(v).css('height',width)
+  })
+  
+  $('.bigImg').abigimage();
+  {% comment %}
+      var feed = new Instafeed({
+        get: 'tagged',
+        tagName: '{{ product.title | downcase | remove: " " }}',
+        // tagName: 'paulandrew',
+        userId: 'paulandrew',
+        limit: 8,
+        after: function(res){
+          $.each($('#instafeed a'),function(k,v){
+            width = $(v).width()
+            $(v).css('height',width)
+          })
+        },
+        resolution: 'low_resolution',
+        accessToken: '409619631.c6264af.07956e7081104e9c94842174d0b835e9'
+    });
+    feed.run();
+    {% endcomment %}
+    $( window ).resize(function() {
+      $.each($('#instafeed a'),function(k,v){
+        width = $(v).width()
+        $(v).css('height',width)
+      })
+    })
+    
+    
+    
+    
 </script>
-{% endif %}

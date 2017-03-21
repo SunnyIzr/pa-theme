@@ -10,16 +10,12 @@
   {% if settings.featured_products_home %}
   <section class="container-fluid">
     <div class="row text-center">
-    {% if settings.featured_products_home_heading != blank %}
-      <h2>{{ settings.featured_products_home_heading }}</h2>
-    {% endif %}
-    {% if settings.featured_products_home_subheading != blank %}
-      <p>{{ settings.featured_products_home_subheading }}</p>
-    {% endif %}
+      <h2>{{ settings.featured_collection_header_text }}</h2>
+      <p>{{ settings.featured_collection_subheader_text }}</p>
     </div>
 
     <div id="featured-products" class="row cat-grid">
-      {% assign collection = collections[settings.featured_products_home_collection] %}
+      {% assign collection = collections[settings.featured_collection] %}
       {% for prod in collection.products limit: settings.featured_products_home_num %}
       <div class="product_item item-{{prod.id}}">
         {% include 'product-item' %}
@@ -32,7 +28,9 @@
   </section>
   {% endif %}
 
+{% comment %}
   {% include 'static-block' %}
+{% endcomment %}
 
 </div>
 

@@ -1,119 +1,128 @@
 <div id="col-main" class="col-xs-24 clearfix contact-wrapper">
   <div class="widget-wrapper page">
     <div class="page_content">
-      <h1>CORPORATE CONTACTS</h1>
+      <h1>{{ settings.contact_header }}</h1>
       <div class="contact-content">
         <div class="visible-xs-block">
           <div class="row">
             <div class="col-xs-24 contact">
-              <h2>HEAD OFFICE</h2>
-              <h3>Paul Andrew</h3>
-              <p>41 W. 58th St. #2A</p>
-              <p>New York, NY 10019</p>
-              <p>tel. 212.371.7171</p>
-              <p><a href="#">info@paulandrew.com</a></p>
+              <h2>{{ settings.contact_1 }}</h2>
+              <h3>{{ settings.contact_1_name }}</h3>
+              <p>{{ settings.contact_1_address_line_1 }}</p>
+              <p>{{ settings.contact_1_address_line_2 }}</p>
+              <p>tel. {{ settings.contact_1_tel }}</p>
+              <p><a href="mailto:{{ settings.contact_1_email }}">{{ settings.contact_1_email }}</a></p>
             </div>
             <div class="col-xs-24 contact">
-              <h2>PRESS - UK</h2>
-              <h3>Nicky Elder</h3>
-              <p><a href="#">nicky@purplePR.com</a></p>
-              <p>tel. +44 0 207 434 7048</p>
-              <p>mobile +44 0 7852 976 511</p>
+              <h2>{{ settings.contact_2 }}</h2>
+              <h3>{{ settings.contact_2_name }}</h3>
+              <p><a href="mailto:{{ settings.contact_2_email }}">{{ settings.contact_2_email }}</a></p>
+              <p>tel. +1 212.371.7171</p>
             </div>
           </div>
 
           <div class="row">
             <div class="col-xs-24 contact">
-              <h2>PRESS - INTERNATIONAL</h2>
-              <h3>Hallie Von Ammon</h3>
-              <p><a href="#">hallie@paulandrew.com</a></p>
-              <p>tel. 212.371.7171</p>
+              <h2>{{ settings.contact_4 }}</h2>
+              <h3>{{ settings.contact_4_name }}</h3>
+              <p><a href="mailto:{{ settings.contact_4_email }}">{{ settings.contact_4_email }}</a></p>
+              <p>tel. {{ settings.contact_4_tel }}</p>
+              <p>mobile {{ settings.contact_4_mobile }}</p>
             </div>
             <div class="col-xs-24 contact">
-              <h2>WHOLESALE</h2>
-              <h3>Justine Liber</h3>
-              <p><a href="#">justine@paulandrew.com</a></p>
-              <p>tel. +33 6 82 56 65 40</p>
+              <h2>{{ settings.contact_3 }}</h2>
+              <h3>{{ settings.contact_3_name }}</h3>
+              <p><a href="mailto:{{ settings.contact_3_email }}">{{ settings.contact_3_email }}</a></p>
+              <p>tel. {{ settings.contact_3_tel }}</p>
             </div>
           </div>
 
           <div class="customer-care">
-            <h2>CUSTOMER CARE</h2>
-            <a href="#">customercare@paulandrew.com</a>
+            <h2>{{ settings.contact_5 }}</h2>
+            <a href="mailto:{{ settings.contact_5_email }}">{{ settings.contact_5_email }}</a>
           </div>
         </div>
 
         <div class="hidden-xs">
           <div class="row">
             <div class="col-xs-8 contact">
-              <h2>HEAD OFFICE</h2>
-              <h3>Paul Andrew</h3>
-              <p>41 W. 58th St. #2A</p>
-              <p>New York, NY 10019</p>
-              <p>tel. 212.371.7171</p>
-              <p><a href="#">info@paulandrew.com</a></p>
+              <h2>{{ settings.contact_1 }}</h2>
+              <h3>{{ settings.contact_1_name }}</h3>
+              <p>{{ settings.contact_1_address_line_1 }}</p>
+              <p>{{ settings.contact_1_address_line_2 }}</p>
+              <p>tel. {{ settings.contact_1_tel }}</p>
+              <p><a href="mailto:{{ settings.contact_1_email }}">{{ settings.contact_1_email }}</a></p>
             </div>
 
             <div class="col-xs-8 contact">
-              <h2>PRESS - UK</h2>
-              <h3>Nicky Elder</h3>
-              <p><a href="#">nicky@purplePR.com</a></p>
-              <p>tel. +44 0 207 434 7048</p>
-              <p>mobile +44 0 7852 976 511</p>
+              <h2>{{ settings.contact_2 }}</h2>
+              <h3>{{ settings.contact_2_name }}</h3>
+              <p><a href="mailto:{{ settings.contact_2_email }}">{{ settings.contact_2_email }}</a></p>
+              <p>tel. +1 212.371.7171</p>
+            </div>
+            <div class="col-xs-8 contact">
+              <h2>{{ settings.contact_3 }}</h2>
+              <h3>{{ settings.contact_3_name }}</h3>
+              <p><a href="mailto:{{ settings.contact_3_email }}">{{ settings.contact_3_email }}</a></p>
+              <p>tel. {{ settings.contact_3_tel }}</p>
             </div>
 
-            <div class="col-xs-8 contact">
-              <h2>PRESS - INTERNATIONAL</h2>
-              <h3>Hallie Von Ammon</h3>
-              <p><a href="#">hallie@paulandrew.com</a></p>
-              <p>tel. 212.371.7171</p>
-            </div>
           </div>
 
           <div class="row">
             <div class="col-xs-8"></div>
+
             <div class="col-xs-8 contact">
-              <h2>WHOLESALE</h2>
-              <h3>Justine Liber</h3>
-              <p><a href="#">justine@paulandrew.com</a></p>
-              <p>tel. +33 6 82 56 65 40</p>
+              <h2>{{ settings.contact_4 }}</h2>
+              <h3>{{ settings.contact_4_name }}</h3>
+              <p><a href="mailto:{{ settings.contact_4_email }}">{{ settings.contact_4_email }}</a></p>
+              <p>tel. {{ settings.contact_4_tel }}</p>
+              <p>mobile {{ settings.contact_4_mobile }}</p>
             </div>
 
             <div class="col-xs-8 contact">
-              <h2>CUSTOMER CARE</h2>
-              <a href="#">info@paulandrew.com</a>
+              <h2>{{ settings.contact_5 }}</h2>
+              <a href="mailto:{{ settings.contact_5_email }}">{{ settings.contact_5_email }}</a>
             </div>
           </div>
         </div>
 
 
         <div class="general-inquries">
-          <h3>GENERAL INQUIRES</h3>
+          <h3>{{ settings.contact_form_header }}</h3>
 
-          <form>
-            <div class="row">
-              <div class="col-sm-12">
-                <input type="text" placeholder="*Name">
-                <input type="email" placeholder="*Email">
-                <input type="text" placeholder="Phone">
+          {% form 'contact' %}
+            
+            {% if form.posted_successfully? %}
+              <div class="successForm feedback">
+                <h4>Thanks for reaching out!</h4>
               </div>
-              <div class="col-sm-12">
-                <textarea placeholder="*Message"></textarea>
+            {% else %}
+              <div class="row">
+                <div class="col-sm-12">
+                  <input type="text" required name='contact[name]' placeholder="*Name">
+                  <input type="email" required name='contact[email]' placeholder="*Email">
+                  <input type="text" required name='contact[phone]' placeholder="Phone">
+                </div>
+                <div class="col-sm-12">
+                  <textarea required name='contact[body]' placeholder="*Message"></textarea>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-20"></div>
-              <div class="col-sm-4">
-                <button name="button">SEND</button>
+              <div class="row">
+                <div class="col-sm-20"></div>
+                <div class="col-sm-4">
+                  <button name="button" type='submit' value="{{ 'contact.form.send' | t }}">SEND</button>
+                </div>
               </div>
-            </div>
-          </form>
+            {% endif %}
+          
+          {% endform %}
         </div>
 
         <div class="authenticity">
-          <h2>PAUL ANDREW AUTHENTICITY</h2>
-          <p>Imitation may be the highest form of flattery - but only authentic Paul Andrew shoes are created with passion, quality materials, and dedication to craftsmanship and engineering.  If you encounter an unauthentic Paul Andrew shoe, please do let us know:</p>
-          <p><a href="#">authenticity@paulandrew.com</a></p>
+          <h2>{{ settings.contact_bottom_header }}</h2>
+          <p>{{ settings.contact_bottom_content }}</p>
+          <p><a href="mailto:info@paulandrew.com">info@paulandrew.com</a></p>
 
           <p>See our full list of authorized retailers:</p>
           <p><a href="" class="retailer">ONLINE</a>

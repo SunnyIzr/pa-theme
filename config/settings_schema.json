@@ -31,6 +31,1039 @@
     ]
   },
   {
+    "name": "PA Custom Homepage",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Top Hero Options"
+      },
+      {
+        "type": "image",
+        "id": "page_home_img_desktop.jpg",
+        "max-width": 1500,
+        "label": "Top Hero Desktop (1500px x 900px)"
+      },
+      {
+        "type": "image",
+        "id": "page_home_img_mobile.jpg",
+        "max-width": 1500,
+        "label": "Top Hero Mobile (750px x 785px)"
+      },
+      {
+        "type": "text",
+        "id": "top_hero_header_text",
+        "label": "Header Text"
+      },
+      {
+        "type": "text",
+        "id": "top_hero_button_text",
+        "label": "Call to Action Button Text"
+      },
+      {
+        "type": "collection",
+        "id": "top_hero_button_link",
+        "label": "Call to Action Button Link"
+      },
+      {
+        "type": "header",
+        "content": "Featured Collection Options"
+      },
+      {
+        "type": "text",
+        "id": "featured_collection_header_text",
+        "label": "Header Text"
+      },
+      {
+        "type": "text",
+        "id": "featured_collection_subheader_text",
+        "label": "Subheader Text"
+      },
+      {
+        "type": "collection",
+        "id": "featured_collection",
+        "label": "Featured Collection"
+      },
+      {
+        "type": "header",
+        "content": "Bottom Hero Options"
+      },
+      {
+        "type": "image",
+        "id": "bottom_hero_desktop.jpg",
+        "max-width": 1500,
+        "label": "Bottom Hero Desktop Version (1500px x 900px)"
+      },
+      {
+        "type": "image",
+        "id": "bottom_hero_mobile.jpg",
+        "max-width": 1500,
+        "label": "Bottom Hero Mobile Version (750px x 785px)"
+      },
+      {
+        "type": "text",
+        "id": "bottom_hero_header_text",
+        "label": "Header Text"
+      },
+      {
+        "type": "text",
+        "id": "bottom_hero_button_text",
+        "label": "Call to Action Button Text"
+      },
+      {
+        "type": "page",
+        "id": "bottom_hero_button_link",
+        "label": "Call to Action Button Link"
+      },
+      {
+        "type": "header",
+        "content": "Bottom Links"
+      },
+      {
+        "type": "text",
+        "id": "bottom_left_link_header_text",
+        "label": "Left Link Header Text"
+      },
+      {
+        "type": "text",
+        "id": "bottom_left_link_subheader_text",
+        "label": "Left Link Subheader Text"
+      },
+      {
+        "type": "image",
+        "id": "bottom_left_link_image.png",
+        "max-width": 1500,
+        "label": "Bottom Left Link Image (230px x 230px)"
+      },
+      {
+        "type": "text",
+        "id": "bottom_left_link",
+        "label": "Left Link"
+      },
+      {
+        "type": "text",
+        "id": "bottom_right_link_header_text",
+        "label": "Right Link Header Text"
+      },
+      {
+        "type": "text",
+        "id": "bottom_right_link_subheader_text",
+        "label": "Right Link Subheader Text"
+      },
+      {
+        "type": "image",
+        "id": "bottom_right_link_image.png",
+        "max-width": 1500,
+        "label": "Bottom Right Link Image (230px x 210px)"
+      },
+      {
+        "type": "text",
+        "id": "bottom_right_link",
+        "label": "Right Link"
+      }
+    ]
+  },
+  {
+    "name": "PA Custom Contact Page",
+    "settings": [
+      {
+        "type": "text",
+        "id": "contact_header",
+        "label": "Header Text"
+      },
+      {
+        "type": "header",
+        "content": "Contact 1"
+      },
+      {
+        "type": "text",
+        "id": "contact_1",
+        "label": "Contact 1"
+      },
+      {
+        "type": "text",
+        "id": "contact_1_name",
+        "label": "Contact Name"
+      },
+      {
+        "type": "text",
+        "id": "contact_1_address_line_1",
+        "label": "Address Line 1"
+      },
+      {
+        "type": "text",
+        "id": "contact_1_address_line_2",
+        "label": "Address Line 2"
+      },
+      {
+        "type": "text",
+        "id": "contact_1_tel",
+        "label": "Phone"
+      },
+      {
+        "type": "text",
+        "id": "contact_1_email",
+        "label": "Email"
+      },
+      {
+        "type": "header",
+        "content": "Contact 2"
+      },
+      {
+        "type": "text",
+        "id": "contact_2",
+        "label": "Contact 2"
+      },
+      {
+        "type": "text",
+        "id": "contact_2_name",
+        "label": "Contact Name"
+      },
+      {
+        "type": "text",
+        "id": "contact_2_tel",
+        "label": "Phone"
+      },
+      {
+        "type": "text",
+        "id": "contact_2_email",
+        "label": "Email"
+      },
+      {
+        "type": "header",
+        "content": "Contact 3"
+      },
+      {
+        "type": "text",
+        "id": "contact_3",
+        "label": "Contact 3"
+      },
+      {
+        "type": "text",
+        "id": "contact_3_name",
+        "label": "Contact Name"
+      },
+      {
+        "type": "text",
+        "id": "contact_3_tel",
+        "label": "Phone"
+      },
+      {
+        "type": "text",
+        "id": "contact_3_email",
+        "label": "Email"
+      },
+      {
+        "type": "header",
+        "content": "Contact 4"
+      },
+      {
+        "type": "text",
+        "id": "contact_4",
+        "label": "Contact 4"
+      },
+      {
+        "type": "text",
+        "id": "contact_4_name",
+        "label": "Contact Name"
+      },
+      {
+        "type": "text",
+        "id": "contact_4_tel",
+        "label": "Phone"
+      },
+      {
+        "type": "text",
+        "id": "contact_4_mobile",
+        "label": "Mobile"
+      },
+      {
+        "type": "text",
+        "id": "contact_4_email",
+        "label": "Email"
+      },
+      {
+        "type": "header",
+        "content": "Contact 5"
+      },
+      {
+        "type": "text",
+        "id": "contact_5",
+        "label": "Contact 5"
+      },
+      {
+        "type": "text",
+        "id": "contact_5_email",
+        "label": "Email"
+      },
+      {
+        "type": "header",
+        "content": "Page Content"
+      },
+      {
+        "type": "text",
+        "id": "contact_form_header",
+        "label": "Contact Form Header"
+      },
+      {
+        "type": "text",
+        "id": "contact_bottom_header",
+        "label": "Bottom Content Header"
+      },
+      {
+        "type": "textarea",
+        "id": "contact_bottom_content",
+        "label": "Bottom Content"
+      }
+    ]
+  },
+  {
+    "name": "PA Custom About Page",
+    "settings": [
+      {
+        "type": "text",
+        "id": "about_quote",
+        "label": "Quote"
+      },
+      {
+        "type": "image",
+        "id": "about_signature.png",
+        "label": "Signature (400px x 286px)"
+      },
+      {
+        "type": "image",
+        "id": "about_hero_desktop.jpg",
+        "label": "Top Hero Desktop Version (1500px x 770px)"
+      },
+      {
+        "type": "image",
+        "id": "about_hero_mobile.png",
+        "label": "Top Hero Mobile Version (749px x 786px)"
+      },
+      {
+        "type": "text",
+        "id": "about_bio_header",
+        "label": "Bio Header"
+      },
+      {
+        "type": "textarea",
+        "id": "about_bio_1",
+        "label": "Bio Paragraph 1"
+      },
+      {
+        "type": "textarea",
+        "id": "about_bio_2",
+        "label": "Bio Paragraph 2"
+      },
+      {
+        "type": "textarea",
+        "id": "about_bio_3",
+        "label": "Bio Paragraph 3"
+      },
+      {
+        "type": "textarea",
+        "id": "about_bio_4",
+        "label": "Bio Paragraph 4"
+      },
+      {
+        "type": "text",
+        "id": "about_accolades_header",
+        "label": "Accolades Header"
+      },
+      {
+        "type": "text",
+        "id": "about_accolades_1",
+        "label": "Accolades 1"
+      },
+      {
+        "type": "text",
+        "id": "about_accolades_2",
+        "label": "Accolades 2"
+      },
+      {
+        "type": "text",
+        "id": "about_accolades_3",
+        "label": "Accolades 3"
+      },
+      {
+        "type": "text",
+        "id": "about_accolades_4",
+        "label": "Accolades 4"
+      },
+      {
+        "type": "text",
+        "id": "about_accolades_5",
+        "label": "Accolades 5"
+      },
+      {
+        "type": "text",
+        "id": "about_mid_hero_header",
+        "label": "About Mid Hero Header"
+      },
+      {
+        "type": "text",
+        "id": "about_mid_hero_subheader",
+        "label": "About Mid Hero Subheader"
+      },
+      {
+        "type": "image",
+        "id": "about_mid_hero_desktop.jpg",
+        "label": "Mid Hero Desktop Version (1500px x 900px)"
+      },
+      {
+        "type": "image",
+        "id": "about_mid_hero_mobile.png",
+        "label": "Mid Hero Mobile Version (749px x 858px)"
+      },
+      {
+        "type": "text",
+        "id": "about_elements_1",
+        "label": "About Elements 1"
+      },
+      {
+        "type": "text",
+        "id": "about_elements_2",
+        "label": "About Elements 2"
+      },
+      {
+        "type": "text",
+        "id": "about_elements_3",
+        "label": "About Elements 3"
+      },
+      {
+        "type": "text",
+        "id": "about_elements_4",
+        "label": "About Elements 4"
+      },
+      {
+        "type": "text",
+        "id": "about_elements_5",
+        "label": "About Elements 5"
+      },
+      {
+        "type": "text",
+        "id": "about_elements_6",
+        "label": "About Elements 6"
+      },
+      {
+        "type": "text",
+        "id": "about_collection_title",
+        "label": "About Collection Title"
+      },
+      {
+        "type": "collection",
+        "id": "about_collection",
+        "label": "About Collection"
+      },
+      {
+        "type": "text",
+        "id": "about_bottom_left_link_header_text",
+        "label": "Left Link Header Text"
+      },
+      {
+        "type": "text",
+        "id": "about_bottom_left_link_subheader_text",
+        "label": "Left Link Subheader Text"
+      },
+      {
+        "type": "image",
+        "id": "about_bottom_left_link_image.png",
+        "max-width": 1500,
+        "label": "Bottom Left Link Image (230px x 230px)"
+      },
+      {
+        "type": "text",
+        "id": "about_bottom_left_link",
+        "label": "Left Link"
+      },
+      {
+        "type": "text",
+        "id": "about_bottom_right_link_header_text",
+        "label": "Right Link Header Text"
+      },
+      {
+        "type": "text",
+        "id": "about_bottom_right_link_subheader_text",
+        "label": "Right Link Subheader Text"
+      },
+      {
+        "type": "image",
+        "id": "about_bottom_right_link_image.png",
+        "max-width": 1500,
+        "label": "Bottom Right Link Image (230px x 210px)"
+      },
+      {
+        "type": "text",
+        "id": "about_bottom_right_link",
+        "label": "Right Link"
+      }
+    ]
+  },
+  {
+    "name": "PA Custom Marketing Template 1",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Hero Image"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp1_hero_desktop.jpg",
+        "label": "Top Hero Desktop Version (1280px x 650)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp1_hero_mobile.jpg",
+        "label": "Top Hero Mobile Version (750px x 785px)"
+      },
+      {
+        "type": "header",
+        "content": "Content Section"
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp1_content_header",
+        "label": "Header"
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp1_content_subheader",
+        "label": "Subheader"
+      },
+      {
+        "type": "textarea",
+        "id": "mktg_temp1_content_body",
+        "label": "Body"
+      },
+      {
+        "type": "header",
+        "content": "Image Grid Section"
+      },
+      {
+        "type": "checkbox",
+        "id": "mktg_temp1_img_grid_display",
+        "label": "Display Image Grid?",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp1_img_grid1.jpg",
+        "label": "Image 1  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp1_img_grid2.jpg",
+        "label": "Image 2  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp1_img_grid3.jpg",
+        "label": "Image 3  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp1_img_grid4.jpg",
+        "label": "Image 4  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp1_img_grid5.jpg",
+        "label": "Image 5  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp1_img_grid6.jpg",
+        "label": "Image 6  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp1_img_grid7.jpg",
+        "label": "Image 7  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp1_img_grid8.jpg",
+        "label": "Image 8  (320px x 320px)"
+      },
+      {
+        "type": "header",
+        "content": "Collection Section"
+      },
+      {
+        "type": "checkbox",
+        "id": "mktg_temp1_collection_display",
+        "label": "Display Collection Section?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp1_collection_header",
+        "label": "Header"
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp1_collection_subheader",
+        "label": "Subheader"
+      },
+      {
+        "type": "collection",
+        "id": "mktg_temp1_collection",
+        "label": "Collection"
+      }
+    ]
+  },
+  {
+    "name": "PA Custom Marketing Template 2",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Hero Image"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp2_hero_desktop.jpg",
+        "label": "Top Hero Desktop Version (1280px x 650)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp2_hero_mobile.jpg",
+        "label": "Top Hero Mobile Version (750px x 785px)"
+      },
+      {
+        "type": "header",
+        "content": "Content Section"
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp2_content_header",
+        "label": "Header"
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp2_content_subheader",
+        "label": "Subheader"
+      },
+      {
+        "type": "textarea",
+        "id": "mktg_temp2_content_body",
+        "label": "Body"
+      },
+      {
+        "type": "header",
+        "content": "Image Grid Section"
+      },
+      {
+        "type": "checkbox",
+        "id": "mktg_temp2_img_grid_display",
+        "label": "Display Image Grid?",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp2_img_grid1.jpg",
+        "label": "Image 1  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp2_img_grid2.jpg",
+        "label": "Image 2  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp2_img_grid3.jpg",
+        "label": "Image 3  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp2_img_grid4.jpg",
+        "label": "Image 4  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp2_img_grid5.jpg",
+        "label": "Image 5  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp2_img_grid6.jpg",
+        "label": "Image 6  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp2_img_grid7.jpg",
+        "label": "Image 7  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp2_img_grid8.jpg",
+        "label": "Image 8  (320px x 320px)"
+      },
+      {
+        "type": "header",
+        "content": "Collection Section"
+      },
+      {
+        "type": "checkbox",
+        "id": "mktg_temp2_collection_display",
+        "label": "Display Collection Section?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp2_collection_header",
+        "label": "Header"
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp2_collection_subheader",
+        "label": "Subheader"
+      },
+      {
+        "type": "collection",
+        "id": "mktg_temp2_collection",
+        "label": "Collection"
+      }
+    ]
+  },
+  {
+    "name": "PA Custom Marketing Template 3",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Hero Image"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp3_hero_desktop.jpg",
+        "label": "Top Hero Desktop Version (1280px x 650)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp3_hero_mobile.jpg",
+        "label": "Top Hero Mobile Version (750px x 785px)"
+      },
+      {
+        "type": "header",
+        "content": "Content Section"
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp3_content_header",
+        "label": "Header"
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp3_content_subheader",
+        "label": "Subheader"
+      },
+      {
+        "type": "textarea",
+        "id": "mktg_temp3_content_body",
+        "label": "Body"
+      },
+      {
+        "type": "header",
+        "content": "Image Grid Section"
+      },
+      {
+        "type": "checkbox",
+        "id": "mktg_temp3_img_grid_display",
+        "label": "Display Image Grid?",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp3_img_grid1.jpg",
+        "label": "Image 1  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp3_img_grid2.jpg",
+        "label": "Image 2  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp3_img_grid3.jpg",
+        "label": "Image 3  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp3_img_grid4.jpg",
+        "label": "Image 4  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp3_img_grid5.jpg",
+        "label": "Image 5  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp3_img_grid6.jpg",
+        "label": "Image 6  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp3_img_grid7.jpg",
+        "label": "Image 7  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp3_img_grid8.jpg",
+        "label": "Image 8  (320px x 320px)"
+      },
+      {
+        "type": "header",
+        "content": "Collection Section"
+      },
+      {
+        "type": "checkbox",
+        "id": "mktg_temp3_collection_display",
+        "label": "Display Collection Section?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp3_collection_header",
+        "label": "Header"
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp3_collection_subheader",
+        "label": "Subheader"
+      },
+      {
+        "type": "collection",
+        "id": "mktg_temp3_collection",
+        "label": "Collection"
+      }
+    ]
+  },
+  {
+    "name": "PA Custom Marketing Template 4",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Hero Image"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp4_hero_desktop.jpg",
+        "label": "Top Hero Desktop Version (1280px x 650)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp4_hero_mobile.jpg",
+        "label": "Top Hero Mobile Version (750px x 785px)"
+      },
+      {
+        "type": "header",
+        "content": "Content Section"
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp4_content_header",
+        "label": "Header"
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp4_content_subheader",
+        "label": "Subheader"
+      },
+      {
+        "type": "textarea",
+        "id": "mktg_temp4_content_body",
+        "label": "Body"
+      },
+      {
+        "type": "header",
+        "content": "Image Grid Section"
+      },
+      {
+        "type": "checkbox",
+        "id": "mktg_temp4_img_grid_display",
+        "label": "Display Image Grid?",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp4_img_grid1.jpg",
+        "label": "Image 1  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp4_img_grid2.jpg",
+        "label": "Image 2  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp4_img_grid3.jpg",
+        "label": "Image 3  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp4_img_grid4.jpg",
+        "label": "Image 4  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp4_img_grid5.jpg",
+        "label": "Image 5  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp4_img_grid6.jpg",
+        "label": "Image 6  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp4_img_grid7.jpg",
+        "label": "Image 7  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp4_img_grid8.jpg",
+        "label": "Image 8  (320px x 320px)"
+      },
+      {
+        "type": "header",
+        "content": "Collection Section"
+      },
+      {
+        "type": "checkbox",
+        "id": "mktg_temp4_collection_display",
+        "label": "Display Collection Section?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp4_collection_header",
+        "label": "Header"
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp4_collection_subheader",
+        "label": "Subheader"
+      },
+      {
+        "type": "collection",
+        "id": "mktg_temp4_collection",
+        "label": "Collection"
+      }
+    ]
+  },
+  {
+    "name": "PA Custom Marketing Template 5",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Hero Image"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp5_hero_desktop.jpg",
+        "label": "Top Hero Desktop Version (1280px x 650)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp5_hero_mobile.jpg",
+        "label": "Top Hero Mobile Version (750px x 785px)"
+      },
+      {
+        "type": "header",
+        "content": "Content Section"
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp5_content_header",
+        "label": "Header"
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp5_content_subheader",
+        "label": "Subheader"
+      },
+      {
+        "type": "textarea",
+        "id": "mktg_temp5_content_body",
+        "label": "Body"
+      },
+      {
+        "type": "header",
+        "content": "Image Grid Section"
+      },
+      {
+        "type": "checkbox",
+        "id": "mktg_temp5_img_grid_display",
+        "label": "Display Image Grid?",
+        "default": true
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp5_img_grid1.jpg",
+        "label": "Image 1  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp5_img_grid2.jpg",
+        "label": "Image 2  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp5_img_grid3.jpg",
+        "label": "Image 3  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp5_img_grid4.jpg",
+        "label": "Image 4  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp5_img_grid5.jpg",
+        "label": "Image 5  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp5_img_grid6.jpg",
+        "label": "Image 6  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp5_img_grid7.jpg",
+        "label": "Image 7  (320px x 320px)"
+      },
+      {
+        "type": "image",
+        "id": "mktg_temp5_img_grid8.jpg",
+        "label": "Image 8  (320px x 320px)"
+      },
+      {
+        "type": "header",
+        "content": "Collection Section"
+      },
+      {
+        "type": "checkbox",
+        "id": "mktg_temp5_collection_display",
+        "label": "Display Collection Section?",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp5_collection_header",
+        "label": "Header"
+      },
+      {
+        "type": "text",
+        "id": "mktg_temp5_collection_subheader",
+        "label": "Subheader"
+      },
+      {
+        "type": "collection",
+        "id": "mktg_temp5_collection",
+        "label": "Collection"
+      }
+    ]
+  },
+  {
     "name": "Colors, Typography",
     "settings": [
       {
@@ -3431,94 +4464,6 @@
     ]
   },
   {
-    "name": "Homepage",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Homepage Options"
-      },
-      {
-        "type": "page",
-        "id": "page_home",
-        "label": "Page to use:"
-      },
-      {
-        "type": "image",
-        "id": "page_home_img.png",
-        "label": "Upload"
-      },
-      {
-        "type": "header",
-        "content": "Featured Products"
-      },
-      {
-        "type": "checkbox",
-        "id": "featured_products_home",
-        "label": "Show this widget?",
-        "default": true
-      },
-      {
-        "type": "text",
-        "id": "featured_products_home_heading",
-        "label": "Featured Products Heading",
-        "default": "Featured Products"
-      },
-      {
-        "type": "text",
-        "id": "featured_products_home_subheading",
-        "label": "Featured Products Sub-heading",
-        "default": "Paul's top picks."
-      },
-      {
-        "type": "text",
-        "id": "featured_products_home_num",
-        "label": "Number of featured products to display",
-        "default": "4"
-      },
-      {
-        "type": "collection",
-        "id": "featured_products_home_collection",
-        "label": "Collection to use:"
-      },
-      {
-        "type": "header",
-        "content": "Static Call-to-act Block"
-      },
-      {
-        "type": "checkbox",
-        "id": "static_enabel",
-        "label": "Show?",
-        "default": true
-      },
-      {
-        "type": "image",
-        "id": "static_bg.jpg",
-        "label": "Background image",
-        "max-width": 1380
-      },
-      {
-        "type": "text",
-        "id": "static_video",
-        "label": "Background video (.MP4)"
-      },
-      {
-        "type": "text",
-        "id": "static_heading",
-        "label": "Heading"
-      },
-      {
-        "type": "text",
-        "id": "static_action",
-        "label": "Call to action"
-      },
-      {
-        "type": "text",
-        "id": "static_action_link",
-        "label": "Link to"
-      }
-    ]
-  },
-  {
     "name": "Collection Page",
     "settings": [
       {
@@ -4382,280 +5327,6 @@
         "type": "text",
         "id": "blog_social_heading",
         "label": "Heading"
-      }
-    ]
-  },
-  {
-    "name": "Contact Page",
-    "settings": [
-      {
-        "type": "text",
-        "id": "contact_map_heading",
-        "label": "Heading",
-        "default": "We'd Love to Hear From You, Lets Get In Touch!"
-      },
-      {
-        "type": "checkbox",
-        "id": "contact_map",
-        "label": "Show contact map",
-        "default": true
-      },
-      {
-        "type": "select",
-        "id": "contact_type",
-        "label": "Map type",
-        "options": [
-          {
-            "value": "ROADMAP",
-            "label": "Normal map"
-          },
-          {
-            "value": "SATELLITE",
-            "label": "Satellite"
-          },
-          {
-            "value": "HYBRID",
-            "label": "Hybrid"
-          },
-          {
-            "value": "TERRAIN",
-            "label": "Terrain"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "contact_zoom",
-        "label": "Zoom level",
-        "options": [
-          {
-            "value": "0",
-            "label": "0"
-          },
-          {
-            "value": "1",
-            "label": "1"
-          },
-          {
-            "value": "2",
-            "label": "2"
-          },
-          {
-            "value": "3",
-            "label": "3"
-          },
-          {
-            "value": "4",
-            "label": "4"
-          },
-          {
-            "value": "5",
-            "label": "5"
-          },
-          {
-            "value": "6",
-            "label": "6"
-          },
-          {
-            "value": "7",
-            "label": "7"
-          },
-          {
-            "value": "8",
-            "label": "8"
-          },
-          {
-            "value": "9",
-            "label": "9"
-          },
-          {
-            "value": "10",
-            "label": "10"
-          },
-          {
-            "value": "11",
-            "label": "11"
-          },
-          {
-            "value": "12",
-            "label": "12"
-          },
-          {
-            "value": "13",
-            "label": "13"
-          },
-          {
-            "value": "14",
-            "label": "14"
-          },
-          {
-            "value": "15",
-            "label": "15"
-          },
-          {
-            "value": "16",
-            "label": "16"
-          },
-          {
-            "value": "17",
-            "label": "17"
-          },
-          {
-            "value": "18",
-            "label": "18"
-          },
-          {
-            "value": "19",
-            "label": "19"
-          },
-          {
-            "value": "20",
-            "label": "20"
-          },
-          {
-            "value": "21",
-            "label": "21"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "id": "contact_address",
-        "label": "Map address"
-      },
-      {
-        "type": "checkbox",
-        "id": "contact_scroll",
-        "label": "Scroll wheel",
-        "default": true
-      },
-      {
-        "type": "radio",
-        "id": "contact_map_placement",
-        "label": "Contact map placement",
-        "options": [
-          {
-            "value": "full-width",
-            "label": "Full width"
-          },
-          {
-            "value": "within-container",
-            "label": "Within container"
-          }
-        ],
-        "default": "full-width"
-      },
-      {
-        "type": "paragraph",
-        "content": "Contact Information"
-      },
-      {
-        "type": "checkbox",
-        "id": "contact_info_show",
-        "label": "Show this widget?",
-        "default": true
-      },
-      {
-        "type": "text",
-        "id": "contact_info_heading",
-        "label": "Heading",
-        "default": "Contact Info"
-      },
-      {
-        "type": "text",
-        "id": "contact_info_address",
-        "label": "Address"
-      },
-      {
-        "type": "text",
-        "id": "contact_info_phone",
-        "label": "Phone"
-      },
-      {
-        "type": "text",
-        "id": "contact_info_email",
-        "label": "Email"
-      },
-      {
-        "type": "text",
-        "id": "contact_info_other",
-        "label": "Other"
-      },
-      {
-        "type": "paragraph",
-        "content": "Get Social"
-      },
-      {
-        "type": "checkbox",
-        "id": "contact_social_show",
-        "label": "Show this widget?",
-        "default": true
-      },
-      {
-        "type": "text",
-        "id": "contact_social_heading",
-        "label": "Heading",
-        "default": "Get Social"
-      },
-      {
-        "type": "checkbox",
-        "id": "contact_social_facebook_show",
-        "label": "Facebook",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "contact_social_twitter_show",
-        "label": "Twitter",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "contact_social_pinterest_show",
-        "label": "Pinterest",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "contact_social_google_show",
-        "label": "Google+",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "contact_social_youtube_show",
-        "label": "Youtube",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "contact_social_vimeo_show",
-        "label": "Vimeo",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "contact_social_flickr_show",
-        "label": "Flickr",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "contact_social_instagram_show",
-        "label": "Instagram",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "contact_social_tumblr_show",
-        "label": "Tumblr",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "contact_social_rss_show",
-        "label": "RSS",
-        "default": true
       }
     ]
   },

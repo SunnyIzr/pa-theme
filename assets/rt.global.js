@@ -223,4 +223,4 @@ var GLOBAL = {
     };
 $(document).ready(UTIL.loadEvents);
 
-new UISearch( document.getElementById( 'sb-search' ) );
+// new UISearch( document.getElementById( 'sb-search' ) );

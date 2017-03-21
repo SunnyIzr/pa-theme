@@ -13,11 +13,6 @@
 <div class="social-icons" data-permalink="{{ permalinkURL }}">
   <ul class="list-inline">
     
-    <li>
-      <a target="_blank" href="//www.facebook.com/sharer.php?u={{ permalinkURL }}" class="social-wrapper">
-        <span class="social-icon"><i class="icomoon-instagram"></i></span>
-      </a>
-    </li>
     
     {% if settings.share_facebook %}
     <li>
@@ -44,6 +39,11 @@
     </li>
     {% endif %}
     
+    <li>
+      <a href="mailto:?body={{product.title}} ({{shop.url}}{{product.url}})" class="social-wrapper">
+        <span class="social-icon"><i class="fa fa-envelope-o"></i></span>
+      </a>
+    </li>
 
     
 

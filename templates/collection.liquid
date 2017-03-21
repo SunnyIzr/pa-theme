@@ -4,49 +4,317 @@
     {% if collection.products.size > 0 %}
     <div class="row cat-grid">
       
-      {% for prod in collection.products %}
-        {% if  forloop.index == 5 and paginate.current_page == 1 %}
-          
-          {% if collection.handle == 'pre-spring-2016' %}
-            {% include 'collection-block-mobile' %}
-          {% endif %}
-        
-        {% endif %}
-        
-        {% if  forloop.index == 3 and paginate.current_page == 2 %}
-          
-          {% if collection.handle == 'pre-spring-2016' %}
-            {% include 'collection-block-mobile' %}
-          {% endif %}
-        
-        {% endif %}
-        
-        {% if  forloop.index == 6 and paginate.current_page == 2 %}
-          
-          {% if collection.handle == 'pre-spring-2016' %}
-            {% include 'collection-block' %}
-          {% endif %}
-          
-        {% endif %}
-        {% if  forloop.index == 4 and paginate.current_page == 4 %}
-          
-          {% if collection.handle == 'pre-spring-2016' %}
-            {% include 'collection-block' %}
-          {% endif %}
-          
-        {% endif %}
-      {% comment %}
-      {% endcomment %}
-     
       
-        <div class="product_item item-{{prod.id}}">
+      <!-- Collection Blocks -->
+      {% for prod in collection.products %}
+      
+  
+        {% unless current_tags %}
+
+          <!-- Mobile Block 1 Row 5 -->
+          {% if  forloop.index == 1 and paginate.current_page == 2 %}
+            
+            {% if collection.handle == 'pre-spring-2016' %}
+              {% include 'collection-block-ps1', platform: 'mobile' %}
+            {% elsif collection.handle == 'spring-summer-2016' %}
+              {% include 'collection-block-ss1', platform: 'mobile' %}
+            {% elsif collection.handle == 'autumn-winter-2016' %}
+              {% include 'collection-block-aw1', platform: 'mobile' %}
+            {% elsif collection.handle == 'mens-autumn-winter-2016' %}
+              {% include 'collection-block-maw1', platform: 'mobile' %}
+            {% elsif collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf1', platform: 'mobile' %}
+            {% elsif collection.handle == 'mens-spring-summer-2017' %}  
+              {% include 'collection-block-ms17-1', platform: 'mobile' %}
+            {% elsif collection.handle == 'spring-summer-2017' %}  
+              {% include 'collection-block-ss17-1', platform: 'mobile' %}
+            {% elsif collection.handle == 'pre-spring-2017' %}    
+              {% include 'collection-block-ps17-1', platform: 'mobile' %}
+            {% endif %}
+          
+          {% endif %}
+          
+          <!-- Mobile Block 2 Row 10 -->
+          {% if  forloop.index == 1 and paginate.current_page == 3 %}
+            
+            {% if collection.handle == 'pre-spring-2016' %}
+              {% include 'collection-block-ps2', platform: 'mobile' %}
+            {% elsif collection.handle == 'spring-summer-2016' %}
+              {% include 'collection-block-ss2', platform: 'mobile' %}
+            {% elsif collection.handle == 'autumn-winter-2016' %}
+              {% include 'collection-block-aw2', platform: 'mobile' %}
+            {% elsif collection.handle == 'mens-autumn-winter-2016' %}
+              {% include 'collection-block-maw2', platform: 'mobile' %}
+            {% elsif collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf2', platform: 'mobile' %}
+            {% elsif collection.handle == 'mens-spring-summer-2017' %}  
+              {% include 'collection-block-ms17-2', platform: 'mobile' %}
+            {% elsif collection.handle == 'spring-summer-2017' %}  
+              {% include 'collection-block-ss17-2', platform: 'mobile' %}
+            {% elsif collection.handle == 'pre-spring-2017' %}    
+              {% include 'collection-block-ps17-2', platform: 'mobile' %}
+            
+            
+            {% endif %}
+          
+          {% endif %}
+          
+          <!-- Mobile Block 3 Row 15 -->
+          {% if  forloop.index == 1 and paginate.current_page == 4 %}
+            
+            {% if collection.handle == 'pre-spring-2016' %}
+              {% include 'collection-block-ps3', platform: 'mobile' %}
+            {% elsif collection.handle == 'spring-summer-2016' %}
+              {% include 'collection-block-ss3', platform: 'mobile' %}
+            {% elsif collection.handle == 'autumn-winter-2016' %}
+              {% include 'collection-block-aw3', platform: 'mobile' %}
+            {% elsif collection.handle == 'mens-autumn-winter-2016' %}
+              {% include 'collection-block-maw3', platform: 'mobile' %}
+            {% elsif collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf3', platform: 'mobile' %}
+            {% elsif collection.handle == 'mens-spring-summer-2017' %}  
+              {% include 'collection-block-ms17-3', platform: 'mobile' %}
+            {% elsif collection.handle == 'spring-summer-2017' %}  
+              {% include 'collection-block-ss17-3', platform: 'mobile' %}
+            {% elsif collection.handle == 'pre-spring-2017' %}    
+              {% include 'collection-block-ps17-3', platform: 'mobile' %}
+            {% endif %}
+          
+          {% endif %}
+          
+          <!-- Mobile Block 4 Row 20 -->
+          {% if  forloop.index == 1 and paginate.current_page == 5 %}
+            
+            {% if collection.handle == 'pre-spring-2016' %}
+              {% include 'collection-block-ps4', platform: 'mobile' %}
+            {% elsif collection.handle == 'spring-summer-2016' %}
+              {% include 'collection-block-ss4', platform: 'mobile' %}
+            {% elsif collection.handle == 'autumn-winter-2016' %}
+              {% include 'collection-block-aw4', platform: 'mobile' %}
+            {% elsif collection.handle == 'mens-autumn-winter-2016' %}
+              {% include 'collection-block-maw4', platform: 'mobile' %}
+            {% elsif collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf4', platform: 'mobile' %}
+            {% elsif collection.handle == 'mens-spring-summer-2017' %}  
+              {% include 'collection-block-ms17-4', platform: 'mobile' %}
+            {% elsif collection.handle == 'spring-summer-2017' %}  
+              {% include 'collection-block-ss17-4', platform: 'mobile' %}
+            {% elsif collection.handle == 'pre-spring-2017' %}    
+              {% include 'collection-block-ps17-4', platform: 'mobile' %}
+            {% endif %}
+          
+          {% endif %}
+          
+          <!-- Mobile Block 5 Row 25 -->
+          {% if  forloop.index == 1 and paginate.current_page == 6 %}
+            
+            {% if collection.handle == 'autumn-winter-2016' %}
+              {% include 'collection-block-aw5', platform: 'mobile' %}
+            {% elsif collection.handle == 'mens-autumn-winter-2016' %}
+              {% include 'collection-block-maw5', platform: 'mobile' %}
+            {% elsif collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf5', platform: 'mobile' %}
+            {% elsif collection.handle == 'mens-spring-summer-2017' %}  
+              {% include 'collection-block-ms17-5', platform: 'mobile' %}
+            {% elsif collection.handle == 'spring-summer-2017' %}  
+              {% include 'collection-block-ss17-5', platform: 'mobile' %}
+            {% elsif collection.handle == 'pre-spring-2017' %}    
+              {% include 'collection-block-ps17-5', platform: 'mobile' %}
+            {% endif %}
+          
+          {% endif %}
+          
+          <!-- Mobile Block 6 Row 30 -->
+          {% if  forloop.index == 1 and paginate.current_page == 7 %}
+            {% if collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf6', platform: 'mobile' %}
+            {% elsif collection.handle == 'mens-spring-summer-2017' %}
+              {% include 'collection-block-ms17-6', platform: 'mobile' %}
+            {% endif %}
+          {% endif %}
+          
+          {% if  forloop.index == 1 and paginate.current_page == 8 %}
+            {% if collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf7', platform: 'mobile' %}
+            {% endif %}
+          {% endif %}
+          
+          {% if  forloop.index == 1 and paginate.current_page == 9 %}
+            {% if collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf8', platform: 'mobile' %}
+            {% endif %}
+          {% endif %}
+          
+          
+          {% if  forloop.index == 1 and paginate.current_page == 10 %}
+            {% if collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf9', platform: 'mobile' %}
+            {% endif %}
+          {% endif %}
+          
+          
+          
+          <!-- Desktop Block 1 Row 3  -->
+          {% if  forloop.index == 2 and paginate.current_page == 2 %}
+            
+            {% if collection.handle == 'pre-spring-2016' %}
+              {% include 'collection-block-ps1', platform: 'desktop' %}
+            {% elsif collection.handle == 'spring-summer-2016' %}
+              {% include 'collection-block-ss1', platform: 'desktop' %}
+            {% elsif collection.handle == 'autumn-winter-2016' %}
+              {% include 'collection-block-aw1', platform: 'desktop' %}
+            {% elsif collection.handle == 'mens-autumn-winter-2016' %}
+              {% include 'collection-block-maw1', platform: 'desktop' %}
+            {% elsif collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf1', platform: 'desktop' %}
+            {% elsif collection.handle == 'mens-spring-summer-2017' %}
+              {% include 'collection-block-ms17-1', platform: 'desktop' %}
+            {% elsif collection.handle == 'spring-summer-2017' %}
+              {% include 'collection-block-ss17-1', platform: 'desktop' %}
+            {% elsif collection.handle == 'pre-spring-2017' %}
+              {% include 'collection-block-ps17-1', platform: 'desktop' %}
+            {% endif %}
+            
+          {% endif %}
+          
+          <!-- Desktop Block 2 Row 6 -->
+          {% if  forloop.index == 4 and paginate.current_page == 3 %}
+            
+            {% if collection.handle == 'pre-spring-2016' %}
+              {% include 'collection-block-ps2', platform: 'desktop' %}
+            {% elsif collection.handle == 'spring-summer-2016' %}
+              {% include 'collection-block-ss2', platform: 'desktop' %}
+            {% elsif collection.handle == 'autumn-winter-2016' %}
+              {% include 'collection-block-aw2', platform: 'desktop' %}
+            {% elsif collection.handle == 'mens-autumn-winter-2016' %}
+              {% include 'collection-block-maw2', platform: 'desktop' %}
+            {% elsif collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf2', platform: 'desktop' %}
+            {% elsif collection.handle == 'mens-spring-summer-2017' %}
+              {% include 'collection-block-ms17-2', platform: 'desktop' %}
+            {% elsif collection.handle == 'spring-summer-2017' %}
+              {% include 'collection-block-ss17-2', platform: 'desktop' %}
+            {% elsif collection.handle == 'pre-spring-2017' %}
+              {% include 'collection-block-ps17-2', platform: 'desktop' %}
+            {% endif %}
+            
+          {% endif %}
+          
+          <!-- Desktop Block 3 Row 9 -->
+          {% if  forloop.index == 6 and paginate.current_page == 4 %}
+            
+            {% if collection.handle == 'pre-spring-2016' %}
+              {% include 'collection-block-ps3', platform: 'desktop' %}
+            {% elsif collection.handle == 'spring-summer-2016' %}
+              {% include 'collection-block-ss3', platform: 'desktop' %}
+            {% elsif collection.handle == 'autumn-winter-2016' %}
+              {% include 'collection-block-aw3', platform: 'desktop' %}
+            {% elsif collection.handle == 'mens-autumn-winter-2016' %}
+              {% include 'collection-block-maw3', platform: 'desktop' %}
+            {% elsif collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf3', platform: 'desktop' %}
+            {% elsif collection.handle == 'mens-spring-summer-2017' %}
+              {% include 'collection-block-ms17-3', platform: 'desktop' %}
+            {% elsif collection.handle == 'spring-summer-2017' %}
+              {% include 'collection-block-ss17-3', platform: 'desktop' %}
+            {% elsif collection.handle == 'pre-spring-2017' %}
+              {% include 'collection-block-ps17-3', platform: 'desktop' %}
+            {% endif %}
+            
+          {% endif %}
+          
+          <!-- Desktop Block 4 Row 12 -->
+          {% if  forloop.index == 8 and paginate.current_page == 5 %}
+            
+            {% if collection.handle == 'pre-spring-2016' %}
+              {% include 'collection-block-ps4', platform: 'desktop' %}
+            {% elsif collection.handle == 'spring-summer-2016' %}
+              {% include 'collection-block-ss4', platform: 'desktop' %}
+            {% elsif collection.handle == 'autumn-winter-2016' %}
+              {% include 'collection-block-aw4', platform: 'desktop' %}
+            {% elsif collection.handle == 'mens-autumn-winter-2016' %}
+              {% include 'collection-block-maw4', platform: 'desktop' %}
+            {% elsif collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf4', platform: 'desktop' %}
+            {% elsif collection.handle == 'mens-spring-summer-2017' %}
+              {% include 'collection-block-ms17-4', platform: 'desktop' %}
+            {% elsif collection.handle == 'spring-summer-2017' %}
+              {% include 'collection-block-ss17-4', platform: 'desktop' %}
+            {% elsif collection.handle == 'pre-spring-2017' %}
+              {% include 'collection-block-ps17-4', platform: 'desktop' %}
+            {% endif %}
+            
+          {% endif %}
+          
+          <!-- Desktop Block 5 Row 15 -->
+          {% if  forloop.index == 2 and paginate.current_page == 7 %}
+            
+            
+            {% if collection.handle == 'autumn-winter-2016' %}
+              {% include 'collection-block-aw5', platform: 'desktop' %}
+            {% elsif collection.handle == 'mens-autumn-winter-2016' %}
+              {% include 'collection-block-maw5', platform: 'desktop' %}
+            {% elsif collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf5', platform: 'desktop' %}
+            {% elsif collection.handle == 'mens-spring-summer-2017' %}
+              {% include 'collection-block-ms17-5', platform: 'desktop' %}
+            {% elsif collection.handle == 'spring-summer-2017' %}
+              {% include 'collection-block-ss17-5', platform: 'desktop' %}
+            {% elsif collection.handle == 'pre-spring-2017' %}
+              {% include 'collection-block-ps17-5', platform: 'desktop' %}
+            {% endif %}
+            
+          {% endif %}
+          
+          
+          <!-- Desktop Block 6 Row 18 -->
+          {% if  forloop.index == 4 and paginate.current_page == 8 %}
+            
+            {% if collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf6', platform: 'desktop' %}
+            {% elsif collection.handle == 'mens-spring-summer-2017' %}
+              {% include 'collection-block-ms17-6', platform: 'desktop' %}
+            {% endif %}
+            
+          {% endif %}
+          
+          
+          {% if  forloop.index == 6 and paginate.current_page == 9 %}
+            
+            {% if collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf7', platform: 'desktop' %}
+            {% endif %}
+            
+          {% endif %}
+          
+          {% if  forloop.index == 8 and paginate.current_page == 10 %}
+            
+            {% if collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf8', platform: 'desktop' %}
+            {% endif %}
+            
+          {% endif %}
+          
+          {% if  forloop.index == 2 and paginate.current_page == 12 %}
+            
+            {% if collection.handle == 'pre-fall-2016' %}
+              {% include 'collection-block-pf9', platform: 'desktop' %}
+            {% endif %}
+            
+          {% endif %}
+          
+        
+        {% endunless %}
+      
+      
+        <div class="product_item item-{{prod.id}} animated" data-animation='fadeInUp' data-delay='100'>
         
           {% include 'product-item' %}
             
         </div>
      
       {% endfor %}
-    
+  
 
     </div>
     
@@ -56,9 +324,6 @@
     {% endif %}
     
   </div>
-  
- 
-
   
   <div class="advanced-pagination">
     {% if settings.collection_infinite_scoll %}
@@ -79,5 +344,57 @@
     {% endif %}
   </div>
 {% endpaginate %}
+  
+  <script>
+  $(document).ready(function(){
+    $(".quickview_modal:first .prev").css('opacity','0.0')
+    $(".quickview_modal:first .dropdown-sep").css('opacity','0.0')
+  })
+  
+  
+  $(".nav-tabs li").click(function(e){
+    target = $(this).data('target')
+    $(this).parent().parent().find('.tab-pane').removeClass('active')
+    $(this).parent().parent().find(target).addClass('active')
+  })
 
- 
+  function nextQuickView(){
+    prodId = $('.quickview_modal.in').attr('id').replace("quickView-",'')
+    product = $('.item-' + prodId)
+    nextProduct = product.next()
+    if ( nextProduct.hasClass("collect-block") ){
+      nextProduct = nextProduct.next()
+      if ( nextProduct.hasClass("collect-block") ){
+        nextProduct = nextProduct.next()
+      }
+    }
+    $('.quickview_modal.in').modal('hide')
+    nextProduct.find('.quick-view-link').click()
+  }
+  
+  function prevQuickView(){
+    prodId = $('.quickview_modal.in').attr('id').replace("quickView-",'')
+    product = $('.item-' + prodId)
+    prevProduct = product.prev()
+    if ( prevProduct.hasClass("collect-block") ){
+      prevProduct = prevProduct.prev()
+      if ( prevProduct.hasClass("collect-block") ){
+        prevProduct = prevProduct.prev()
+      }
+    }
+    $('.quickview_modal.in').modal('hide')
+    prevProduct.find('.quick-view-link').click()
+  }
+  
+  $(document).on('click','.prevQuickView',function(e){
+    e.preventDefault();
+    prevQuickView()
+  })
+  $(document).on('click','.nextQuickView',function(e){
+    e.preventDefault();
+    nextQuickView()
+  })
+  
+  
+  </script>
+  

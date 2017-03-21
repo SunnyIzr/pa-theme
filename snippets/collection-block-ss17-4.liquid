@@ -1,0 +1,50 @@
+<div class="product_item collect-block {% if platform == 'desktop' %}hidden-xs{%else%}visible-xs{%endif%}">
+  <div class="product">
+    
+    <div class="product-container">
+  
+        
+        
+      <div id='carousel-aw1-{{ platform }}' class='block-slides carousel slide' data-ride='carousel'>
+        <div class='carousel-inner' role='listbox'>
+            
+          <div class='block-slide item active'>
+            <img class='collection-background' src="{{ 'ss17-block4.jpg' | asset_url }}">
+            <div class='story-block'>
+              <div class='inner-content'>
+
+                <h4>Italian Vachetta</h4>
+                <div class='sep'></div>
+                <p>Italian vachetta leather has long been lauded for its vibrancy and longevity. For Spring/Summer 2017 Paul Andrew developed a range of hues inspired by Mid-century Modern art and architecture.</p>
+              </div>
+            </div>
+          </div>
+
+        
+        </div>
+        
+      
+      </div>
+
+      <div class="product-wrap">
+        <div class="product-image">
+          <div class="wrap">
+            {% include 'spinner2' %}
+            <a>
+              <img style='' src="{{ 'block-ph.jpg' | asset_url }}" class="main-image img-responsive" alt="{{ prod.title }}" />
+            </a>
+          </div>
+        </div>
+        <div class="product-content">
+          <div class="inner">
+            <div class="product-title">
+              <a href="#">
+                Collection Block
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,44 +1,273 @@
-<div id="col-main" class="page-search col-md-24">
-  <div class="row">
-    <div class="col-md-18">
-      {% capture search_title %}{{ search.terms | escape }}{% endcapture %}
-      <h2 class="title">{{ 'search.general.title' | t: title: search_title }}</h2>
-    </div>
-    <div class="col-md-6">
-      <div class="search-wrap">
-        <form action="/search" method="get">
-          <input type="text" name="q" value="" accesskey="4" autocomplete="off" placeholder="{{settings.search_searchtext}}" />
-          <!--input type="text" value="search" id="search" name="q" onclick="javascript:if($(this).val() == 'search') {$(this).val() = '';} return false;" /-->
-          <button type="submit" class="btn btn-1">
-            <i class="icon-magnifier"></i>
-          </button>
-        </form>
-      </div>
-    </div>
+<div class="row">
+  <div class="col-md-18">
+    {% capture search_title %}{{ search.terms | escape }}{% endcapture %}
+    <h2 class="title">{{ 'search.general.title' | t: title: search_title }}</h2>
   </div>
+</div>
+
+
+{% unless search.results.first.url contains 'blogs' %}
+<div id="col-main" class="collection-page search-template col-md-24">
 
   <div id="sandBox">
     {% if search.performed and search.results.size > 0 %}
-    {% paginate search.results by settings.collection_pagination_limit %}
+    {% paginate search.results by 50 %}
+    
 
     <div class="cat-grid row">
       {% for prod in search.results %}
-      <div class="product_item item-{{prod.id}}">
-        {% if prod.url contains 'products' %}
-        {% include 'product-item' %}
-        {% else %}
-        {% include 'other-item' %}
-        {% endif %}
-      </div>
+      {% if prod.url contains 'products' %}
+        <div class="product_item item-{{prod.id}}">
+          {% include 'product-item' %}
+        </div>
+      {% endif %}
       {% endfor %}
     </div>
     
+    
     {% include 'pagination' %}
     {% endpaginate %}
-
-    {% else %}
-    <p class="empty">{{ 'search.general.no_products' | t: title: search_title }}</p>
-    {% include 'collection-default' %}
     {% endif %}
   </div>
+  
+  
+  <div class="press-page-content">
+    
+  </div>
 </div>
+
+<script>
+  function getBlogArticles(){
+    url = '/search?type=article&q={{ search.terms }}'
+    jQuery.ajax({
+      type: "get",
+      url: url,
+      success: function(res) {
+        console.log(res)
+        window.res = res
+        $('.press-page-content').html($(res).find('.press-page-content').html())
+        
+        $('.carousel-inner img').addClass('item');
+        $(".carousel-inner img:nth-child(1)").addClass('active')
+    
+        $('.carousel-inner').each(function(k,v){
+          if ( $(v).find('.item').size() < 2 ){
+            $(v).parent().parent().find('.carousel-control').hide()
+          }
+        })
+      }
+    })
+  }
+  
+  getBlogArticles()
+
+</script>
+
+
+{% else %}
+
+
+
+  {% paginate search.results by 50 %}
+
+  {% assign articles = search.results %}
+
+  
+  {% assign article_ids = articles | map: 'id' %}
+  {% assign indices = '' %}
+
+  {% for article_id in article_ids %}
+    {% assign indices = indices | append: forloop.index0 } | append: ',' %} 
+  {% endfor %}
+
+
+  {% assign index_ary = indices | split: ','  %}
+
+
+  {% for index in index_ary %}
+      {% assign mod = forloop.index0 | modulo: 2 %}
+      {% if mod == 0 %}
+        {% assign ids = ids | append: index | append: ',' %}
+      {% elsif mod == 1 %}
+        {% assign ids = ids | append: index | append: '|' %}
+      {% endif %}
+  {% endfor %}
+
+
+  {% assign rows = ids | split: '|' %}
+
+  <div class="press-page-content" style='border-top: 1px solid #fff;'>
+    
+    <div class="visible-xs-block panel-group" id="mobile-accordion" aria-multiselectable="true">
+    
+      {% for article in articles %}
+      {% assign mod = forloop.index | modulo: 2 %}
+      {% assign content = article.content | split: '</p>' | first | strip_html %}
+      {% assign images = article.content | split: '<p>' | last | remove: '</p>' %}
+      
+      <div class="panel panel-default">
+        <div id="headingOne" class="row press press-wrapper">
+          <div class="col-xs-12 {% if mod == 0 %} col-xs-push-12 {% endif %} press">
+            <a data-toggle="collapse" class='collapsed' data-parent="#mobile-accordion" href="#mobileExpandDetail-{{ article.id }}" aria-expanded="false" aria-controls="mobileExpandDetail-{{ article.id }}">
+              <img src="{{ article | img_url: 'grande' }}">
+            </a>
+          </div>
+          <div class="col-xs-12 {% if mod == 0 %} col-xs-pull-12 {% endif %} press">
+            <a data-toggle="collapse" class='collapsed' data-parent="#mobile-accordion" href="#mobileExpandDetail-{{ article.id }}" aria-expanded="false" aria-controls="mobileExpandDetail-{{ article.id }}">
+              {% if blog.handle == 'journal' %}<h2>{{ article.tags.first }}</h2>{% endif %}
+              <h3 class='articleTitle'>{{ article.title }}</h3>
+              <p>{{ article.published_at | date: '%-m/%-d/%y'}}</p>
+            </a>
+          </div>
+        </div>
+        <div class="collapse" id="mobileExpandDetail-{{ article.id }}" aria-labelledby="headingOne">
+          <div class="well" id="mobile-well">
+
+            <div id="mobile-carousel-{{article.id}}" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner" role="listbox">
+                  {{ images }}
+              </div>
+              <a class="left carousel-control" href="#mobile-carousel-{{article.id}}" role="button" data-slide="prev">
+                <img src="{{ 'left-icon.png' | asset_url }}">
+              </a>
+              <a class="right carousel-control" href="#mobile-carousel-{{article.id}}" role="button" data-slide="next">
+                <img src="{{ 'right-icon.png' | asset_url }}">
+              </a>
+            </div>
+
+
+
+            <div class="well-text">
+              <h3 class='articleTitle'>{{ article.title }}</h3>
+              <p>{{ article.published_at | date: '%-m/%-d/%y'}}</p>
+              <p>{{ article.excerpt | strip_html }}</p>
+            </div>
+            <h3>SHARE</h3>
+
+            {% include "social-media" %}
+            <a data-toggle="collapse" data-parent="#mobile-accordion" href="#mobileExpandDetail-{{ article.id }}" aria-expanded="false" aria-controls="mobileExpandDetail-{{ article.id }}">
+              <div class="close-well">
+                {{ 'close.png' | asset_url | img_tag }}
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    
+    
+    </div>
+    
+
+
+    <div class="hidden-xs panel-group" id="desktop-accordion" aria-multiselectable="true">
+    
+      
+      {% for row in rows %}
+      {% assign row_int = row | plus: 0 %}
+      {% assign row_mod = forloop.index | modulo: 2 %}
+      {% assign entry_ids = row | split: ',' %}
+      <div class="panel panel-default">
+        
+        <div id="headingOneDesktop" class="row press press-wrapper">
+          
+          {% for entry_id in entry_ids %}
+          {% assign entry_int = entry_id | plus: 0 %}
+          {% assign article = articles[entry_int] %}
+          
+          <div class="press-preview-wrapper">
+            <div class='overlay'>
+              <a href="#press-detail-{{article.id}}" data-parent="#desktop-accordion" data-toggle="collapse" aria-expanded="false" class='collapsed'></a>
+            </div>
+              <div class="col-xs-12 press {% if row_mod == 0 %}col-xs-push-12{% endif %}">
+                <img src="{{ article | img_url: 'grande' }}"/>
+              </div>
+              <div class="col-xs-12 press press-text{% if row_mod == 0 %} col-xs-pull-12 right-text{% endif %}">
+                <div class="text-wrapper">
+                 {% if blog.handle == 'journal' %}<h2>{{ article.tags.first }}</h2>{% endif %}
+                  <h3 class='articleTitle'>{{ article.title }}</h3>
+                  <p>{{ article.published_at | date: '%-m/%-d/%y'}}</p>
+                </div>
+              </div>
+
+          </div>
+          
+          {% endfor %}
+
+        </div>
+        
+        {% for entry_id in entry_ids %}
+        {% assign entry_int = entry_id | plus: 0 %}
+        {% assign article = articles[entry_int] %}
+        
+        {% assign content = article.content | split: '</p>' | first | strip_html %}
+        {% assign images = article.content | split: '<p>' | last | remove: '</p>' %}
+
+        <div class="collapse" id="press-detail-{{article.id}}">
+          <div class="well">
+            <div class="row detail-well">
+              <div class="col-xs-17 press-img-desktop">
+
+                <div id="desktop-carousel-{{forloop.index}}-{{entry_id}}" class="carousel slide" data-ride="carousel">
+                  
+                  <div class="carousel-inner" role="listbox">
+                    {{ article.content }}
+                  </div>
+                  
+                </div>
+
+                <a class="left carousel-control" href="#desktop-carousel-{{forloop.index}}-{{entry_id}}" data-slide="prev">
+                  <img src="{{ 'left-icon.png' | asset_url }}"/>
+                </a>
+                <a class="right carousel-control" href="#desktop-carousel-{{forloop.index}}-{{entry_id}}" data-slide="next">
+                  <img src="{{ 'right-icon.png' | asset_url }}"/>
+                </a>
+
+              </div>
+              <div class="col-xs-2"></div>
+              <div class="col-xs-6 detail-content">
+                <a data-toggle="collapse" href="#press-detail-{{article.id}}" aria-expanded="false">
+                  <div class="close-well">
+                    {{ 'close.png' | asset_url | img_tag }}
+                  </div>
+                </a>
+                <div class="well-text">
+                  <h3 class='articleTitle'>{{ article.title }}</h3>
+                  <p>{{ article.published_at | date: '%-m/%-d/%y'}}</p>
+                  <p>{{ article.excerpt | strip_html }}</p>
+                  
+                  {% comment %}
+                  <div class='share-social-media'>
+                    <h3>SHARE</h3>
+                    {% include "social-media" %}
+                  </div>
+                  {% endcomment %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {% endfor %}
+
+      </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+  <script>
+    $('.carousel-inner img').addClass('item');
+    $(".carousel-inner img:nth-child(1)").addClass('active')
+    
+    $('.carousel-inner').each(function(k,v){
+      if ( $(v).find('.item').size() < 2 ){
+        $(v).parent().parent().find('.carousel-control').hide()
+      }
+    })
+  </script>
+  
+  
+  {% endpaginate %}
+
+{% endunless %}

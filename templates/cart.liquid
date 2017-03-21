@@ -1,90 +1,121 @@
-<div id="col-main" class="col-md-24 widget-wrapper cart-page">
-  {% if cart.items == empty %}
-  <div class="empty">
-    <p>{{ 'cart.general.empty' | t }} {{ 'cart.general.continue_browsing_html' | t }}</p>
-  </div>
-  {% else %}
-  <form action="/cart" method="post" id="cartform" class="clearfix">
-    <div class="row">
-      <div class="col-md-18 col-sm-16">
-        <div class="cart-items">
-          {% for item in cart.items %}
-          <div class="cart-item">
-            <div class="cart-left">
-              <img src="{{ item | img_url: 'compact' }}"  alt="{{ item.title | escape }}" />
-              <a title="{{ 'cart.general.remove' | t }}" class="cart-remove btooltip" href="/cart/change?line={{ forloop.index }}&quantity=0">
-                <i class="fa fa-trash"></i>
-              </a>
-            </div>
-            <div class="cart-right">
-              <div class="wrap">
-                <div class="product-title">
-                  <a href="{{item.url }}">
-                    <span>{{ item.product.title }}</span>
-                    {% if item.product.variants.size > 1 %}
-                    <span class="variant_title"> - {{ item.variant.title }}</span>
-                    {% endif %}
-                  </a>
-                </div>
+<div id="col-main" class="col-md-24 contact-wrapper cart-page">
+  <h1>Bag Details: {{ cart.item_count }} item{% unless cart.item_count == 1 %}s{% endunless %}</h1>
+  <div class='contact-content'>
+    {% if cart.items == empty %}
+    <div class="empty">
+      <p>{{ 'cart.general.empty' | t }} {{ 'cart.general.continue_browsing_html' | t }}</p>
+    </div>
+    {% else %}
+    <form action="/cart" method="post" id="cartform" class="clearfix">
+      <div class="row">
+        <div class="col-md-24 col-sm-24">
+          <div class="cart-items">
+            {% for item in cart.items %}
+            <div class="cart-item">
+              <div class='close-column column'>
+                <a title="{{ 'cart.general.remove' | t }}" class="cart-remove btooltip" href="/cart/change?line={{ forloop.index }}&quantity=0">
+                  <img src="{{ 'close.png' | asset_url }}" alt="">
+                </a>
+              </div>
+              <div class="img-column column">
+                <img src="{{ item | img_url: 'compact' }}"  alt="{{ item.title | escape }}" />
+              </div>
+              <div class="details-column column">
+                <div class="wrap">
+                  <div class="product-title">
+                    <a href="{{item.url }}">
+                      <span>{{ item.product.title }}</span>
+                    </a>
+                  </div>
 
-                <div class="product-price">{{ item.price | money }}</div>
-                
-                <div class="cart-group cart-qty">
-                  <div class="qty">
-                    <span class="button icomoon-minus" onclick="roar.modifyQty(this, -1)"></span>
-                    <input type="text" class="quantity" id="updates_{{ item.id }}" name="updates[]" value="{{ item.quantity }}" />
-                    <span class="button icomoon-plus" onclick="roar.modifyQty(this, 1)"></span>
+                  <div class="product-color">{{ item.variant.option1 | capitalize }} </div>
+                  
+                  <div class="cart-group cart-qty">
+                    <div class="qty">
+                      <span class="button icomoon-minus" onclick="roar.modifyQty(this, -1)"></span>
+                      <input type="text" class="quantity" id="updates_{{ item.id }}" name="updates[]" value="{{ item.quantity }}" />
+                      <span class="button icomoon-plus" onclick="roar.modifyQty(this, 1)"></span>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div class='price-column column'>
+                <h4>{{ item.line_price | money }}</h4>
+              </div>
             </div>
+            {% endfor %}
           </div>
-          {% endfor %}
-        </div>
-      </div>
-      
-      <div class="col-md-6 col-sm-8">
-        <div class="widget-wrapper cart-items">
-          <div class="title">
-            {{ 'cart.general.subtotal' | t }}
-          </div>
-          <div class="subtotal">
-            {{ cart.total_price | money }}
-          </div>
-          
-          {% if settings.allow_add_note %}
-          <div id="checkout-addnote" class="control-group">
-            <p>
-              {{ 'cart.general.note' | t }}:
-            </p>
-            <textarea id="note" rows="5" class="btn-block" name="note">{{ cart.note }}</textarea>
-          </div>
-          {% endif %}
-          
-          <div id="update-proceed" class="control-group">
-            <button type="submit" class="btn btn-block big" name="update">
-              {{ 'cart.general.update' | t }}
+          <div class='bottom-section'>
+            <h4>SUBTOTAL: {{ cart.total_price | money }}</h4>
+           <button type="submit" class="btn-update btn-block big" name="update">
+                {{ 'cart.general.update' | t }}
             </button>
-          </div>
-
-          <div id="checkout-proceed" class="control-group">
-            <button class="btn-arrow btn btn-1 btn-block big" type="submit" id="update-cart" name="checkout"><i class="icomoon-arrow-right"></i> {{ 'cart.general.checkout' | t }}</button>
-            {% if additional_checkout_buttons %}
-            <div id="additional-checkout-buttons">
-              <span id="additional-checkout-buttons-label">{{'cart.general.checkout_using' | t}}:</span>
-              {{ content_for_additional_checkout_buttons }}
-            </div>
-            {% endif %}                       
+            <button class="btn btn-primary btn-checkout" type="submit" id="update-cart" name="checkout">CHECK OUT</button>
+            <div class='clear'></div>
+            <a href='/collections/all' class='btn btn-primary'>Continue Shopping</a>
           </div>
         </div>
         
-        {% if cart.items != empty %} 
-        {% include 'shipping-calculator' %}
-        {% endif %}
+        
+        
+        {% comment %}
+        <div class="col-md-6 col-sm-8">
+          <div class="widget-wrapper cart-items">
+            <div class="title">
+              {{ 'cart.general.subtotal' | t }}
+            </div>
+            <div class="subtotal">
+              {{ cart.total_price | money }}
+            </div>
+            
+            {% if settings.allow_add_note %}
+            <div id="checkout-addnote" class="control-group">
+              <p>
+                {{ 'cart.general.note' | t }}:
+              </p>
+              <textarea id="note" rows="5" class="btn-block" name="note">{{ cart.note }}</textarea>
+            </div>
+            {% endif %}
+            
+            <div id="update-proceed" class="control-group">
+              <button type="submit" class="btn btn-block big" name="update">
+                {{ 'cart.general.update' | t }}
+              </button>
+            </div>
+
+            <div id="checkout-proceed" class="control-group">
+              <button class="btn-arrow btn btn-1 btn-block big" type="submit" id="update-cart" name="checkout"><i class="icomoon-arrow-right"></i> {{ 'cart.general.checkout' | t }}</button>
+              {% if additional_checkout_buttons %}
+              <div id="additional-checkout-buttons">
+                <span id="additional-checkout-buttons-label">{{'cart.general.checkout_using' | t}}:</span>
+                {{ content_for_additional_checkout_buttons }}
+              </div>
+              {% endif %}                       
+            </div>
+          </div>
+          
+          {% if cart.items != empty %} 
+          {% include 'shipping-calculator' %}
+          {% endif %}
+        </div>
+        {% endcomment %}
       </div>
-    </div>
-  </form>
-  {% endif %}
+    </form>
+    {% endif %}
+    
+    {% include 'cart-collection' %}
+  </div>
   
-  {% include 'cart-collection' %}
 </div>
+
+<script>
+
+$(".quantity").change(function(){
+  $('#cartform').submit()
+})
+
+$('.qty .button').click(function(){
+  $('#cartform').submit()
+})
+
+</script>

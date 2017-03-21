@@ -13,7 +13,7 @@
 {% unless cat_item == '' %}
 {% assign numColumns = numColumns | plus:1 %}
 <div class="column">
-  <div class="filter_title"><span>{{ cat_item }}</span></div>
+  <div class="filter_title"><span>{% if cat_item == 'Colors' %}Colours{%else%}{{ cat_item }}{%endif%}</span></div>
   <div class="advanced-filter filter_container {{ cat_item | downcase }}">
     <ul class="list-unstyled fields">
       {% assign active_tags = collection.tags %}
@@ -56,3 +56,6 @@
 {% endif %}
 {% endif %}
 
+<script>
+
+</script>

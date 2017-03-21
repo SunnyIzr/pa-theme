@@ -1,111 +1,16 @@
 <div class="stockists-content">
   <div class="stockists-hero-img">
-    <h1>SHOP PAUL ANDREW WORLD-WIDE</h1>
-    <p>Paul Andrew shoes are created with passion, quality materials, and dedication to craftsmanship and engineering.  We sell through only the finest retails worldwide, online and in-store.</p>
-    <a class="active" href="#"><h2>ONLINE</h2></a><a href="#"><h2>IN-STORE</h2></a>
+    <h1>SHOP PAUL ANDREW WORLDWIDE</h1>
+    <p>Paul Andrew shoes are designed in New York, handcrafted in Italy, and carried by only the most prestigious fashion boutiques in the world.</p>
+    <a class="active stockistType onlineVendors" data-target='#onlineVendors'href="#"><h2>WOMEN'S - ONLINE</h2></a><a class='active stockistType inStoreVendors' data-target='#inStoreVendors' href="#"><h2>WOMEN'S - IN-STORE</h2></a><a class='active stockistType inStoreVendors' data-target='#mensVendors' href="#"><h2>MEN'S</h2></a>
   </div>
-  <div class="hidden vendors online-vendors">
-    <div class='vendor-container'>
-      <a href="">
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-avenue32.jpg"/>
-          <div class='overlay'></div>
-      </a>
-    </div>
-    <div class="vendor-container">
-      <a href="">
-        <div class="overlay"></div>
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-barneys.jpg"/>
-      </a>
-    </div>
-    <div class="vendor-container">
-      <a href="">
-        <div class="overlay"></div>
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-bergdorfgoodman.jpg"/>
-      </a>
-    </div>
-    <div class="vendor-container">
-      <a href="">
-        <div class="overlay"></div>
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-forward.jpg"/>
-      </a>
-    </div>
-    <div class="vendor-container">
-      <a href="">
-        <div class="overlay"></div>
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-intermix.jpg"/>
-      </a>
-    </div>
-    <div class="vendor-container">
-      <a href="">
-        <div class="overlay"></div>
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-luisaviaroma.jpg"/>
-      </a>
-    </div>
-    <div class="vendor-container">
-      <a href="">
-        <div class="overlay"></div>
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-matchesfashion.jpg"/>
-      </a>
-    </div>
-    <div class="vendor-container">
-      <a href="">
-        <div class="overlay"></div>
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-modaoperandi.jpg"/>
-      </a>
-    </div>
-    <div class="vendor-container">
-      <a href="">
-        <div class="overlay"></div>
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-netaporter.jpg"/>
-      </a>
-    </div>
-    <div class="vendor-container">
-      <a href="">
-        <div class="overlay"></div>
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-niemanmarcus.jpg"/>
-      </a>
-    </div>
-    <div class="vendor-container">
-      <a href="">
-        <div class="overlay"></div>
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-nordstrom.jpg"/>
-      </a>
-    </div>
-    <div class="vendor-container">
-      <a href="">
-        <div class="overlay"></div>
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-saksfifthave.jpg"/>
-      </a>
-    </div>
-    <div class="vendor-container">
-      <a href="">
-        <div class="overlay"></div>
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-shoescribe.jpg"/>
-      </a>
-    </div>
-    <div class="vendor-container">
-      <a href="">
-        <div class="overlay"></div>
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-shopbop.jpg"/>
-      </a>
-    </div>
-    <div class="vendor-container">
-      <a href="">
-        <div class="overlay"></div>
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-stylebop.jpg"/>
-      </a>
-    </div>
-    <div class="vendor-container">
-      <a href="">
-        <div class="overlay"></div>
-        <img class="vendor" src="//cdn.shopify.com/s/files/1/1171/4544/t/1/assets/stockist-logo-tiziana.jpg"/>
-      </a>
-    </div>
+  <div id='onlineVendors' class="hidden vendors online-vendors">
   </div>
 
-
-  <div class="hidden vendors in-store">
-    <a href="#region-expanded" data-toggle="collapse" aria-expanded="true" aria-controls="region-expanded">
+  {% include 'spinner2' %}
+  
+  <div id='inStoreVendors' class="hidden vendors in-store">
+    <a href="#region-expanded" data-toggle="collapse" aria-expanded="true" aria-controls="region-expanded" class='regionToggle'>
       <div class="region">
         <h3>REGION</h3>
         <i class="icon-pa-arrow-down sortby-arrow"></i>
@@ -129,7 +34,7 @@
             </a>
             <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
               <div class="list-group" >
-                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#unitedstates'>
+                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#usa'>
                   <li>
                     <h4 class="panel-title">UNITED STATES</h4>
                   </li>
@@ -164,7 +69,7 @@
                     <h4 class="panel-title">ITALY</h4>
                   </li>
                 </a>
-                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#uk'>
+                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#united-kingdom'>
                   <li>
                     <h4 class="panel-title">UNITED KINGDOM</h4>
                   </li>
@@ -204,6 +109,21 @@
                     <h4 class="panel-title">KAZAKHSTAN</h4>
                   </li>
                 </a>
+                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#belgium'>
+                  <li>
+                    <h4 class="panel-title">BELGIUM</h4>
+                  </li>
+                </a>
+                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#cyprus'>
+                  <li>
+                    <h4 class="panel-title">CYPRUS</h4>
+                  </li>
+                </a>
+                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#russia'>
+                  <li>
+                    <h4 class="panel-title">RUSSIA</h4>
+                  </li>
+                </a>
               </div>
             </div>
           </div>
@@ -219,29 +139,19 @@
             </a>
             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
               <div class="list-group">
-                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#lebanon'>
+                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#quatar'>
                   <li>
-                    <h4 class="panel-title">LEBANON</h4>
+                    <h4 class="panel-title">QUATAR</h4>
                   </li>
                 </a>
-                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#turkey'>
+                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#kuwait'>
                   <li>
-                    <h4 class="panel-title">TURKEY</h4>
+                    <h4 class="panel-title">KUWAIT</h4>
                   </li>
                 </a>
-                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#uae'>
+                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#united-arab-emirates'>
                   <li>
                     <h4 class="panel-title">UNITED ARAB EMIRATES</h4>
-                  </li>
-                </a>
-                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#saudi'>
-                  <li>
-                    <h4 class="panel-title">SAUDI ARABIA</h4>
-                  </li>
-                </a>
-                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#israel'>
-                  <li>
-                    <h4 class="panel-title">ISRAEL</h4>
                   </li>
                 </a>
               </div>
@@ -274,7 +184,7 @@
                     <h4 class="panel-title">CHINA</h4>
                   </li>
                 </a>
-                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#hongkong'>
+                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#hong-kong'>
                   <li>
                     <h4 class="panel-title">HONG KONG</h4>
                   </li>
@@ -287,6 +197,11 @@
                 <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#japan'>
                   <li>
                     <h4 class="panel-title">JAPAN</h4>
+                  </li>
+                </a>
+                <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expnaded" data-country='#taiwan'>
+                  <li>
+                    <h4 class="panel-title">TAIWAN</h4>
                   </li>
                 </a>
               </div>
@@ -308,7 +223,7 @@
                 <h4>CANADA</h4>
               </a>
             </div class="list-element">
-            <div class="list-element country" data-country='#unitedstates'>
+            <div class="list-element country" data-country='#usa'>
               <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expanded">
                 <h4>UNITED STATES</h4>
               </a>
@@ -328,7 +243,7 @@
                 <h4>ITALY</h4>
               </a>
             </div class="list-element">
-            <div class="list-element country" data-country='#uk'>
+            <div class="list-element country" data-country='#united-kingdom'>
               <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expanded">
                 <h4>UNITED KINGDOM</h4>
               </a>
@@ -368,34 +283,39 @@
                 <h4>KAZAKHSTAN</h4>
               </a>
             </div class="list-element">
+            <div class="list-element country" data-country='#belgium'>
+              <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expanded">
+                <h4>BELGIUM</h4>
+              </a>
+            </div class="list-element">
+            <div class="list-element country" data-country='#cyprus'>
+              <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expanded">
+                <h4>CYPRUS</h4>
+              </a>
+            </div class="list-element">
+            <div class="list-element country" data-country='#russia'>
+              <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expanded">
+                <h4>RUSSIA</h4>
+              </a>
+            </div class="list-element">
           </div>
           <div class="desktop-region">
             <div class="list-element">
               <h3>MIDDLE EAST</h3>
             </div class="list-element">
-            <div class="list-element country" data-country='#lebanon'>
+            <div class="list-element country" data-country='#quatar'>
               <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expanded">
-                <h4>LEBANON</h4>
+                <h4>QUATAR</h4>
               </a>
             </div class="list-element">
-            <div class="list-element country" data-country='#turkey'>
+            <div class="list-element country" data-country='#kuwait'>
               <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expanded">
-                <h4>TURKEY</h4>
+                <h4>KUWAIT</h4>
               </a>
             </div class="list-element">
-            <div class="list-element country" data-country='#uae'>
+            <div class="list-element country" data-country='#united-arab-emirates'>
               <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expanded">
                 <h4>UNITED ARAB EMIRATES</h4>
-              </a>
-            </div class="list-element">
-            <div class="list-element country" data-country='#saudi'>
-              <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expanded">
-                <h4>SAUDI ARABIA</h4>
-              </a>
-            </div class="list-element">
-            <div class="list-element country" data-country='#israel'>
-              <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expanded">
-                <h4>ISRAEL</h4>
               </a>
             </div class="list-element">
           </div>
@@ -418,7 +338,7 @@
                 <h4>CHINA</h4>
               </a>
             </div class="list-element">
-            <div class="list-element country" data-country='#hongkong'>
+            <div class="list-element country" data-country='#hong-kong'>
               <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expanded">
                 <h4>HONG KONG</h4>
               </a>
@@ -433,6 +353,11 @@
                 <h4>JAPAN</h4>
               </a>
             </div class="list-element">
+            <div class="list-element country" data-country='#taiwan'>
+              <a href="#region-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="region-expanded">
+                <h4>TAIWAN</h4>
+              </a>
+            </div class="list-element">
           </div>
         </div>
         <a href="#region-expanded" data-toggle="collapse" aria-expanded="true" aria-controls="region-expanded">
@@ -440,77 +365,83 @@
         </a>
       </div>
     </div>
+    
+    <div id='countryData'>
+    </div>
 
-    {{ page.content }}
-
-    {% comment %}
+    
     <div id="kazakhstan" class="hidden in-store in-store-vendors">
-      <div class="hidden-xs" style="display: block !important;">
-        <h2>KAZAKHSTAN</h2>
-        <div class="stores">
-          <div class="store">
-            <h2>California</h2>
-            <h3>Neiman Marcus</h3>
-            <p>9700 Wilshire Boulevard</p>
-            <p>Beverly Hills, CA 90212</p>
-            <p>tel: 310.550.5900</p>
-          </div>
-          <div class="store">
-            <h2>California</h2>
-            <h3>Intermix</h3>
-            <p>400 N.Beverly Hills Dr.</p>
-            <p>Beverly Hills, CA 09210</p>
-            <p>tel: 310.623.1619</p>
-          </div>
-          <div class="store">
-            <h2>California</h2>
-            <h3>Intermix</h3>
-            <p>110 Robertson Blvd.</p>
-            <p>los Angeles, CA 90048</p>
-            <p>tel: 310.860.0113</p>
-          </div>
-          <div class="store">
-            <h2>Connecticut</h2>
-            <h3>Walin and Wolf</h3>
-            <p>36 Elm St.</p>
-            <p>New Canaan, CT 06840</p>
-            <p>tel: 203.966.4281</p>
-          </div>
-          <div class="store">
-            <h2>Florida</h2>
-            <h3>Neiman Marcus</h3>
-            <p>9700 Collins Ave</p>
-            <p>Bal Harbour, FL 33154</p>
-            <p>tel: 305.865.6161</p>
-          </div>
-          <div class="store">
-            <h2>Florida</h2>
-            <h3>Intermix</h3>
-            <p>1005 Lincoln Rd.</p>
-            <p>Miami Beach, FL 33139</p>
-            <p>tel: 305.604.6353</p>
-          </div>
-          <div class="store">
-            <h2>Florida</h2>
-            <h3>Intermix</h3>
-            <p>9700 Collins Avenue</p>
-            <p>Bal Harbour, FL 33154</p>
-            <p>tel: 305.993.1232</p>
-          </div>
-          <div class="store">
-            <h2>Florida</h2>
-            <h3>Carpetto Shoes</h3>
-            <p>5822 Sunset Dr.</p>
-            <p>South Miami, FL 33143</p>
-            <p>tel: 305.661.7767</p>
-          </div>
+      <h2>KAZAKHSTAN</h2>
+      <div class="stores">
+        <div class="store">
+          <h2>California</h2>
+          <h3>Neiman Marcus</h3>
+          <p>9700 Wilshire Boulevard</p>
+          <p>Beverly Hills, CA 90212</p>
+          <p>tel: 310.550.5900</p>
+        </div>
+        <div class="store">
+          <h2>California</h2>
+          <h3>Intermix</h3>
+          <p>400 N.Beverly Hills Dr.</p>
+          <p>Beverly Hills, CA 09210</p>
+          <p>tel: 310.623.1619</p>
+        </div>
+        <div class="store">
+          <h2>California</h2>
+          <h3>Intermix</h3>
+          <p>110 Robertson Blvd.</p>
+          <p>los Angeles, CA 90048</p>
+          <p>tel: 310.860.0113</p>
+        </div>
+        <div class="store">
+          <h2>Connecticut</h2>
+          <h3>Walin and Wolf</h3>
+          <p>36 Elm St.</p>
+          <p>New Canaan, CT 06840</p>
+          <p>tel: 203.966.4281</p>
+        </div>
+        <div class="store">
+          <h2>Florida</h2>
+          <h3>Neiman Marcus</h3>
+          <p>9700 Collins Ave</p>
+          <p>Bal Harbour, FL 33154</p>
+          <p>tel: 305.865.6161</p>
+        </div>
+        <div class="store">
+          <h2>Florida</h2>
+          <h3>Intermix</h3>
+          <p>1005 Lincoln Rd.</p>
+          <p>Miami Beach, FL 33139</p>
+          <p>tel: 305.604.6353</p>
+        </div>
+        <div class="store">
+          <h2>Florida</h2>
+          <h3>Intermix</h3>
+          <p>9700 Collins Avenue</p>
+          <p>Bal Harbour, FL 33154</p>
+          <p>tel: 305.993.1232</p>
+        </div>
+        <div class="store">
+          <h2>Florida</h2>
+          <h3>Carpetto Shoes</h3>
+          <p>5822 Sunset Dr.</p>
+          <p>South Miami, FL 33143</p>
+          <p>tel: 305.661.7767</p>
         </div>
       </div>
     </div>
+    {% comment %}
     {% endcomment %}
+  </div>
+  
+  <div id='mensVendors' class='hidden vendors online-vendors'>
   </div>
 
 </div>
 
+<div id='instore-vendor-data' class='hidden'>
+  {{ page.content }}
+</div>
 
 {{ 'stockists.js' | asset_url | script_tag }}

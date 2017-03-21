@@ -50,6 +50,7 @@
   {% endif %}
   {{ 'bootstrap.min.3x.css' | asset_url | stylesheet_tag }}
   {{ 'rt.global.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'animate.min.css' | asset_url | stylesheet_tag }}
   {{ 'rt.style.scss.css' | asset_url | stylesheet_tag }}
   <!--[if IE 8 ]> {{ 'ie8.scss.css' | asset_url | stylesheet_tag }} <![endif]-->
   {{ 'rt.media.css' | asset_url | stylesheet_tag }}
@@ -87,7 +88,9 @@
   {{ 'jquery.gmap.min.js' | asset_url | script_tag }}
   {% endif %}
   {{ '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js' | script_tag }}
+  {% comment %}
   {{ 'bootstrap.min.3x.js' | asset_url | script_tag }}
+  {% endcomment %}
   {{ 'modernizr.js' | asset_url | script_tag }}
 
   {{ content_for_header }}
@@ -119,8 +122,8 @@
         {% include 'page-background' %}
         {% endif %}
 
-        {% unless template contains 'index' or template contains 'page.contact' or template contains 'page.press' or template contains 'blog' or template contains 'page.about' or template contains 'page.stockists' or template == 'product' or template contains 'product.' or template contains 'page.lookbook' %}
-        <div id="content" class="container{% if template == 'collection' %}-fluid{% endif %}">
+        {% unless template contains 'index' or template contains 'page.contact' or template contains 'page.press' or template contains 'blog' or template contains 'page.about' or template contains 'page.mktg-template' or template contains 'page.stockists' or template == 'product' or template contains 'product.' or template contains 'page.lookbook' %}
+        <div id="content" class="container{% if template == 'collection' or template == 'search' %}-fluid{% endif %}">
           <div class="row">
             {% endunless %}
 
@@ -160,7 +163,10 @@
   {{ 'jquery.smoothscroll.js' | asset_url | script_tag }}
   {% endif %}
 
+  
+  {% comment %}
   {{ 'uisearch.js' | asset_url | script_tag }}
+  {% endcomment %}
   {{ 'rt.global.js' | asset_url | script_tag }}
   {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
   {% include 'api.jquery.custom' %}
@@ -173,5 +179,84 @@
   {% include 'theme-controller' %}
 
   {{ 'option_selection.js' | asset_url | script_tag }}
+  
+  <script>
+  
+  
+    $(document).on('click', '.quick-view-link', function(e){
+      setTimeout(function(){
+        $('.modal.fade').removeClass('fade');
+      },500)
+    })
+    $(document).on('click', '.modal-header button', function(e){
+        $('.modal').addClass('fade');
+    })
+    $('form.mailing-form.footer-mailchimp').submit(function(e){
+      e.preventDefault();
+      url = $(this).attr('action') + '&c=?'
+      data = $(this).serialize()
+      $.post(url,data,function(res){console.log(res)})
+      $(this).html("<p class='mailchimp-disclaimer'>Thank You! You will receive a confirmation email shortly.</p>")
+    })
+  </script>
+  
+  {% if template == 'index' or template == 'page.about' or template == 'collection' or template contains 'mktg-template' %}
+    {% for prod in collection.products %}
+    
+      {% include 'quickview-modal' %}  
+      
+      
+    {% endfor %}
+  
+  {% endif %}
+  
+  
+  {% if template == 'search' %}
+    {% paginate search.results by 50 %}  
+      {% for prod in search.results %}
+        
+        {% if prod.url contains 'products' %}
+          {% include 'quickview-modal' %}  
+        {% endif %}
+      
+      {% endfor %}
+    {% endpaginate %}
+  {% endif %}
+  
+  {% if template == 'blog' %}
+  <script>
+    $(document).ready(function(){
+      $(document).on('click','a.collapsed', function(e){
+        console.log($('.collapsing').size())
+        target = $(this).attr('href')
+        window.targetEl = target
+        if ( $('.collapsing').size() > 1 ){
+          console.log('open')
+          targetPosition = $(target).offset().top - 100 - 892
+        } else {
+          targetPosition = $(target).offset().top - 100
+        }
+        $('html,body').animate({
+          scrollTop: targetPosition
+        },400);
+      })
+  })
+  </script>
+  {% endif %}
+  <!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '738431549627717');
+fbq('track', "PageView");</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=738431549627717&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code —>
+  
 </body>
 </html>

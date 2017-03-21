@@ -1,0 +1,141 @@
+{% assign product = prod %}
+
+<div class="modal fade quickview_modal" id="quickView-{{ prod.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><img src="{{ 'close.png' | asset_url }}" alt=""></span></button>
+      </div>
+      <div class="modal-body">
+        
+        <div id="product" class="row clearfix">
+          
+          <div class="col-sm-14 product-images">
+            <div class="flexslider visible-xs-block">
+              
+              <ul class="slides">
+              {% for image in product.images %}
+                {% unless image.src contains '_hover' %}
+                <li><a href="{{ image | product_img_url:'master' }}" ><img src="{{ image | product_img_url:'1024x1024' }}" alt="{{product.title}}" /></a></li>
+                {% endunless %}
+              {% endfor %}
+              </ul>
+              
+            </div>
+            <div class="product-gallery inner hidden-xs">
+              {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+              <div class="main">
+                <div class="main-img-link" href="{{featured_image | product_img_url:'master'}}" title="{{product.title}}">
+                  
+                  <img itemprop="image" id="main-image" class="main-img" src="{{product.featured_image | product_img_url:'1024x1024'}}" alt="{{product.title}}" />
+                  {% include 'spinner' %}
+                </div>
+                <div class="gallery-icon">
+                  <i class="fa fa-expand"></i>
+                  <div class="icon_spinner2 svg" style="display:none;">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="34px" height="34px">
+                      <circle cx="17" cy="17" r="16" stroke-width="2px" stroke="{{settings.b_scaffolding_bg}}" fill="none"></circle>
+                    </svg>
+                  </div>
+                </div>
+                {% include 'wishlist-product' %}
+                <div class="product-label{% if variant_tmp.compare_at_price > variant_tmp.price %} sale{% endif %}">
+                  {% if settings.use_saleoff == 'saleoff_txt' %}
+                  {{settings.saleoff_txt}}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-sm-9 product-sidebar">
+            <div class="">
+              {% include 'spinner2' %}
+              <div class="inner">
+                {% for tag in product.tags %}
+                  {% if tag contains 'Styles_' %}
+                    {% assign current_style = tag | remove: "Styles_" %}
+                  {% endif %}
+                {% endfor %}
+                
+                {% if template == 'collection' %}
+                  <div id="arrow-nav-mobile" class="next-prev-nav">
+                    <div class="prod-dropdown">
+                      <a href="#" class="prev prevQuickView" style=" border:none; border-radius:none;"><i class="fa fa-angle-left fa-2x"></i> </a>
+                    </div>
+                    <div class='dropdown-sep'></div>
+                    <div class="prod-dropdown">
+                      <a href="#" class="next nextQuickView" style=" border:none; border-radius:none;"><i class="fa fa-angle-right fa-2x"></i></a>
+                    </div>
+                  </div>
+                {% endif %}
+                
+                <h1 class="title" itemprop="name" content="{{ product.title }}"><a href='{{ product.url }}'>{{ product.title }}</a></h1>
+                
+                <p class="title2" itemprop="name" style="font-size:16px; color:#949494; font-weight:10; text-transform:capitalize; margin-bottom:10%;" content="{{ collection.title }}">{{ current_style }}</p>
+                
+
+                {% if settings.reviews_enable %}
+                  <a class="smoothscroll" href="#product-reviews-a">
+                    <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+                  </a>
+                {% endif %}
+                
+                <div class="wrap-one">
+                  {% include 'product-tab' %}
+                </div>
+              </div>
+
+              {% if product.available %}
+
+              {% assign hide_default_title = false %}
+              {% if product.variants.first.title contains 'color'%}
+              {% assign hide_default_title = true %}
+              {% endif %}
+
+              <form action="/cart/add" method="post" class="cart product-form" enctype="multipart/form-data">
+                <div id="product-actions-{{ product.id }}"  class="options clearfix">
+                  <div class="variants-wrapper clearfix{% if hide_default_title %} hide{% endif %}">
+                    <select id="product-select-{{ product.id }}" name="id" style="display: none;">
+                      {% for variant in product.variants %}
+                      {% if variant.available %}
+
+                      <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+                      {% else %}
+                      <option disabled="disabled">
+                        {{ variant.title }} - {{'products.product.sold_out' | t}}
+                      </option>
+                      {% endif %}
+                      {% endfor %}
+                    </select>
+                  </div>
+                  
+                 {% include 'product-swatches' %}
+                  
+                  
+
+                  <div class="cart-group limited-edition-group">
+                    {% include 'limited-edition' %}
+                  </div>
+                </div>
+              </form>
+            
+              <div class="inner-wrap">
+                <button id="btn-2">
+                  <a href="/pages/stockists">Where To Buy</a>
+                </button>
+              </div>
+            
+            </div>
+            
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}

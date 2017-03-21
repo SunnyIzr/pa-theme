@@ -1,19 +1,7 @@
-{% comment %}
-  Normal: Descending Publish Date (Newest - Oldest)
-  Page 2: Ascending Publish Date (Oldest - Newest)
-  Page 3: Ascending Title (A-Z)
-  Page 4
-  : Descending Title (Z-A)
-{% endcomment %}
+{% paginate blog.articles by 8 %}
 
+{% assign articles = blog.articles %}
 
-{% assign ary = [1..3] %}
-  
-{% if current_page == 3 or current_page == 4 %}
-  {% assign articles = blog.articles | sort: 'title' %}
-{% else %}
-  {% assign articles = blog.articles %}
-{% endif %}
 
 {% assign article_ids = blog.articles | map: 'id' %}
 {% assign indices = '' %}
@@ -25,130 +13,85 @@
 
 {% assign index_ary = indices | split: ','  %}
 
-{% if current_page == 2 or current_page == 4 %}
 
-  {% for index in index_ary reversed %}
+{% for index in index_ary %}
     {% assign mod = forloop.index0 | modulo: 2 %}
     {% if mod == 0 %}
       {% assign ids = ids | append: index | append: ',' %}
     {% elsif mod == 1 %}
       {% assign ids = ids | append: index | append: '|' %}
     {% endif %}
-  {% endfor %}
-
-{% else %}
-  
-  {% for index in index_ary %}
-    {% assign mod = forloop.index0 | modulo: 2 %}
-    {% if mod == 0 %}
-      {% assign ids = ids | append: index | append: ',' %}
-    {% elsif mod == 1 %}
-      {% assign ids = ids | append: index | append: '|' %}
-    {% endif %}
-  {% endfor %}
-  
-{% endif %}
-
+{% endfor %}
 
 
 {% assign rows = ids | split: '|' %}
 
 
+<div class="loading_img" style="display:none;">{% include 'spinner2' %}</div>
+
 <div class="press-page-content">
-  <div class='filter-controls'>
-    {% if blog.handle == 'journal' %}
-    <a href="#filter-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="sortby-expanded">
-      <div class="sortby">
-        <h3>REFINE</h3>
-        <i class="icon-pa-arrow-down sortby-arrow"></i>
+  <div id='filter-sort-accordion'role="tablist" aria-multiselectable="true">
+    <div class='filter-container'>
+      {% if blog.handle == 'journal' %}
+      <div class='filter-controls'>
+        <a href="#filter-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="sortby-expanded" data-parent='#filter-sort-accordion' id='filter-collapse'>
+          <div class="sortby">
+            <h3>REFINE</h3>
+            <i class="icon-pa-arrow-down sortby-arrow"></i>
+          </div>
+        </a>
       </div>
-    </a>
-    {% endif %}
-    <a href="#sortby-expanded" data-toggle="collapse" aria-expanded="false" aria-controls="sortby-expanded">
-      <div class="sortby">
-        <h3>SORT</h3>
-        <i class="icon-pa-arrow-down sortby-arrow"></i>
-      </div>
-    </a>
-  </div>
-  <div class="collapse" id="sortby-expanded">
-    <div class="well">
-      <div class="filter_wrap">
-        <ul class="list-unstyled fields">
-          <li data-target='?page=1'>
-            <span class="field">
-              PRESENT - PAST
-            </span>
-          </li>
-
-          <li data-target='?page=3'>
-            <span class="field">
-              PUBLICATION A-Z
-            </span>
-          </li>
-
-          <li data-target='?page=2'>
-            <span class="field">
-              PAST - PRESENT
-            </span>
-          </li>
-
-          <li data-target='?page=4'>
-            <span class="field">
-              PUBLICATION Z-A
-            </span>
-          </li>
-        </ul>
-      </div>
-
+      {% endif %}
     </div>
-  </div>
-  <div class="collapse" id="filter-expanded">
-    <div class="well">
-      <div class="filter_wrap">
-        <ul class="list-unstyled fields">
-          <li>
-            <a href='{{ blog.url }}/tagged/press'>
-              <span class="field">
-                IN PRINT
-              </span>
-            </a>
-          </li>
+    <div class="panel-collapse collapse" id="filter-expanded">
+      <div class="well">
+        <div class="filter_wrap">
+          <ul class="list-unstyled fields">
+            <li>
+              <a href='{{ blog.url }}/tagged/press'>
+                <span class="{% if current_tags contains 'press' %}active{%endif%} field">
+                  IN PRINT
+                </span>
+              </a>
+            </li>
+            
+            {% comment %}
+            <li>
+              <a href='{{ blog.url }}/tagged/interviews'>
+                <span class="{% if current_tags contains 'interviews' %}active{%endif%} field">
+                  INTERVIEWS
+                </span>
+              </a>
+            </li>
+            {% endcomment %}
 
-          <li>
-            <a href='{{ blog.url }}/tagged/interviews'>
-              <span class="field">
-                INTERVIEWS
-              </span>
-            </a>
-          </li>
+            <li>
+              <a href='{{ blog.url }}/tagged/vip'>
+                <span class="{% if current_tags contains 'vip' %}active{%endif%} field">
+                  VIP
+                </span>
+              </a>
+            </li>
 
-          <li>
-            <a href='{{ blog.url }}/tagged/vip'>
-              <span class="field">
-                VIP
-              </span>
-            </a>
-          </li>
+            <li>
+              <a href='{{ blog.url }}/tagged/events'>
+                <span class="{% if current_tags contains 'events' %}active{%endif%} field">
+                  NEWS & EVENTS
+                </span>
+              </a>
+            </li>
+            
+            <li>
+              <a href='{{ blog.url }}/tagged/social'>
+                <span class="{% if current_tags contains 'social' %}active{%endif%} field">
+                  BEST OF SOCIAL
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
 
-          <li>
-            <a href='{{ blog.url }}/tagged/events'>
-              <span class="field">
-                NEWS & EVENTS
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            <a href='{{ blog.url }}/tagged/social'>
-              <span class="field">
-                BEST OF SOCIAL
-              </span>
-            </a>
-          </li>
-        </ul>
       </div>
-
     </div>
   </div>
   
@@ -157,20 +100,20 @@
     {% for article in articles %}
     {% assign mod = forloop.index | modulo: 2 %}
     {% assign content = article.content | split: '</p>' | first | strip_html %}
-    {% assign images = article.content | split: '<p>' | last | remove: '</p>' %}
+    {% assign images = article.content | remove: '<p>' | remove: '</p>' %}
     
     <div class="panel panel-default">
       <div id="headingOne" class="row press press-wrapper">
         <div class="col-xs-12 {% if mod == 0 %} col-xs-push-12 {% endif %} press">
-          <a data-toggle="collapse" data-parent="#mobile-accordion" href="#mobileExpandDetail-{{ article.id }}" aria-expanded="false" aria-controls="mobileExpandDetail-{{ article.id }}">
+          <a data-toggle="collapse" class='collapsed' data-parent="#mobile-accordion" href="#mobileExpandDetail-{{ article.id }}" aria-expanded="false" aria-controls="mobileExpandDetail-{{ article.id }}">
             <img src="{{ article | img_url: 'grande' }}">
           </a>
         </div>
         <div class="col-xs-12 {% if mod == 0 %} col-xs-pull-12 {% endif %} press">
-          <a data-toggle="collapse" data-parent="#mobile-accordion" href="#mobileExpandDetail-{{ article.id }}" aria-expanded="false" aria-controls="mobileExpandDetail-{{ article.id }}">
-            <h2>{{ article.tags.first }}</h2>
-            <h3>{{ article.title }}</h3>
-            <p>{{ article.excerpt | strip_html }}</p>
+          <a data-toggle="collapse" class='collapsed' data-parent="#mobile-accordion" href="#mobileExpandDetail-{{ article.id }}" aria-expanded="false" aria-controls="mobileExpandDetail-{{ article.id }}">
+            {% if blog.handle == 'journal' %}<h2>{{ article.tags.first }}</h2>{% endif %}
+            <h3 class='articleTitle'>{{ article.title }}</h3>
+            <p>{{ article.published_at | date: '%-m/%-d/%y'}}</p>
           </a>
         </div>
       </div>
@@ -192,9 +135,9 @@
 
 
           <div class="well-text">
-            <h3>{{ article.title }}</h3>
+            <h3 class='articleTitle'>{{ article.title }}</h3>
+            <p>{{ article.published_at | date: '%-m/%-d/%y'}}</p>
             <p>{{ article.excerpt | strip_html }}</p>
-            <p>{{ content }}</p>
           </div>
           <h3>SHARE</h3>
 
@@ -231,16 +174,16 @@
         
         <div class="press-preview-wrapper">
           <div class='overlay'>
-            <a href="#press-detail-{{article.id}}" data-parent="#desktop-accordion" data-toggle="collapse" aria-expanded="false" ></a>
+            <a href="#press-detail-{{article.id}}" data-parent="#desktop-accordion" data-toggle="collapse" aria-expanded="false" class='collapsed'></a>
           </div>
             <div class="col-xs-12 press {% if row_mod == 0 %}col-xs-push-12{% endif %}">
               <img src="{{ article | img_url: 'grande' }}"/>
             </div>
             <div class="col-xs-12 press press-text{% if row_mod == 0 %} col-xs-pull-12 right-text{% endif %}">
               <div class="text-wrapper">
-                <h2>{{ article.tags.first }}</h2>
-                <h3>{{ article.title | upcase }}</h3>
-                <p>{{ article.excerpt | strip_html }}</p>
+               {% if blog.handle == 'journal' %}<h2>{{ article.tags.first }}</h2>{% endif %}
+                <h3 class='articleTitle'>{{ article.title }}</h3>
+                <p>{{ article.published_at | date: '%-m/%-d/%y'}}</p>
               </div>
             </div>
 
@@ -255,25 +198,25 @@
       {% assign article = articles[entry_int] %}
       
       {% assign content = article.content | split: '</p>' | first | strip_html %}
-      {% assign images = article.content | split: '<p>' | last | remove: '</p>' %}
+      {% assign images = article.content | remove: '<p>' | remove: '</p>' %}
 
       <div class="collapse" id="press-detail-{{article.id}}">
         <div class="well">
           <div class="row detail-well">
             <div class="col-xs-17 press-img-desktop">
 
-              <div id="desktop-carousel-{{forloop.index}}-{{entry_id}}" class="carousel slide" data-ride="carousel">
+              <div id="desktop-carousel-{{forloop.index}}-{{article.id}}" class="carousel slide" data-ride="carousel">
                 
                 <div class="carousel-inner" role="listbox">
-                  {{ images }}
+                  {{ article.content | remove: '<p>' | remove: '</p>' }}
                 </div>
                 
               </div>
 
-              <a class="left carousel-control" href="#desktop-carousel-{{forloop.index}}-{{entry_id}}" data-slide="prev">
+              <a class="left carousel-control" href="#desktop-carousel-{{forloop.index}}-{{article.id}}" data-slide="prev">
                 <img src="{{ 'left-icon.png' | asset_url }}"/>
               </a>
-              <a class="right carousel-control" href="#desktop-carousel-{{forloop.index}}-{{entry_id}}" data-slide="next">
+              <a class="right carousel-control" href="#desktop-carousel-{{forloop.index}}-{{article.id}}" data-slide="next">
                 <img src="{{ 'right-icon.png' | asset_url }}"/>
               </a>
 
@@ -286,14 +229,16 @@
                 </div>
               </a>
               <div class="well-text">
-                <h3>{{ article.title }}</h3>
+                <h3 class='articleTitle'>{{ article.title }}</h3>
+                <p>{{ article.published_at | date: '%-m/%-d/%y'}}</p>
                 <p>{{ article.excerpt | strip_html }}</p>
-                <p>{{ content }}</p>
-
+                
+                {% comment %}
                 <div class='share-social-media'>
                   <h3>SHARE</h3>
                   {% include "social-media" %}
                 </div>
+                {% endcomment %}
               </div>
             </div>
           </div>
@@ -309,41 +254,153 @@
 
 </div>
 
+{% if paginate.pages > 1 %}
+<div class="pagination hide">
+  {{ paginate | default_pagination }}
+</div>
+{% endif %}
+
+
+
+
 {% if settings.sidebar_blog_placement == 'right' %}
 <div id="sidebar" class="col-md-6{% if settings.sidebar_blog_mobile %} hidden-sm hidden-xs{% endif %}">
   {% include 'sidebar-blog' %}
 </div>
 {% endif %}
 
+<!-- <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
+
 <script>
-$('.carousel-inner img').addClass('item');
+
+  
 $(".carousel-inner img:nth-child(1)").addClass('active')
+
 
 currentUrl = window.location.href
 
-if ( currentUrl.indexOf('page=2') > -1 ){
-  $( $(".list-unstyled.fields li")[2] ).find(' span.field').addClass('active')
-} else if ( currentUrl.indexOf('page=3') > -1 ){
-  $( $(".list-unstyled.fields li")[1] ).find(' span.field').addClass('active')
-} else if ( currentUrl.indexOf('page=4') > -1 ){
-  $( $(".list-unstyled.fields li")[3] ).find(' span.field').addClass('active')
-} else {
-  $( $(".list-unstyled.fields li")[0] ).find(' span.field').addClass('active')
+
+
+$(document).on('click',"a.right.carousel-control",function(e){
+  e.preventDefault();
+  $carousel = $(this).parent().find('.carousel-inner')
+  nextCarouselImg($carousel)
+})
+$(document).on('click',"a.left.carousel-control",function(e){
+  e.preventDefault();
+  $carousel = $(this).parent().find('.carousel-inner')
+  prevCarouselImg($carousel)
+})
+
+
+$(document).on('swipeleft','div.carousel-inner',function(e){
+  e.preventDefault();
+  $carousel = $(this)
+  nextCarouselImg($carousel)
+})
+
+$(document).on('swiperight','div.carousel-inner',function(e){
+  e.preventDefault();
+  $carousel = $(this)
+  prevCarouselImg($carousel)
+})
+
+function nextCarouselImg($carousel){
+  
+  $activeImg = $carousel.find('.active')
+  totalImgs = $carousel.find('img').size()
+  currentIndex = $($carousel.find('img')).index($carousel.find('img.active'))
+  
+  if ( ( currentIndex + 1 ) == totalImgs ){
+    $nextImg = $($carousel.find('img')[0])
+  } else {
+    $nextImg = $activeImg.next() 
+  }
+  
+  $activeImg.removeClass('active')
+  $nextImg.addClass('active')
+  
 }
 
-$("#sortby-expanded .list-unstyled.fields li").click(function(){
-  target = $(this).data('target')
-  rootUrl = window.location.href.split('?')[0]
-  newUrl = rootUrl + target
-  window.location.href = newUrl
+function prevCarouselImg($carousel){
+  
+  $activeImg = $carousel.find('.active')
+  totalImgs = $carousel.find('img').size()
+  currentIndex = $($carousel.find('img')).index($carousel.find('img.active'))
+  
+  if ( ( currentIndex - 1 ) < 0 ){
+    $prevImg = $($carousel.find('img')[(totalImgs - 1)])
+  } else {
+    $prevImg = $activeImg.prev() 
+  }
+  
+  $activeImg.removeClass('active')
+  $prevImg.addClass('active')
+  
+}
+
+$('.carousel-inner').each(function(k,v){
+  if ( $(v).find('img').size() < 2 ){
+    $(v).parent().parent().find('.carousel-control').hide()
+  }
 })
+
+$('#filter-collapse').click(function(e){
+  $('#sortby-expanded').removeClass('in')
+})
+
+$('#sort-collapse').click(function(e){
+  $('#filter-expanded').removeClass('in')
+})
+
+{% if paginate.pages > 1 %}
+  $(window).data('ajaxready', true);
+{% else %}
+$(window).data('ajaxready', false);
+{% endif %}
+
+function getNextArticles(){
+  url = $('.pagination .next a').attr('href')
+  jQuery.ajax({
+    type: "get",
+    url: url,
+    beforeSend: function() {
+      $(window).data('ajaxready', false);
+      $('.loading_img').show()
+    },
+    success: function(res) {
+      if ( $(res).find('.pagination .next a').size() == 0 ){
+      } else {
+        newUrl = $(res).find('.pagination .next a').attr('href')
+        $('.pagination .next a').attr('href',newUrl)
+        $(window).data('ajaxready', true);
+      }
+      $('.hidden-xs.panel-group').append($(res).find('.hidden-xs.panel-group').html())
+      $('.visible-xs-block.panel-group').append($(res).find('.visible-xs-block.panel-group').html())
+      $('.loading_img').hide()
+      $(".carousel-inner img:nth-child(1)").addClass('active')
+    },
+    error: function() {
+      $('.loading_img').hide()
+    }
+  })
+}
+
+$(document).on('scroll', function(){
+  if( $(window).scrollTop() > $(document).height() - 1000 ) {
+    if ($(window).data('ajaxready') == true) {
+      getNextArticles();
+    }
+  }
+}).scroll();
+
 </script>
 
 
 
 
 
-
+{% endpaginate %}
 
 
 

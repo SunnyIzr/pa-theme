@@ -1,0 +1,41 @@
+{% assign ary = [1..3] %}
+  
+{% if current_page == 3 or current_page == 4 %}
+  {% assign articles = blog.articles | sort: 'title' %}
+{% else %}
+  {% assign articles = blog.articles %}
+{% endif %}
+
+{% assign article_ids = blog.articles | map: 'id' %}
+{% assign indices = '' %}
+
+{% for article_id in article_ids %}
+  {% assign indices = indices | append: forloop.index0 } | append: ',' %} 
+{% endfor %}
+
+
+{% assign index_ary = indices | split: ','  %}
+
+{% if current_page == 2 or current_page == 4 %}
+
+  {% for index in index_ary reversed %}
+    {% assign mod = forloop.index0 | modulo: 2 %}
+    {% if mod == 0 %}
+      {% assign ids = ids | append: index | append: ',' %}
+    {% elsif mod == 1 %}
+      {% assign ids = ids | append: index | append: '|' %}
+    {% endif %}
+  {% endfor %}
+
+{% else %}
+  
+  {% for index in index_ary %}
+    {% assign mod = forloop.index0 | modulo: 2 %}
+    {% if mod == 0 %}
+      {% assign ids = ids | append: index | append: ',' %}
+    {% elsif mod == 1 %}
+      {% assign ids = ids | append: index | append: '|' %}
+    {% endif %}
+  {% endfor %}
+  
+{% endif %}

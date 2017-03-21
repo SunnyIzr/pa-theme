@@ -1,7 +1,7 @@
 {% assign current_color = product.variants.first.options.first %}
 <div class="swatch color clearfix" data-option-index="1">
-  <div class="header"><span>Color</span><span class='color reveal'>{{ current_color }}</span></div>
-{% paginate collections.all.products by 1000 %}
+  <div class="header"><span>Colour</span><span class='color reveal'>{{ current_color }}</span></div>
+{% paginate collections.all.products by 2000 %}
 {% for prod in collections.all.products %}
   {% if prod.title == product.title %}
     {% assign color = prod.variants.first.options.first %}

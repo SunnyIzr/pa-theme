@@ -1,14 +1,31 @@
+{% comment %}
 <div id='home-slider' class="jumbotron_hero">
   <div class="slide-caption caption header">
     
-    <h2>Spring/Summer 2016</h2>
+    <h2>{{ settings.top_hero_header_text }}</h2>
 
     <div class="caption sub">
       <div class="caption-link">
-        <a class="btn" href="/collections/spring-summer-2016">See The Collection</a>
+        <a class="btn" href="/collections/{{ settings.top_hero_button_link }}">{{ settings.top_hero_button_text }}</a>
       </div>
     </div>
 
   </div>
   <a class='arrow-link' data-target='#col-main' href='#col-main'>{{ 'arrow2.png' | asset_url | img_tag }}</a>
 </div>
+
+
+{% endcomment %}
+
+<div id='home-slider-1'>
+  <div class="bottom-hero">
+    <img class='hero hidden-xs' src='{{ "page_home_img_desktop.jpg" | asset_url }}'>
+    <img class='hero visible-xs' src='{{ "page_home_img_mobile.jpg" | asset_url }}'>
+    <div class="hero-text">
+      <h2 style='color:#000;'>{{ settings.top_hero_header_text }}</h2>
+      <a href="/collections/{{ settings.top_hero_button_link }}" class="btn">{{ settings.top_hero_button_text }}</a>
+      <a class='arrow-link' data-target='#col-main' href='#col-main'>{{ 'arrow2.png' | asset_url | img_tag }}</a>
+    </div>
+  </div>
+</div>
+

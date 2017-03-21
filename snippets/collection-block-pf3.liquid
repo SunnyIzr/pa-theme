@@ -1,0 +1,50 @@
+<div class="product_item collect-block {% if platform == 'desktop' %}hidden-xs{%else%}visible-xs{%endif%}">
+  <div class="product">
+    
+    <div class="product-container">
+  
+        
+        
+      <div id='carousel-pf3-{{ platform }}' class='block-slides carousel slide' data-ride='carousel'>
+        <div class='carousel-inner' role='listbox'>
+            
+          <div class='block-slide item active'>
+            <img class='collection-background' src="{{ 'pf16-block3.jpg' | asset_url }}">
+            <div class='story-block'>
+              <div class='inner-content'>
+
+                <h4>ARABESQUE WEDGE</h4>
+                <div class='sep'></div>
+                <p>Arabesque architecture inspired this dramatic wedge, which was hand-carved by Italian artisans then metalized with a galvanic finish.</p>
+              </div>
+            </div>
+          </div>
+
+        
+        </div>
+        
+      
+      </div>
+
+      <div class="product-wrap">
+        <div class="product-image">
+          <div class="wrap">
+            {% include 'spinner2' %}
+            <a>
+              <img style='' src="{{ 'block-ph.jpg' | asset_url }}" class="main-image img-responsive" alt="{{ prod.title }}" />
+            </a>
+          </div>
+        </div>
+        <div class="product-content">
+          <div class="inner">
+            <div class="product-title">
+              <a href="#">
+                Collection Block
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

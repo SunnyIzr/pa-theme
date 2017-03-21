@@ -1,17 +1,34 @@
 <div class="product_item collect-block hidden-xs">
-<div class="product">
-  <div class="product-container">
-
-    <div class="product-wrap">
-      <div class="product-image">
-        <div class="wrap">
-          {% include 'spinner2' %}
-          <a>
-            <img src="{{ 'col-block.jpg' | asset_url }}" class="main-image img-responsive" alt="{{ prod.title }}" />
-          </a>
+  <div class="product">
+    <div class="product-container">
+    <img class='collection-background' src="{{ '1272-942.jpg' | asset_url }}">
+    <div class='story-block'>
+      <div class='inner-content'>
+        <h4>Details</h4>
+        <div class='sep'></div>
+        <p>Against nude mesh backing, the most delicate, Belgian lace becomes instantly wearable.</p>
+      </div>
+    </div>
+    
+      <div class="product-wrap">
+        <div class="product-image">
+          <div class="wrap">
+            {% include 'spinner2' %}
+            <a>
+              <img style='' src="{{ 'block-ph.jpg' | asset_url }}" class="main-image img-responsive" alt="{{ prod.title }}" />
+            </a>
+          </div>
+        </div>
+        <div class="product-content">
+          <div class="inner">
+            <div class="product-title">
+              <a href="#">
+                Collection Block
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
