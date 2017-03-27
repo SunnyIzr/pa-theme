@@ -8,7 +8,21 @@
     <h2>{{ settings.mktg_temp5_content_header }}</h2>
     <h3>{{ settings.mktg_temp5_content_subheader }}</h3>
     
+    {% comment %}
     <p>{{ settings.mktg_temp5_content_body }}</p>
+    {% endcomment %}
+    <div class='form-container'>
+      <form action="//paulandrew.us11.list-manage.com/subscribe/post?u=37a3aa761498960efd667ae4a&amp;id=456077a8c4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate form" target="_blank" novalidate>
+        <div class='form-group'>
+          <input type='text' name='FNAME' placeholder='First Name'><input type='text' name='LNAME' placeholder='Last Name'>
+        </div>
+        <input type='text' name='EMAIL' placeholder='Email Address'>
+        <div class='agree-terms'>
+          <input type="checkbox" name="checkbox" value="check" id="agree" /> <label for='agree'>I accept <a href='https://paulandrew.com/pages/terms' target='_blank'>Terms and Conditions</a> of the contest, and agree to receive emails from paulandrew.com</label>
+        </div>
+        <input class='btn' type='submit' value='Register'>
+      </form>
+    </div>
   </div>
   
   
@@ -37,3 +51,13 @@
   {% endif %}
   
 </div>
+
+<script>
+$('.form').submit(function(e){
+  $('.form-container').html('<p style="text-align:center;">Thank you for signing up.<br>You will receive an email shortly to complete your registration.</p>')
+    e.preventDefault();
+    url = $(this).attr('action') + '&c=?'
+    data = $(this).serialize()
+    $.post(url,data,function(res){console.log(res)})
+})
+</script>
